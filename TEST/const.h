@@ -2,6 +2,7 @@
 #define GAMEFIELD_PATH "gamefield.jpg"
 #define APP_TITLE "Polipoly"
 #define FIELDINFO_TEX_PATH "field.jpg"
+#define FIELDDATA_PATH "fielddata.txt"
 #define FIELDINFO_X 768
 #define FIELDINFO_Y 3
 #define FIELDCOLOR_SIZEX 247

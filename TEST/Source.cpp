@@ -15,6 +15,7 @@ void thread(std::string no){
 
 int main()
 {
+	std::fstream fielddata = std::fstream(FIELDDATA_PATH,std::fstream::in);
 	sf::RenderWindow window(sf::VideoMode(SCREEN_X,SCREEN_Y), APP_TITLE);
 	sf::Texture gamefieldTX;
 	sf::Texture fieldInfoTX;
@@ -38,9 +39,9 @@ int main()
 	fieldName.setFont(font);
 	teamName.setColor(sf::Color::Black);
 	fieldName.setColor(sf::Color::Black);
-	teamName.setCharacterSize(10);
+	teamName.setCharacterSize(15);
 	fieldName.setCharacterSize(20);
-	field myField("allah", "U AKBAR", sf::Color::Yellow);
+	field myField(fielddata);
 	//position = sf::Text("Welcome", font, 30);
 	//position.setPosition(830, 50);
 	
@@ -69,6 +70,6 @@ int main()
 		window.draw(fieldName);
 		window.display();
 	}
-
+	fielddata.close();
 	return 0;
 }
