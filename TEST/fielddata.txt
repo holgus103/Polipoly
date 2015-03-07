@@ -1,23 +1,40 @@
-ZTI Podstawy_Informatyki 4294902015
-ZTI Metody_Statystyczne 4294902015
-Jezyki Jezyk_angielski 1111111
-ZTiPSK Matematyka_Dyskretna 16679171
-ZTiPSK Systemy_Operacyjne 16679171
-ZTiPSK Metody_Numeryczne 16679171
-Zespól_Oprogramowania Inzynieria_Oprogramowania 16712450
-Zespól_Oprogramowania_(III_sem) Oblicznia_Równolegle 16712450
-Zespól_Oprogramowania Bazy_Danych 16712450
-Zespól_Oprogramowania_(I,II_sem) Algorytmy_i_Struktury_Danych 867839
-Zespól_Oprogramowania_(I,II_sem) Podstawy_Programowania_Komputerów 867839
-Zespól_Oprogramowania_(I,II_sem) Programowanie_Komputerów 867839
-ZMiTAC Teoria_Ukladów_Cyfrowych 1544223
-ZMiTAC Arytmetyka_Systemów_Cyfrowych 1544223
-ZMiTAC Jezyki_Assemblerowe 1544223
-Powtórka Fizyka 262122
-Powtórka Algebra 262122
-Powtórka Analiza_Matematyczna 262122
-ZMiTAC_II Konstrukcja_Ukladów_Cyfrowych 916016
-ZMiTAC_II Podstawy_Cyfrowej_Transmisji_Danych 916016
-ZMiTAC_II Systemy_Mikroprogramowalne_i_Wbudowane 916016
-Elektronicy Podstawy_Elektrotechniki 10487011
-Elektronicy Elektronika_i_Miernictwo 10487011
+Start Nowy_semestr 0 663 764 4 104
+ZTI Podstawy_Informatyki 4294902015 663 764 105 166
+Szansa ??? 0 663 764 167 228
+ZTI Metody_Statystyczne 4294902015 663 764 229 290
+Mandat Przykro_mi,_kolego 0 663 764 291 352
+Jezyki Jezyk_angielski 0 663 764 353 414
+ZTiPSK Matematyka_Dyskretna 4269868031 663 764 415 476
+Szansa ??? 0 663 764 477 538
+ZTiPSK Systemy_Operacyjne 4269868031 663 764 539 600
+ZTiPSK Metody_Numeryczne 4269868031 663 764 601 662
+KAC Znowu_sie_upiles? 0 663 764 663 764
+Zespól_Oprogramowania_(III_sem) Inzynieria_Oprogramowania 4278387455 602 662 663 764
+WF Sport_to_zdrowie 0 539 601 663 764
+Zespól_Oprogramowania_(III_sem) Oblicznia_Równolegle 4278387455 477 538 663 764
+Zespól_Oprogramowania_(III_sem) Bazy_Danych 4278387455 415 476 663 764
+Jezyki Jezyk_niemiecki 0 353 414 663 764
+Zespól_Oprogramowania_(I,II_sem) Algorytmy_i_Struktury_Danych 222167039 291 352 663 764
+Szansa ??? 0 229 290 663 764
+Zespól_Oprogramowania_(I,II_sem) Podstawy_Programowania_Komputerów 222167039 167 228 663 764
+Zespól_Oprogramowania_(I,II_sem) Programowanie_Komputerów 222167039 105 166 663 764
+Ferie Czas_na_relaks 0 4 104 663 764
+ZMiTAC Teoria_Ukladów_Cyfrowych 395321343 4 104 601 662
+Szansa ??? 0 4 104 539 600
+ZMiTAC Arytmetyka_Systemów_Cyfrowych 395321343 4 104 477 538
+ZMiTAC Jezyki_Assemblerowe 395321343 4 104 415 476
+Jezyki Jezyk_rosyjski 0 4 104 353 414
+Powtórka Fizyka 67103487 4 104 291 352
+Powtórka Algebra 67103487 4 104 229 290
+WF Sport_to_zdrowie 0 4 104 167 228
+Powtórka Analiza_Matematyczna 67103487 4 104 105 166
+Popijawa Pospij_sobie 0 4 104 4 104
+ZMiTAC_II Konstrukcja_Ukladów_Cyfrowych 234500351 105 166 4 104
+ZMiTAC_II Podstawy_Cyfrowej_Transmisji_Danych 234500351 167 228 4 104
+Szansa ??? 0 229 290 4 104
+ZMiTAC_II Systemy_Mikroprogramowalne_i_Wbudowane 234500351 291 352 4 104
+Jezyki Jezyk_hiszpanski 0 353 414 4 104
+Szansa ??? 0 415 476 4 104
+Elektronicy Podstawy_Elektrotechniki 2684675071 477 538 4 104
+Mandat Przykro_mi,_kolego 0 539 601 4 104
+Elektronicy Elektronika_i_Miernictwo 2684675071 602 662 4 104

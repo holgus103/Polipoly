@@ -1,5 +1,5 @@
 #define MY_FONT_PATH  "arial.ttf"
-#define GAMEFIELD_PATH "gamefield.jpg"
+#define GAMEFIELD_PATH "Interface.bmp"
 #define APP_TITLE "Polipoly"
 #define FIELDINFO_TEX_PATH "field.jpg"
 #define FIELDDATA_PATH "fielddata.txt"
@@ -15,3 +15,4 @@
 #define TEAMNAME_Y 9
 #define FIELDNAME_X 774
 #define FIELDNAME_Y 30
+#define GAMEFIELD_SIZE 40

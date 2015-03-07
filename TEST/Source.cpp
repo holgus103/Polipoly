@@ -1,8 +1,9 @@
-#include <SFML/System.hpp>
+//#include <SFML/System.hpp>
 #include <iostream>
-#include "fields.h"
-
-
+#include "board.h"
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
 void thread(std::string no){
 	for (int i = 0; i < 10; i++){
 		std::cout << no + " threat reporting in" << std::endl;
@@ -25,7 +26,7 @@ int main()
 	sf::RectangleShape fieldColor(sf::Vector2f(FIELDCOLOR_SIZEX, FIELDCOLOR_SIZEY));
 	sf::Text teamName;
 	sf::Text fieldName;
-	//std::string help;	
+	//board::start;
 	font.loadFromFile(MY_FONT_PATH);
 	gamefieldTX.loadFromFile(GAMEFIELD_PATH);
 	fieldInfoTX.loadFromFile(FIELDINFO_TEX_PATH);
@@ -39,9 +40,9 @@ int main()
 	fieldName.setFont(font);
 	teamName.setColor(sf::Color::Black);
 	fieldName.setColor(sf::Color::Black);
-	teamName.setCharacterSize(15);
-	fieldName.setCharacterSize(20);
-	field myField(fielddata);
+	teamName.setCharacterSize(12);
+	fieldName.setCharacterSize(13);
+	board::buildGameField(fielddata);
 	//position = sf::Text("Welcome", font, 30);
 	//position.setPosition(830, 50);
 	
@@ -54,6 +55,7 @@ int main()
 			{
 				if (event.mouseButton.button == sf::Mouse::Left)
 				{
+					board::renderClickedField(event.mouseButton.x, event.mouseButton.y,teamName, fieldName,fieldColor);
 					//position.setString("x: " + std::to_string(event.mouseButton.x) + " y: " + std::to_string(event.mouseButton.y));
 
 				}
@@ -61,7 +63,7 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
-		myField.renderMe(teamName, fieldName, fieldColor);
+		//myField.renderMe(teamName, fieldName, fieldColor);
 		window.clear(sf::Color::Black);
 		window.draw(gamefield);
 		window.draw(fieldInfo);
@@ -70,6 +72,8 @@ int main()
 		window.draw(fieldName);
 		window.display();
 	}
+	board::dispose();
 	fielddata.close();
+	_CrtDumpMemoryLeaks();
 	return 0;
 }
