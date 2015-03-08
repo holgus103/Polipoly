@@ -1,9 +1,7 @@
 //#include <SFML/System.hpp>
 #include <iostream>
 #include "board.h"
-#define _CRTDBG_MAP_ALLOC
-#include <stdlib.h>
-#include <crtdbg.h>
+#include <vld.h>
 void thread(std::string no){
 	for (int i = 0; i < 10; i++){
 		std::cout << no + " threat reporting in" << std::endl;
@@ -17,7 +15,8 @@ void thread(std::string no){
 int main()
 {
 	std::fstream fielddata = std::fstream(FIELDDATA_PATH,std::fstream::in);
-	sf::RenderWindow window(sf::VideoMode(SCREEN_X,SCREEN_Y), APP_TITLE);
+	
+	sf::RenderWindow window(sf::VideoMode(SCREEN_X, SCREEN_Y), APP_TITLE);
 	sf::Texture gamefieldTX;
 	sf::Texture fieldInfoTX;
 	sf::Sprite gamefield;
@@ -26,7 +25,6 @@ int main()
 	sf::RectangleShape fieldColor(sf::Vector2f(FIELDCOLOR_SIZEX, FIELDCOLOR_SIZEY));
 	sf::Text teamName;
 	sf::Text fieldName;
-	//board::start;
 	font.loadFromFile(MY_FONT_PATH);
 	gamefieldTX.loadFromFile(GAMEFIELD_PATH);
 	fieldInfoTX.loadFromFile(FIELDINFO_TEX_PATH);
@@ -43,8 +41,6 @@ int main()
 	teamName.setCharacterSize(12);
 	fieldName.setCharacterSize(13);
 	board::buildGameField(fielddata);
-	//position = sf::Text("Welcome", font, 30);
-	//position.setPosition(830, 50);
 	
 	while (window.isOpen())
 	{
@@ -56,24 +52,35 @@ int main()
 				if (event.mouseButton.button == sf::Mouse::Left)
 				{
 					board::renderClickedField(event.mouseButton.x, event.mouseButton.y,teamName, fieldName,fieldColor);
-					//position.setString("x: " + std::to_string(event.mouseButton.x) + " y: " + std::to_string(event.mouseButton.y));
+
 
 				}
 			}
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
-		//myField.renderMe(teamName, fieldName, fieldColor);
+		
 		window.clear(sf::Color::Black);
 		window.draw(gamefield);
 		window.draw(fieldInfo);
 		window.draw(fieldColor);
 		window.draw(teamName);
 		window.draw(fieldName);
+		
 		window.display();
 	}
+	
+	/*gamefieldTX.~Texture();
+	fieldInfoTX.~Texture();
+	teamName.~Text();
+	fieldName.~Text();
+	gamefield.~Sprite();
+	fieldInfo.~Sprite();
+	//font.~Font();
+	fieldColor.~RectangleShape();
+	window.~RenderWindow();*/
 	board::dispose();
 	fielddata.close();
-	_CrtDumpMemoryLeaks();
+	window.~RenderWindow();
 	return 0;
 }
