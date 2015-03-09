@@ -59,7 +59,7 @@ int main()
 	teamName.setCharacterSize(12);
 	fieldName.setCharacterSize(13);
 	board::buildGameField(fielddata);
-	
+	srand(time(NULL));
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -71,13 +71,15 @@ int main()
 				{
 					board::renderClickedField(event.mouseButton.x, event.mouseButton.y,teamName, fieldName,fieldColor);
 					int random1, random2;
-					for (int j = 0; j < 50; j++)
+					for (int j = 0; j < 20; j++)
 					{
 						random1 = rand() % 6;
 						dicePic1.setTexture(dicePicTX[random1]);
 						random2 = rand() % 6;
 						dicePic2.setTexture(dicePicTX[random2]);
 						Sleep(j * 15);
+						window.draw(dicePic1);
+						window.draw(dicePic2);
 						window.display();
 					}
 
