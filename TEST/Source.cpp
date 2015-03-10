@@ -1,10 +1,12 @@
 //#include <SFML/System.hpp>
 #include <iostream>
 #include <time.h>
+#include <functional>
 #include "board.h"
-#include <windows.h>
+#include "Dice.h"
 
-//#include <vld.h>
+
+#include <vld.h>
 void thread(std::string no){
 	for (int i = 0; i < 10; i++){
 		std::cout << no + " threat reporting in" << std::endl;
@@ -20,11 +22,10 @@ int main()
 	srand(time(NULL));
 
 	std::fstream fielddata = std::fstream(FIELDDATA_PATH,std::fstream::in);
-	
+	int roll = 0;
 	sf::RenderWindow window(sf::VideoMode(SCREEN_X, SCREEN_Y), APP_TITLE);
 	sf::Texture gamefieldTX;
 	sf::Texture fieldInfoTX;
-	sf::Texture dicePicTX[6];
 	sf::Sprite gamefield;
 	sf::Sprite dicePic1;
 	sf::Sprite dicePic2;
@@ -33,19 +34,14 @@ int main()
 	sf::RectangleShape fieldColor(sf::Vector2f(FIELDCOLOR_SIZEX, FIELDCOLOR_SIZEY));
 	sf::Text teamName;
 	sf::Text fieldName;
+	//sf::Thread Roll1(std::bind(&dice::RollMe,&window, dicePic1));
+	//sf::Thread Roll2(std::bind(&dice::RollMe,&window, dicePic2));
+	sf::Sprite* Dices[2] = { &dicePic1,&dicePic2};
 	font.loadFromFile(MY_FONT_PATH);
 	gamefieldTX.loadFromFile(GAMEFIELD_PATH);
-	dicePicTX[0].loadFromFile(DICE_PIC_ONE);
-	dicePicTX[1].loadFromFile(DICE_PIC_TWO);
-	dicePicTX[2].loadFromFile(DICE_PIC_THREE);
-	dicePicTX[3].loadFromFile(DICE_PIC_FOUR);
-	dicePicTX[4].loadFromFile(DICE_PIC_FIVE);
-	dicePicTX[5].loadFromFile(DICE_PIC_SIX);
 	fieldInfoTX.loadFromFile(FIELDINFO_TEX_PATH);
 	gamefield.setTexture(gamefieldTX);
 	fieldInfo.setTexture(fieldInfoTX);
-	dicePic1.setTexture(dicePicTX[0]);
-	dicePic2.setTexture(dicePicTX[0]);
 	fieldInfo.setPosition(FIELDINFO_X, FIELDINFO_Y);
 	dicePic1.setPosition(800, 500);
 	dicePic2.setPosition(860, 500);
@@ -59,6 +55,7 @@ int main()
 	teamName.setCharacterSize(12);
 	fieldName.setCharacterSize(13);
 	board::buildGameField(fielddata);
+	dice::LoadTextures();
 	srand(time(NULL));
 	while (window.isOpen())
 	{
@@ -70,18 +67,7 @@ int main()
 				if (event.mouseButton.button == sf::Mouse::Left)
 				{
 					board::renderClickedField(event.mouseButton.x, event.mouseButton.y,teamName, fieldName,fieldColor);
-					int random1, random2;
-					for (int j = 0; j < 20; j++)
-					{
-						random1 = rand() % 6;
-						dicePic1.setTexture(dicePicTX[random1]);
-						random2 = rand() % 6;
-						dicePic2.setTexture(dicePicTX[random2]);
-						Sleep(j * 15);
-						window.draw(dicePic1);
-						window.draw(dicePic2);
-						window.display();
-					}
+					roll = dice::RollMe(&window, Dices,sizeof(Dices)/sizeof(Dices[0]));			
 
 				}
 			}
