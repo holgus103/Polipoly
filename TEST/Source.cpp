@@ -4,15 +4,9 @@
 #include <functional>
 #include "board.h"
 #include "Dice.h"
-
-
+#include "player.h"
 #include <vld.h>
-void thread(std::string no){
-	for (int i = 0; i < 10; i++){
-		std::cout << no + " threat reporting in" << std::endl;
-		getchar();
-	}
-}
+
 
 
 
@@ -20,40 +14,15 @@ void thread(std::string no){
 int main()
 {
 	srand(time(NULL));
-
-	std::fstream fielddata = std::fstream(FIELDDATA_PATH,std::fstream::in);
 	int roll = 0;
+	std::fstream fielddata = std::fstream(FIELDDATA_PATH,std::fstream::in);
 	sf::RenderWindow window(sf::VideoMode(SCREEN_X, SCREEN_Y), APP_TITLE);
-	sf::Texture gamefieldTX;
-	sf::Texture fieldInfoTX;
-	sf::Sprite gamefield;
 	sf::Sprite dicePic1;
 	sf::Sprite dicePic2;
-	sf::Sprite fieldInfo;
-	sf::Font font;
-	sf::RectangleShape fieldColor(sf::Vector2f(FIELDCOLOR_SIZEX, FIELDCOLOR_SIZEY));
-	sf::Text teamName;
-	sf::Text fieldName;
-	//sf::Thread Roll1(std::bind(&dice::RollMe,&window, dicePic1));
-	//sf::Thread Roll2(std::bind(&dice::RollMe,&window, dicePic2));
+	player player1(1, 700, 700, PLAYER_1_PATH);
 	sf::Sprite* Dices[2] = { &dicePic1,&dicePic2};
-	font.loadFromFile(MY_FONT_PATH);
-	gamefieldTX.loadFromFile(GAMEFIELD_PATH);
-	fieldInfoTX.loadFromFile(FIELDINFO_TEX_PATH);
-	gamefield.setTexture(gamefieldTX);
-	fieldInfo.setTexture(fieldInfoTX);
-	fieldInfo.setPosition(FIELDINFO_X, FIELDINFO_Y);
-	dicePic1.setPosition(800, 500);
-	dicePic2.setPosition(860, 500);
-	fieldColor.setPosition(FIELDCOLOR_X, FIELDCOLOR_Y);
-	teamName.setPosition(TEAMNAME_X, TEAMNAME_Y);
-	fieldName.setPosition(FIELDNAME_X, FIELDNAME_Y);
-	teamName.setFont(font);
-	fieldName.setFont(font);
-	teamName.setColor(sf::Color::Black);
-	fieldName.setColor(sf::Color::Black);
-	teamName.setCharacterSize(12);
-	fieldName.setCharacterSize(13);
+	dicePic1.setPosition(DICE1_X, DICE1_Y);
+	dicePic2.setPosition(DICE2_X,DICE2_Y);
 	board::buildGameField(fielddata);
 	dice::LoadTextures();
 	srand(time(NULL));
@@ -66,7 +35,7 @@ int main()
 			{
 				if (event.mouseButton.button == sf::Mouse::Left)
 				{
-					board::renderClickedField(event.mouseButton.x, event.mouseButton.y,teamName, fieldName,fieldColor);
+					board::renderClickedField(event.mouseButton.x, event.mouseButton.y);
 					roll = dice::RollMe(&window, Dices,sizeof(Dices)/sizeof(Dices[0]));			
 
 				}
@@ -76,28 +45,19 @@ int main()
 		}
 		
 		window.clear(sf::Color::Black);
-		window.draw(gamefield);
-		window.draw(fieldInfo);
-		window.draw(fieldColor);
-		window.draw(teamName);
-		window.draw(fieldName);
+		window.draw(board::getBoardSprite());
+		window.draw(board::GetFieldInfo());
+		window.draw(board::GetFieldColor());
+		window.draw(board::GetTeamName());
+		window.draw(board::GetFieldName());
 		window.draw(dicePic1);
 		window.draw(dicePic2);
+		window.draw(player1.getPlayerSprite());
 		
 		window.display();
 	}
-	
-	/*gamefieldTX.~Texture();
-	fieldInfoTX.~Texture();
-	teamName.~Text();
-	fieldName.~Text();
-	gamefield.~Sprite();
-	fieldInfo.~Sprite();
-	//font.~Font();
-	fieldColor.~RectangleShape();
-	window.~RenderWindow();*/
+
 	board::dispose();
 	fielddata.close();
-	window.~RenderWindow();
 	return 0;
 }

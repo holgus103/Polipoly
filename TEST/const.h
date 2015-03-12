@@ -1,3 +1,4 @@
+#pragma once
 #define MY_FONT_PATH  "arial.ttf"
 #define GAMEFIELD_PATH "Interface.bmp"
 #define APP_TITLE "Polipoly"
@@ -9,6 +10,7 @@
 #define DICE_PIC_FOUR "Dice_4.bmp"
 #define DICE_PIC_FIVE "Dice_5.bmp"
 #define DICE_PIC_SIX "Dice_6.bmp"
+#define PLAYER_1_PATH "Pionek1.png"
 #define FIELDINFO_X 768
 #define FIELDINFO_Y 3
 #define FIELDCOLOR_SIZEX 247
@@ -22,4 +24,9 @@
 #define FIELDNAME_X 774
 #define FIELDNAME_Y 30
 #define GAMEFIELD_SIZE 40
-#define DICES 2
+#define DICE1_X 800
+#define DICE1_Y 500
+#define DICE2_X 860 
+#define DICE2_Y 500
+#define FIELDNAME_TEXT_SIZE 13
+#define TEAMNAME_TEXT_SIZE 12

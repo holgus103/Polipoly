@@ -1,7 +1,9 @@
+#pragma once
 #include <string>
 #include <SFML/Graphics.hpp>
 #include "const.h"
 #include <fstream>
+#include "player.h"
 
 class field{
 private:
@@ -11,6 +13,7 @@ private:
 	std::string name;
 	sf::Color color;
 	void putSpaces(std::string& input);
+	player* occupant;
 
 public:
 	void renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::RectangleShape& field);
