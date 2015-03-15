@@ -1,11 +1,10 @@
 #include "player.h"
 #include "fields.h"
 
-player::player(int numberIn, int x, int y, std::string TexPath){
+player::player(int numberIn, std::string TexPath){
 	number = numberIn;
 	PlayerTx.loadFromFile(TexPath);
 	Player.setTexture(PlayerTx);
-	Player.setPosition(x, y);
 	current = board::getStart();
 	current->SetPosition(this);
 }

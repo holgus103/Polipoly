@@ -11,7 +11,7 @@ class player{
 
 public:
 	//player* next;
-	player(int numberIn, int x, int y, std::string TexPath);
+	player(int numberIn, std::string TexPath);
 	sf::Sprite& getPlayerSprite(){ return Player; }
 	int getNumber(){ return number;}
 	field* GetCurrentField(){ return current; }

@@ -1,16 +1,21 @@
 #include "board.h"
 #include "fields.h"
+#include "Dice.h"
 
 field* board::start;
 sf::Texture board::gamefieldTX;
 sf::Texture board::fieldInfoTX;
 sf::Sprite board::gamefield;
 sf::Sprite board::fieldInfo;
+sf::Sprite* board::Dices[2];
+sf::Sprite board::dicePic1;
+sf::Sprite board::dicePic2;
 sf::Text board::teamName;
 sf::Text board::fieldName;
 sf::Font board::font;
 sf::RectangleShape board::fieldColor;
-
+player* board::players[PLAYERS];
+player* board::current;
 
 
 void board::buildGameField(std::fstream& fielddata){
@@ -36,6 +41,13 @@ void board::buildGameField(std::fstream& fielddata){
 
 	fieldColor = sf::RectangleShape(sf::Vector2f(FIELDCOLOR_SIZEX, FIELDCOLOR_SIZEY));
 	fieldColor.setPosition(FIELDCOLOR_X, FIELDCOLOR_Y);
+	//prepare the dices
+	dicePic1.setPosition(DICE1_X, DICE1_Y);
+	dicePic2.setPosition(DICE2_X, DICE2_Y);
+	dice::LoadTextures();
+	Dices[0] = &dicePic1;
+	Dices[1] = &dicePic2;
+
 	//build the gamefield list 
 	field* temp = NULL;
 	start = new field(fielddata, NULL);
@@ -46,6 +58,13 @@ void board::buildGameField(std::fstream& fielddata){
 	}
 	temp->next = start;
 	start->prev = temp;
+
+	//initialize players
+	players[0] = new player(1, PLAYER_1_PATH);
+	players[1] = new player(2, PLAYER_2_PATH);
+	players[2] = NULL;
+	players[3] = NULL;
+	current = players[0];
 }
 
 bool board::renderClickedField(short x, short y)
@@ -63,12 +82,43 @@ bool board::renderClickedField(short x, short y)
 void board::dispose(){
 	start->prev->next = NULL;
 	while (start->next!= NULL){
-		//start->prev= NULL;
 		start = start->next;
 		delete start->prev;
 	}
 	delete start;
+	for (int i = 0; i < PLAYERS; i++){
+		if (players[i] == NULL)
+			break;
+		delete players[i];
+	}
 }
-void board::move(int roll){
 
+void board::DrawGamefield(sf::RenderWindow& window){
+	window.draw(gamefield);
+	window.draw(fieldInfo);
+	window.draw(fieldColor);
+	window.draw(teamName);
+	window.draw(fieldName);
+	window.draw(dicePic1);
+	window.draw(dicePic2);
+	for (int i = 0; i < PLAYERS; i++){
+		if (players[i] == NULL)
+			break;
+		window.draw(players[i]->getPlayerSprite());
+	}
+	window.draw((players[0]->getPlayerSprite()));
+}
+
+void board::serveClick(sf::RenderWindow& window, int x, int y){
+	int roll;
+	if (DICE1_X<x && x<DICE2_X + DICE_SIZE && y>DICE1_Y && y < DICE1_Y + DICE_SIZE){
+		roll = dice::RollMe(&window, Dices, sizeof(Dices) / sizeof(Dices[0]));
+		current->Move(roll);
+		current = players[current->getNumber()] != NULL ? players[current->getNumber()] : players[0];
+		/*if (players[current->getNumber()] != NULL)
+			current = players[current->getNumber()];
+		else
+			current = players[0];*/
+	}
+	renderClickedField(x, y);
 }

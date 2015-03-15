@@ -35,3 +35,5 @@
 #define TEAMNAME_TEXT_SIZE 12
 #define PIN_WIDTH 26
 #define PIN_HEIGHT 26
+#define DICE_SIZE 60
+#define PLAYERS 4

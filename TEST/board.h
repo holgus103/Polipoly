@@ -2,6 +2,7 @@
 //#include "fields.h"
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "const.h"
 class field;
 class player;
 
@@ -14,21 +15,23 @@ private:
 	static sf::Texture fieldInfoTX;
 	static sf::Sprite gamefield;
 	static sf::Sprite fieldInfo;
+	static sf::Sprite dicePic1;
+	static sf::Sprite dicePic2;
 	static sf::Text teamName;
 	static sf::Text fieldName;
 	static sf::Font font;
 	static sf::RectangleShape fieldColor; 
+	static sf::Sprite* Dices[2];
+	static player* players[PLAYERS];
+	static player* current;
+
 
 public:
+	static void serveClick(sf::RenderWindow& window,int x, int y);
 	static void buildGameField(std::fstream& fielddata);
 	static bool renderClickedField(short x, short y);
 	static void dispose();
-	static sf::Sprite& getBoardSprite(){ return gamefield; }
-	static sf::Text& GetTeamName(){ return teamName; }
-	static sf::Text& GetFieldName(){ return fieldName; }
-	static sf::RectangleShape& GetFieldColor(){ return fieldColor; }
-	static  sf::Sprite& GetFieldInfo(){ return fieldInfo; }
 	static field* getStart(){ return start; }
-	static void move(int roll);
-
+	//static void move(int roll);
+	static void DrawGamefield(sf::RenderWindow& window);
 };
