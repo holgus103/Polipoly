@@ -7,7 +7,7 @@
 
 class field{
 private:
-	int number;
+	int owner;
 	short xl, xr, yu, yd;
 	std::string team;
 	std::string name;
@@ -17,11 +17,9 @@ private:
 
 public:
 	void renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::RectangleShape& field);
-	//field(std::string newTeam, std::string newName, sf::Color newColor);
+	int GetOwner(){ return owner; }
 	field(std::fstream& fielddata, field* prev);
 	bool belongs(short x, short y);
 	field* next, *prev;
-	//void occupy(player* invader);
-	//void removeMe();
 	void SetPosition(player* occupant);
 };

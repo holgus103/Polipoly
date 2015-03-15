@@ -115,10 +115,7 @@ void board::serveClick(sf::RenderWindow& window, int x, int y){
 		roll = dice::RollMe(&window, Dices, sizeof(Dices) / sizeof(Dices[0]));
 		current->Move(roll);
 		current = players[current->getNumber()] != NULL ? players[current->getNumber()] : players[0];
-		/*if (players[current->getNumber()] != NULL)
-			current = players[current->getNumber()];
-		else
-			current = players[0];*/
+		current->GetCurrentField()->renderMe(teamName, fieldName, fieldColor);
 	}
 	renderClickedField(x, y);
 }
