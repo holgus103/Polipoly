@@ -16,6 +16,7 @@ sf::Font board::font;
 sf::RectangleShape board::fieldColor;
 player* board::players[PLAYERS];
 player* board::current;
+sf::RenderWindow* board::mainWindow;
 
 
 void board::buildGameField(std::fstream& fielddata){
@@ -47,6 +48,7 @@ void board::buildGameField(std::fstream& fielddata){
 	dice::LoadTextures();
 	Dices[0] = &dicePic1;
 	Dices[1] = &dicePic2;
+	dice::SetDicesIdle(Dices, sizeof(Dices) / sizeof(Dices[0]));
 
 	//build the gamefield list 
 	field* temp = NULL;
@@ -93,29 +95,30 @@ void board::dispose(){
 	}
 }
 
-void board::DrawGamefield(sf::RenderWindow& window){
-	window.draw(gamefield);
-	window.draw(fieldInfo);
-	window.draw(fieldColor);
-	window.draw(teamName);
-	window.draw(fieldName);
-	window.draw(dicePic1);
-	window.draw(dicePic2);
+void board::DrawGamefield(){
+	mainWindow->draw(gamefield);
+	mainWindow->draw(fieldInfo);
+	mainWindow->draw(fieldColor);
+	mainWindow->draw(teamName);
+	mainWindow->draw(fieldName);
+	mainWindow->draw(dicePic1);
+	mainWindow->draw(dicePic2);
 	for (int i = 0; i < PLAYERS; i++){
 		if (players[i] == NULL)
 			break;
-		window.draw(players[i]->getPlayerSprite());
+		mainWindow->draw(players[i]->getPlayerSprite());
 	}
-	window.draw((players[0]->getPlayerSprite()));
+	mainWindow->draw((players[0]->getPlayerSprite()));
+	mainWindow->display();
 }
 
-void board::serveClick(sf::RenderWindow& window, int x, int y){
+void board::serveClick(int x, int y){
 	int roll;
 	if (DICE1_X<x && x<DICE2_X + DICE_SIZE && y>DICE1_Y && y < DICE1_Y + DICE_SIZE){
-		roll = dice::RollMe(&window, Dices, sizeof(Dices) / sizeof(Dices[0]));
+		roll = dice::RollMe(mainWindow, Dices, sizeof(Dices) / sizeof(Dices[0]));
 		current->Move(roll);
-		current = players[current->getNumber()] != NULL ? players[current->getNumber()] : players[0];
 		current->GetCurrentField()->renderMe(teamName, fieldName, fieldColor);
+		current = players[current->getNumber()] != NULL ? players[current->getNumber()] : players[0];
 	}
 	renderClickedField(x, y);
 }

@@ -20,6 +20,12 @@
 	return sum+dices;
 }
 
+ void dice::SetDicesIdle(sf::Sprite* diceFields[], int dices){
+	 for (int i = 0; i < dices; i++){
+		 diceFields[i]->setTexture(dicePicTX[6]);
+	 }
+ }
+
 bool dice::LoadTextures(){
 		dicePicTX[0].loadFromFile(DICE_PIC_ONE);
 		dicePicTX[1].loadFromFile(DICE_PIC_TWO);
@@ -27,7 +33,8 @@ bool dice::LoadTextures(){
 		dicePicTX[3].loadFromFile(DICE_PIC_FOUR);
 		dicePicTX[4].loadFromFile(DICE_PIC_FIVE);
 		dicePicTX[5].loadFromFile(DICE_PIC_SIX);
+		dicePicTX[6].loadFromFile(DICE_PIC_IDLE);
 		return true;
 	}
 
-sf::Texture dice::dicePicTX[6];
+sf::Texture dice::dicePicTX[7];

@@ -24,14 +24,16 @@ private:
 	static sf::Sprite* Dices[2];
 	static player* players[PLAYERS];
 	static player* current;
+	static sf::RenderWindow* mainWindow;
 
 
 public:
-	static void serveClick(sf::RenderWindow& window,int x, int y);
+	static void setWindow(sf::RenderWindow& myWindow){ mainWindow = &myWindow; }
+	static void serveClick(int x, int y);
 	static void buildGameField(std::fstream& fielddata);
 	static bool renderClickedField(short x, short y);
 	static void dispose();
 	static field* getStart(){ return start; }
 	//static void move(int roll);
-	static void DrawGamefield(sf::RenderWindow& window);
+	static void DrawGamefield();
 };

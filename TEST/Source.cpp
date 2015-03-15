@@ -18,8 +18,7 @@ int main()
 	std::fstream fielddata = std::fstream(FIELDDATA_PATH,std::fstream::in);
 	sf::RenderWindow window(sf::VideoMode(SCREEN_X, SCREEN_Y), APP_TITLE);
 	board::buildGameField(fielddata);
-	//player player1(1, 700, 700, PLAYER_1_PATH);
-	srand(time(NULL));
+	board::setWindow(window);
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -29,11 +28,7 @@ int main()
 			{
 				if (event.mouseButton.button == sf::Mouse::Left)
 				{
-					board::serveClick(window,event.mouseButton.x, event.mouseButton.y);
-					//board::renderClickedField(event.mouseButton.x, event.mouseButton.y);
-					//roll = dice::RollMe(&window, Dices,sizeof(Dices)/sizeof(Dices[0]));		
-					//player1.Move(roll);
-
+					board::serveClick(event.mouseButton.x, event.mouseButton.y);
 				}
 			}
 			if (event.type == sf::Event::Closed)
@@ -41,10 +36,7 @@ int main()
 		}
 		
 		window.clear(sf::Color::Black);
-		board::DrawGamefield(window);
-		//window.draw(player1.getPlayerSprite());
-		
-		window.display();
+		board::DrawGamefield();
 	}
 
 	board::dispose();

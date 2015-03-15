@@ -10,6 +10,7 @@
 #define DICE_PIC_FOUR "Dice_4.bmp"
 #define DICE_PIC_FIVE "Dice_5.bmp"
 #define DICE_PIC_SIX "Dice_6.bmp"
+#define DICE_PIC_IDLE "Dice_Idle.bmp"
 #define PLAYER_1_PATH "Pionek1.png"
 #define PLAYER_2_PATH "Pionek2.png"
 #define PLAYER_3_PATH "Pionek3.png"
@@ -37,3 +38,4 @@
 #define PIN_HEIGHT 26
 #define DICE_SIZE 60
 #define PLAYERS 4
+#define MOVE_INTERVAL 500

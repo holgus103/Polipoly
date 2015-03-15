@@ -30,16 +30,6 @@
 		prev = newPrev;
 	}
 
-	/*void field::occupy(player* invader){
-		player* temp = occupant;
-		if (occupant == NULL)
-			occupant = invader;
-		else{
-			while (temp->next != NULL){
-				temp = temp->next;
-			}
-		}
-	}*/
 	void field::SetPosition(player* occupant){
 		int x, y, number;
 		number = occupant->getNumber();
