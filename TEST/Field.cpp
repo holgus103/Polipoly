@@ -15,8 +15,6 @@
 		fieldname.setString(name);
 		field.setFillColor(color);
 	};
-	//field::field(std::string newTeam, std::string newName, sf::Color newColor):team(newTeam),name(newName), color(newColor)
-	//{}
 	field::field(std::fstream& fielddata,field* newPrev){
 		unsigned int RGBA;
 		fielddata >> team;
@@ -30,4 +28,22 @@
 		fielddata >> yu;
 		fielddata >> yd;
 		prev = newPrev;
+	}
+
+	/*void field::occupy(player* invader){
+		player* temp = occupant;
+		if (occupant == NULL)
+			occupant = invader;
+		else{
+			while (temp->next != NULL){
+				temp = temp->next;
+			}
+		}
+	}*/
+	void field::SetPosition(player* occupant){
+		int x, y, number;
+		number = occupant->getNumber();
+		x = xl + (3 - (number % 2) * 2)*(xr - xl) / 4 - PIN_WIDTH/2;
+		y = yu + (floor(number / 3) * 2 + 1)*(yd - yu) / 4 -PIN_HEIGHT/2;
+		(occupant->getPlayerSprite()).setPosition(x, y);
 	}

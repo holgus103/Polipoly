@@ -1,4 +1,5 @@
 #include "board.h"
+#include "fields.h"
 
 field* board::start;
 sf::Texture board::gamefieldTX;
@@ -68,20 +69,6 @@ void board::dispose(){
 	}
 	delete start;
 }
+void board::move(int roll){
 
-sf::Sprite& board::getBoardSprite(){
-	return gamefield;
-}
-
-sf::Text& board::GetTeamName(){
-	return teamName;
-}
-sf::Text& board::GetFieldName(){
-	return fieldName;
-}
-sf::RectangleShape& board::GetFieldColor(){
-	return fieldColor;
-}
-sf::Sprite& board::GetFieldInfo(){
-	return fieldInfo;
 }

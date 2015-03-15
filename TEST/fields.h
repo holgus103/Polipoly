@@ -21,4 +21,7 @@ public:
 	field(std::fstream& fielddata, field* prev);
 	bool belongs(short x, short y);
 	field* next, *prev;
+	//void occupy(player* invader);
+	//void removeMe();
+	void SetPosition(player* occupant);
 };

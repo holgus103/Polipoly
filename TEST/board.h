@@ -1,5 +1,10 @@
 #pragma once
-#include "fields.h"
+//#include "fields.h"
+#include <string>
+#include <SFML/Graphics.hpp>
+class field;
+class player;
+
 
 
 class board{
@@ -18,10 +23,12 @@ public:
 	static void buildGameField(std::fstream& fielddata);
 	static bool renderClickedField(short x, short y);
 	static void dispose();
-	static sf::Sprite& getBoardSprite();
-	static sf::Text& GetTeamName();
-	static sf::Text& GetFieldName();
-	static sf::RectangleShape& GetFieldColor();
-	static  sf::Sprite& GetFieldInfo();
+	static sf::Sprite& getBoardSprite(){ return gamefield; }
+	static sf::Text& GetTeamName(){ return teamName; }
+	static sf::Text& GetFieldName(){ return fieldName; }
+	static sf::RectangleShape& GetFieldColor(){ return fieldColor; }
+	static  sf::Sprite& GetFieldInfo(){ return fieldInfo; }
+	static field* getStart(){ return start; }
+	static void move(int roll);
 
 };

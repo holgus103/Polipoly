@@ -11,6 +11,9 @@
 #define DICE_PIC_FIVE "Dice_5.bmp"
 #define DICE_PIC_SIX "Dice_6.bmp"
 #define PLAYER_1_PATH "Pionek1.png"
+#define PLAYER_2_PATH "Pionek2.png"
+#define PLAYER_3_PATH "Pionek3.png"
+#define PLAYER_4_PATH "Pionek4.png"
 #define FIELDINFO_X 768
 #define FIELDINFO_Y 3
 #define FIELDCOLOR_SIZEX 247
@@ -30,3 +33,5 @@
 #define DICE2_Y 500
 #define FIELDNAME_TEXT_SIZE 13
 #define TEAMNAME_TEXT_SIZE 12
+#define PIN_WIDTH 26
+#define PIN_HEIGHT 26
