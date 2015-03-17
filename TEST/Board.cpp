@@ -64,8 +64,8 @@ void board::buildGameField(std::fstream& fielddata){
 	//initialize players
 	players[0] = new player(1, PLAYER_1_PATH);
 	players[1] = new player(2, PLAYER_2_PATH);
-	players[2] = NULL;
-	players[3] = NULL;
+	players[2] = new player(3,PLAYER_3_PATH);
+	players[3] = new player(4, PLAYER_4_PATH);
 	current = players[0];
 }
 
