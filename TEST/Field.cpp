@@ -10,10 +10,11 @@
 			return true;
 		return false;
 	}
-	void field::renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::RectangleShape& field){
+	void field::renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::RectangleShape& field, sf::Text& fieldContent){
 		fieldteam.setString(team);
 		fieldname.setString(name);
 		field.setFillColor(color);
+		fieldContent.setString("");
 	};
 	field::field(std::fstream& fielddata,field* newPrev){
 		unsigned int RGBA;
@@ -37,3 +38,6 @@
 		y = yu + (floor(number / 3) * 2 + 1)*(yd - yu) / 4 -PIN_HEIGHT/2;
 		(occupant->getPlayerSprite()).setPosition(x, y);
 	}
+	field::~field(){}
+	void field::EnterTheFieldtrix(player& Neo){}
+	bool field::PayDay(player& Chaplin){ return true; }

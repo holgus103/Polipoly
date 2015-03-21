@@ -12,6 +12,7 @@ sf::Sprite board::dicePic1;
 sf::Sprite board::dicePic2;
 sf::Text board::teamName;
 sf::Text board::fieldName;
+sf::Text board::fieldContent;
 sf::Font board::font;
 sf::RectangleShape board::fieldColor;
 player* board::players[PLAYERS];
@@ -42,6 +43,11 @@ void board::buildGameField(std::fstream& fielddata){
 
 	fieldColor = sf::RectangleShape(sf::Vector2f(FIELDCOLOR_SIZEX, FIELDCOLOR_SIZEY));
 	fieldColor.setPosition(FIELDCOLOR_X, FIELDCOLOR_Y);
+
+	fieldContent.setFont(font);
+	fieldContent.setCharacterSize(CONTENT_TEXT_SIZE);
+	fieldContent.setPosition(CONTENT_X, CONTENT_Y);
+	fieldContent.setColor(sf::Color::Black);
 	//prepare the dices
 	dicePic1.setPosition(DICE1_X, DICE1_Y);
 	dicePic2.setPosition(DICE2_X, DICE2_Y);
@@ -52,10 +58,20 @@ void board::buildGameField(std::fstream& fielddata){
 
 	//build the gamefield list 
 	field* temp = NULL;
-	start = new field(fielddata, NULL);
+	int price;
+	fielddata >> price;
+	if (price == 0)
+		start = new field(fielddata, temp);
+	else
+		start = new CommercialField(fielddata, temp, price);
+	//start = new field(fielddata, NULL);
 	temp = start;
 	for (int i = 0; i < GAMEFIELD_SIZE - 1; i++){
-		temp->next = new field(fielddata, temp);
+		fielddata >> price;
+		if (price == 0)
+			temp->next = new field(fielddata, temp);
+		else
+			temp->next = new CommercialField(fielddata, temp, price);
 		temp = temp->next;
 	}
 	temp->next = start;
@@ -74,7 +90,7 @@ bool board::renderClickedField(short x, short y)
 	field* temp = start;
 	do{
 		if (temp->belongs(x, y)){
-			temp->renderMe(teamName, fieldName, fieldColor);
+			temp->renderMe(teamName, fieldName, fieldColor,fieldContent);
 			return true;
 		}
 		temp = temp->next;
@@ -91,7 +107,7 @@ void board::dispose(){
 	for (int i = 0; i < PLAYERS; i++){
 		if (players[i] == NULL)
 			break;
-		delete players[i];
+		delete (players[i]);
 	}
 }
 
@@ -101,6 +117,7 @@ void board::DrawGamefield(){
 	mainWindow->draw(fieldColor);
 	mainWindow->draw(teamName);
 	mainWindow->draw(fieldName);
+	mainWindow->draw(fieldContent);
 	mainWindow->draw(dicePic1);
 	mainWindow->draw(dicePic2);
 	for (int i = 0; i < PLAYERS; i++){
@@ -117,8 +134,8 @@ void board::serveClick(int x, int y){
 	if (DICE1_X<x && x<DICE2_X + DICE_SIZE && y>DICE1_Y && y < DICE1_Y + DICE_SIZE){
 		roll = dice::RollMe(mainWindow, Dices, sizeof(Dices) / sizeof(Dices[0]));
 		current->Move(roll);
-		current->GetCurrentField()->renderMe(teamName, fieldName, fieldColor);
-		current = players[current->getNumber()] != NULL ? players[current->getNumber()] : players[0];
+		current->GetCurrentField()->renderMe(teamName, fieldName, fieldColor,fieldContent);
+		current = ((players[current->getNumber()] != NULL) && (current->getNumber()!=PLAYERS))? players[current->getNumber()] : players[0];
 	}
 	renderClickedField(x, y);
 }

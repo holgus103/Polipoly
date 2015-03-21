@@ -21,6 +21,8 @@
 #define FIELDCOLOR_SIZEY 50
 #define FIELDCOLOR_X 771
 #define FIELDCOLOR_Y 6
+#define CONTENT_X 780
+#define CONTENT_Y 60
 #define SCREEN_X 1024
 #define SCREEN_Y 768
 #define TEAMNAME_X 774
@@ -34,8 +36,10 @@
 #define DICE2_Y 600
 #define FIELDNAME_TEXT_SIZE 13
 #define TEAMNAME_TEXT_SIZE 12
+#define CONTENT_TEXT_SIZE 10
 #define PIN_WIDTH 26
 #define PIN_HEIGHT 26
 #define DICE_SIZE 60
 #define PLAYERS 4
+#define INITIAL_CASH 1500
 #define MOVE_INTERVAL 500

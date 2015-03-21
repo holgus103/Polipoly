@@ -4,7 +4,7 @@
 #include <functional>
 #include "board.h"
 #include "player.h"
-//#include <vld.h>
+#include <vld.h>
 #include "fields.h"
 
 
@@ -15,7 +15,7 @@ int main()
 {
 	srand(time(NULL));
 	int roll = 0;
-	std::fstream fielddata = std::fstream(FIELDDATA_PATH,std::fstream::in);
+	std::fstream fielddata(FIELDDATA_PATH,std::fstream::in);
 	sf::RenderWindow window(sf::VideoMode(SCREEN_X, SCREEN_Y), APP_TITLE);
 	board::buildGameField(fielddata);
 	board::setWindow(window);

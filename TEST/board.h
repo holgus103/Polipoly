@@ -1,5 +1,4 @@
 #pragma once
-//#include "fields.h"
 #include <string>
 #include <SFML/Graphics.hpp>
 #include "const.h"
@@ -19,6 +18,7 @@ private:
 	static sf::Sprite dicePic2;
 	static sf::Text teamName;
 	static sf::Text fieldName;
+	static sf::Text fieldContent;
 	static sf::Font font;
 	static sf::RectangleShape fieldColor; 
 	static sf::Sprite* Dices[2];
@@ -34,6 +34,5 @@ public:
 	static bool renderClickedField(short x, short y);
 	static void dispose();
 	static field* getStart(){ return start; }
-	//static void move(int roll);
 	static void DrawGamefield();
 };
