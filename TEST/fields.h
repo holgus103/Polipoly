@@ -6,7 +6,7 @@
 #include "player.h"
 
 class field{
-private:
+protected:
 	short xl, xr, yu, yd;
 	std::string team;
 	std::string name;

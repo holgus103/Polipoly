@@ -1,4 +1,5 @@
 #include "fields.h"
+#include <Windows.h>
 
 CommercialField::CommercialField(std::fstream& fielddata, field* prev, int priceIn):field(fielddata,prev){
 	owner = NULL;
@@ -20,10 +21,22 @@ bool CommercialField::PayDay(player& Indepted){
 }
 
 void CommercialField::EnterTheFieldtrix(player& Neo){
-	if (owner == NULL)
-		BuyMe(Neo);
+	if (owner == NULL){
+		if (IDOK == MessageBox(NULL, ("Czy chcesz kupic pole " + name).c_str(), "Zakup", MB_OKCANCEL))
+			if (BuyMe(Neo))
+				MessageBox(NULL, ("Kupiles pole" + name).c_str(), "Zakup udany", MB_OK);
+			else
+				MessageBox(NULL, "Nie masz dosc ECTS", "Zakup nieudany", MB_OK);
+		else{
+			return;
+		}
+	}
 	else
-		PayDay(Neo);
+		if (PayDay(Neo))
+		{
+			MessageBox(NULL, ("Zaplaciles graczowi numer " + std::to_string(owner->getNumber())).c_str(), "Oplata", MB_OK);
+		}
+
 }
 
 void CommercialField::renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::RectangleShape& field, sf::Text& fieldContent){
