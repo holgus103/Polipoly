@@ -15,6 +15,11 @@
 #define PLAYER_2_PATH "Pionek2.png"
 #define PLAYER_3_PATH "Pionek3.png"
 #define PLAYER_4_PATH "Pionek4.png"
+#define PLAYER_BGR_PATH "playerbgr.png"
+#define PLAYERS_X 771
+#define PLAYERS_Y 440
+#define PLAYER_BGR_X 130
+#define PLAYER_BGR_Y 60
 #define FIELDINFO_X 768
 #define FIELDINFO_Y 3
 #define FIELDCOLOR_SIZEX 247

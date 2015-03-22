@@ -5,11 +5,13 @@
 field* board::start;
 sf::Texture board::gamefieldTX;
 sf::Texture board::fieldInfoTX;
+sf::Texture board::bgrTx;
 sf::Sprite board::gamefield;
 sf::Sprite board::fieldInfo;
 sf::Sprite* board::Dices[2];
 sf::Sprite board::dicePic1;
 sf::Sprite board::dicePic2;
+sf::Sprite board::bgr;
 sf::Text board::teamName;
 sf::Text board::fieldName;
 sf::Text board::fieldContent;
@@ -43,6 +45,9 @@ void board::buildGameField(std::fstream& fielddata){
 
 	fieldColor = sf::RectangleShape(sf::Vector2f(FIELDCOLOR_SIZEX, FIELDCOLOR_SIZEY));
 	fieldColor.setPosition(FIELDCOLOR_X, FIELDCOLOR_Y);
+	
+	bgrTx.loadFromFile(PLAYER_BGR_PATH);
+	bgr.setTexture(bgrTx);
 
 	fieldContent.setFont(font);
 	fieldContent.setCharacterSize(CONTENT_TEXT_SIZE);
@@ -124,6 +129,7 @@ void board::DrawGamefield(){
 		if (players[i] == NULL)
 			break;
 		mainWindow->draw(players[i]->getPlayerSprite());
+		players[i]->drawMe(*mainWindow, font,bgr);
 	}
 	mainWindow->draw((players[0]->getPlayerSprite()));
 	mainWindow->display();

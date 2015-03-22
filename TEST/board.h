@@ -12,10 +12,12 @@ private:
 	static field* start;
 	static sf::Texture gamefieldTX;
 	static sf::Texture fieldInfoTX;
+	static sf::Texture bgrTx;
 	static sf::Sprite gamefield;
 	static sf::Sprite fieldInfo;
 	static sf::Sprite dicePic1;
 	static sf::Sprite dicePic2;
+	static sf::Sprite bgr;
 	static sf::Text teamName;
 	static sf::Text fieldName;
 	static sf::Text fieldContent;

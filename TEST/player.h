@@ -11,7 +11,6 @@ private:
 	field* current;
 	int ECTS, cash;
 
-
 public:
 	//player* next;
 	player(int numberIn, std::string TexPath);
@@ -22,4 +21,5 @@ public:
 	bool Acquire(int amount);
 	void Move(int Roll);
 	bool Transfer(player& Indepted, int amount);
+	void drawMe(sf::RenderWindow& window, sf::Font& font, sf::Sprite& bgr);
 };

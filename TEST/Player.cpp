@@ -38,3 +38,24 @@ bool player::Transfer(player& Indepted,int amount){
 		return true;
 	}
 }
+
+void player::drawMe(sf::RenderWindow& window,sf::Font& font, sf::Sprite& bgr){
+	sf::Text temp;
+	sf::Sprite player = Player;
+	int x = PLAYERS_X + ((number + 1) % 2) * PLAYER_BGR_X;
+	int y = PLAYERS_Y +(floor(number / 3) * PLAYER_BGR_Y);
+	bgr.setPosition(x, y);
+	window.draw(bgr);
+	player.setPosition(x, y);
+	window.draw(player);
+	temp.setFont(font);
+	temp.setCharacterSize(CONTENT_TEXT_SIZE);
+	temp.setColor(sf::Color::Black);
+	temp.setPosition(x + 30, y);
+	temp.setString("ECTS: " + std::to_string(this->ECTS));
+	window.draw(temp);
+	temp.setString("Cash: " + std::to_string(this->cash));
+	temp.setPosition(x+30, y + 30);
+	window.draw(temp);
+
+}
