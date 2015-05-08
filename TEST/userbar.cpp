@@ -3,7 +3,9 @@
 userbar::userbar(int how_many)
 {
 	player_count = how_many;
-//	current_player = 0;
+	current_player = 0;
+	for (int i = 0; i < 8; i++)
+		avatars[i] = new sf::Texture;
 }
 
 void userbar::load_textures()
@@ -25,13 +27,13 @@ void userbar::start_up(sf::RenderWindow& window)
 	for (int i = 0; i < player_count; i++)
 	{
 		temp_player->setTexture(*avatars[2 * i]);
-		temp_player->setPosition(780 + i * 64, 11);
+		temp_player->setPosition(780 + i * 62, 11);
 		window.draw(*temp_player);
 	}
-/*	for (int i = player_count; i < PLAYERS; i++)
+	for (int i = player_count; i < PLAYERS; i++)
 	{
-		temp_player.setTexture(avatars[2 * i]);
-		temp_player.setPosition(50 * i, 25);
-		window.draw(temp_player);
-	}*/
+		temp_player->setTexture(*avatars[2 * i]);
+		temp_player->setPosition(50 * i, 25);
+		window.draw(*temp_player);
+	}
 }

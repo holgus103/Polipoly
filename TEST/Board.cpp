@@ -90,8 +90,8 @@ void board::buildGameField(std::fstream& fielddata){
 	players[2] = new player(3, PLAYER_3_PATH);
 	players[3] = new player(4, PLAYER_4_PATH);
 	current = players[0];
-//	user_bar = new userbar(4);
-//	user_bar->load_textures();
+	user_bar = new userbar(4);
+	user_bar->load_textures();
 }
 
 bool board::renderClickedField(short x, short y)
@@ -137,7 +137,7 @@ void board::DrawGamefield(){
 		players[i]->drawMe(*mainWindow, font,bgr);
 	}
 	mainWindow->draw((players[0]->getPlayerSprite()));
-//	user_bar->start_up(*mainWindow);
+	user_bar->start_up(*mainWindow);
 	mainWindow->display();
 }
 
