@@ -4,6 +4,7 @@
 #include "const.h"
 class field;
 class player;
+class userbar;
 
 
 
@@ -27,6 +28,7 @@ private:
 	static player* players[PLAYERS];
 	static player* current;
 	static sf::RenderWindow* mainWindow;
+	static userbar user_bar;
 
 
 public:

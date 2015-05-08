@@ -1,4 +1,4 @@
-# include "Dice.h"
+#include "Dice.h"
 #include "const.h"
 #include <array>
  int dice::RollMe(sf::RenderWindow* window, sf::Sprite* diceFields[],int dices){

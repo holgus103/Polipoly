@@ -1,6 +1,6 @@
 #pragma once
 #define MY_FONT_PATH  "arial.ttf"
-#define GAMEFIELD_PATH "Interface.bmp"
+#define GAMEFIELD_PATH "Background_new.png"
 #define APP_TITLE "Polipoly"
 #define FIELDINFO_TEX_PATH "field.jpg"
 #define FIELDDATA_PATH "fielddata.txt"
@@ -15,6 +15,10 @@
 #define PLAYER_2_PATH "Pionek2.png"
 #define PLAYER_3_PATH "Pionek3.png"
 #define PLAYER_4_PATH "Pionek4.png"
+#define PLAYER_1B_PATH "Pionek1b.png"
+#define PLAYER_2B_PATH "Pionek2b.png"
+#define PLAYER_3B_PATH "Pionek3b.png"
+#define PLAYER_4B_PATH "Pionek4b.png"
 #define PLAYER_BGR_PATH "playerbgr.png"
 #define PLAYERS_X 771
 #define PLAYERS_Y 440

@@ -24,7 +24,7 @@ void CommercialField::EnterTheFieldtrix(player& Neo){
 	if (owner == NULL){
 		if (IDOK == MessageBox(NULL, ("Czy chcesz kupic pole " + name).c_str(), "Zakup", MB_OKCANCEL))
 			if (BuyMe(Neo))
-				MessageBox(NULL, ("Kupiles pole" + name).c_str(), "Zakup udany", MB_OK);
+				MessageBox(NULL, ("Kupiles pole " + name).c_str(), "Zakup udany", MB_OK);
 			else
 				MessageBox(NULL, "Nie masz dosc ECTS", "Zakup nieudany", MB_OK);
 		else{

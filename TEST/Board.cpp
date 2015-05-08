@@ -1,6 +1,7 @@
 #include "board.h"
 #include "fields.h"
 #include "Dice.h"
+#include "userbar.h"
 
 field* board::start;
 sf::Texture board::gamefieldTX;
@@ -20,6 +21,7 @@ sf::RectangleShape board::fieldColor;
 player* board::players[PLAYERS];
 player* board::current;
 sf::RenderWindow* board::mainWindow;
+userbar board::user_bar(4);
 
 
 void board::buildGameField(std::fstream& fielddata){
@@ -85,9 +87,11 @@ void board::buildGameField(std::fstream& fielddata){
 	//initialize players
 	players[0] = new player(1, PLAYER_1_PATH);
 	players[1] = new player(2, PLAYER_2_PATH);
-	players[2] = new player(3,PLAYER_3_PATH);
+	players[2] = new player(3, PLAYER_3_PATH);
 	players[3] = new player(4, PLAYER_4_PATH);
 	current = players[0];
+//	user_bar = new userbar(4);
+	user_bar.load_textures();
 }
 
 bool board::renderClickedField(short x, short y)
@@ -118,13 +122,14 @@ void board::dispose(){
 
 void board::DrawGamefield(){
 	mainWindow->draw(gamefield);
-	mainWindow->draw(fieldInfo);
-	mainWindow->draw(fieldColor);
+//	mainWindow->draw(fieldInfo);
+//	mainWindow->draw(fieldColor);
 	mainWindow->draw(teamName);
 	mainWindow->draw(fieldName);
 	mainWindow->draw(fieldContent);
 	mainWindow->draw(dicePic1);
 	mainWindow->draw(dicePic2);
+	
 	for (int i = 0; i < PLAYERS; i++){
 		if (players[i] == NULL)
 			break;
@@ -132,6 +137,7 @@ void board::DrawGamefield(){
 		players[i]->drawMe(*mainWindow, font,bgr);
 	}
 	mainWindow->draw((players[0]->getPlayerSprite()));
+//	user_bar->start_up(*mainWindow);
 	mainWindow->display();
 }
 

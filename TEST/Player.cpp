@@ -45,7 +45,7 @@ void player::drawMe(sf::RenderWindow& window,sf::Font& font, sf::Sprite& bgr){
 	int x = PLAYERS_X + ((number + 1) % 2) * PLAYER_BGR_X;
 	int y = PLAYERS_Y +(floor(number / 3) * PLAYER_BGR_Y);
 	bgr.setPosition(x, y);
-	window.draw(bgr);
+//	window.draw(bgr);
 	player.setPosition(x, y);
 	window.draw(player);
 	temp.setFont(font);
