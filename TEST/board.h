@@ -28,7 +28,7 @@ private:
 	static player* players[PLAYERS];
 	static player* current;
 	static sf::RenderWindow* mainWindow;
-	static userbar user_bar;
+	static userbar* user_bar;
 
 
 public:

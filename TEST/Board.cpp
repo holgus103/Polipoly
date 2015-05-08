@@ -21,7 +21,7 @@ sf::RectangleShape board::fieldColor;
 player* board::players[PLAYERS];
 player* board::current;
 sf::RenderWindow* board::mainWindow;
-userbar board::user_bar(4);
+userbar* board::user_bar;
 
 
 void board::buildGameField(std::fstream& fielddata){
@@ -91,7 +91,7 @@ void board::buildGameField(std::fstream& fielddata){
 	players[3] = new player(4, PLAYER_4_PATH);
 	current = players[0];
 //	user_bar = new userbar(4);
-	user_bar.load_textures();
+//	user_bar->load_textures();
 }
 
 bool board::renderClickedField(short x, short y)
