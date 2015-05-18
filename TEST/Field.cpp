@@ -10,7 +10,7 @@
 			return true;
 		return false;
 	}
-	void field::renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::RectangleShape& field, sf::Text& fieldContent){
+	void field::renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::ConvexShape& field, sf::Text& fieldContent){
 		fieldteam.setString(team);
 		fieldname.setString(name);
 		field.setFillColor(color);

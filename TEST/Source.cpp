@@ -19,6 +19,7 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(SCREEN_X, SCREEN_Y), APP_TITLE);
 	board::buildGameField(fielddata);
 	board::setWindow(window);
+	sf::Vector2u screen_size;
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -28,7 +29,8 @@ int main()
 			{
 				if (event.mouseButton.button == sf::Mouse::Left)
 				{
-					board::serveClick(event.mouseButton.x, event.mouseButton.y);
+					screen_size = window.getSize();
+					board::serveClick(event.mouseButton.x * SCREEN_X / screen_size.x, event.mouseButton.y * SCREEN_Y / screen_size.y);
 				}
 			}
 			if (event.type == sf::Event::Closed)

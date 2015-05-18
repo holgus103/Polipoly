@@ -39,7 +39,7 @@ void CommercialField::EnterTheFieldtrix(player& Neo){
 
 }
 
-void CommercialField::renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::RectangleShape& field, sf::Text& fieldContent){
+void CommercialField::renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::ConvexShape& field, sf::Text& fieldContent){
 	std::string my_info;
 	field::renderMe(fieldteam, fieldname, field, fieldContent);
 	if (owner != NULL){

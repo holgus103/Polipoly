@@ -15,7 +15,7 @@ protected:
 	//player* occupant;
 
 public:
-	virtual void renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::RectangleShape& field, sf::Text& fieldContent);
+	virtual void renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::ConvexShape& field, sf::Text& fieldContent);
 	field(std::fstream& fielddata, field* prev);
 	bool belongs(short x, short y);
 	field* next, *prev;
@@ -29,7 +29,7 @@ class CommercialField:public field{
 	player* owner;
 	int price;
 public:
-	virtual void renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::RectangleShape& field, sf::Text& fieldContent);
+	virtual void renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::ConvexShape& field, sf::Text& fieldContent);
 	bool BuyMe(player& buyer);
 	virtual bool PayDay(player& Chaplin);
 	CommercialField(std::fstream& fielddata, field* prev, int price);

@@ -6,6 +6,8 @@ userbar::userbar(int how_many)
 	current_player = 0;
 	for (int i = 0; i < 8; i++)
 		avatars[i] = new sf::Texture;
+	for (int i = 0; i < 3; i++)
+		led[i] = new sf::Texture;
 }
 
 void userbar::load_textures()
@@ -18,12 +20,16 @@ void userbar::load_textures()
 	avatars[5]->loadFromFile(PLAYER_3B_PATH);
 	avatars[6]->loadFromFile(PLAYER_4_PATH);
 	avatars[7]->loadFromFile(PLAYER_4B_PATH);
+	led[0]->loadFromFile(USERBAR_LED1_PATH);
+	led[1]->loadFromFile(USERBAR_LED2_PATH);
+	led[2]->loadFromFile(USERBAR_LED3_PATH);
 }
 
 void userbar::start_up(sf::RenderWindow& window)
 {
-//	sf::Text temp_text;
+	//	sf::Text temp_text;
 	sf::Sprite* temp_player = new sf::Sprite();
+	sf::Sprite* temp_led = new sf::Sprite();
 	for (int i = 0; i < player_count; i++)
 	{
 		temp_player->setTexture(*avatars[2 * i]);
@@ -32,8 +38,45 @@ void userbar::start_up(sf::RenderWindow& window)
 	}
 	for (int i = player_count; i < PLAYERS; i++)
 	{
-		temp_player->setTexture(*avatars[2 * i]);
+		temp_player->setTexture(*avatars[2 * i + 1]);
 		temp_player->setPosition(50 * i, 25);
 		window.draw(*temp_player);
 	}
+	temp_led->setTexture(*led[2]);
+	temp_led->setPosition(818, 9);
+	window.draw(*temp_led);
+	temp_led->setTexture(*led[0]);
+	for (int i = 1; i < player_count; i++)
+	{
+		temp_led->setPosition(818 + i * 62, 9);
+		window.draw(*temp_led);
+	}
+	temp_led->setTexture(*led[1]);
+	for (int i = player_count; i < PLAYERS; i++)
+	{
+		temp_led->setPosition(818 + i * 62, 9);
+		window.draw(*temp_led);
+	}
+	delete(temp_led);
+	delete(temp_player);
 }
+
+void userbar::next_player(sf::RenderWindow& window)
+{
+	sf::Sprite temp_led;
+	temp_led.setTexture(*led[0]);
+	temp_led.setPosition(818 + current_player * 62, 9);
+	window.draw(temp_led);
+	temp_led.setTexture(*led[2]);
+	current_player = (current_player + 1) % player_count;
+	temp_led.setPosition(818 + current_player * 62, 9);
+	window.draw(temp_led);
+}
+
+userbar::~userbar()
+	{
+	for (int i = 0; i < 8; i++)
+		delete(avatars[i]);
+	for (int i = 0; i < 3; i++)
+		delete(led[i]);
+	}

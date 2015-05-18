@@ -17,12 +17,11 @@ sf::Text board::teamName;
 sf::Text board::fieldName;
 sf::Text board::fieldContent;
 sf::Font board::font;
-sf::RectangleShape board::fieldColor;
+sf::ConvexShape board::fieldColor;
 player* board::players[PLAYERS];
 player* board::current;
 sf::RenderWindow* board::mainWindow;
 userbar* board::user_bar;
-
 
 void board::buildGameField(std::fstream& fielddata){
 	//create gamefield sprite
@@ -45,8 +44,13 @@ void board::buildGameField(std::fstream& fielddata){
 	fieldInfo.setTexture(fieldInfoTX);
 	fieldInfo.setPosition(FIELDINFO_X, FIELDINFO_Y);
 
-	fieldColor = sf::RectangleShape(sf::Vector2f(FIELDCOLOR_SIZEX, FIELDCOLOR_SIZEY));
-	fieldColor.setPosition(FIELDCOLOR_X, FIELDCOLOR_Y);
+//	fieldColor = sf::ConvexShape;
+	fieldColor.setPointCount(4);
+	fieldColor.setPoint(0, sf::Vector2f(782, 101));
+	fieldColor.setPoint(1, sf::Vector2f(1007, 101));
+	fieldColor.setPoint(2, sf::Vector2f(987, 121));
+	fieldColor.setPoint(3, sf::Vector2f(802, 121));
+//	fieldColor.setPosition(FIELDCOLOR_X, FIELDCOLOR_Y);
 	
 	bgrTx.loadFromFile(PLAYER_BGR_PATH);
 	bgr.setTexture(bgrTx);
@@ -92,6 +96,7 @@ void board::buildGameField(std::fstream& fielddata){
 	current = players[0];
 	user_bar = new userbar(4);
 	user_bar->load_textures();
+
 }
 
 bool board::renderClickedField(short x, short y)
@@ -123,7 +128,7 @@ void board::dispose(){
 void board::DrawGamefield(){
 	mainWindow->draw(gamefield);
 //	mainWindow->draw(fieldInfo);
-//	mainWindow->draw(fieldColor);
+	mainWindow->draw(fieldColor);
 	mainWindow->draw(teamName);
 	mainWindow->draw(fieldName);
 	mainWindow->draw(fieldContent);
@@ -149,5 +154,8 @@ void board::serveClick(int x, int y){
 		current->GetCurrentField()->renderMe(teamName, fieldName, fieldColor,fieldContent);
 		current = ((players[current->getNumber()] != NULL) && (current->getNumber()!=PLAYERS))? players[current->getNumber()] : players[0];
 	}
+	if (900 < x && x<1013 && y>559 && y < 620)
+		user_bar->next_player(*mainWindow);
+
 	renderClickedField(x, y);
 }

@@ -23,7 +23,7 @@ private:
 	static sf::Text fieldName;
 	static sf::Text fieldContent;
 	static sf::Font font;
-	static sf::RectangleShape fieldColor; 
+	static sf::ConvexShape fieldColor; 
 	static sf::Sprite* Dices[2];
 	static player* players[PLAYERS];
 	static player* current;
