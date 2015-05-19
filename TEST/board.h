@@ -29,6 +29,7 @@ private:
 	static player* current;
 	static sf::RenderWindow* mainWindow;
 	static userbar* user_bar;
+	static bool rolled;
 
 
 public:

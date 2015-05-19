@@ -24,8 +24,8 @@
 #define USERBAR_LED2_PATH "LED2.png"
 #define USERBAR_LED3_PATH "LED3.png"
 #define BTN_SKIP_PATH "SkipRoundButton.png"
-#define PLAYERS_X 771
-#define PLAYERS_Y 440
+#define PLAYERS_X 787
+#define PLAYERS_Y 48
 #define PLAYER_BGR_X 130
 #define PLAYER_BGR_Y 60
 #define FIELDINFO_X 768

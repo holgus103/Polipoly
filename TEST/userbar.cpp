@@ -30,47 +30,34 @@ void userbar::start_up(sf::RenderWindow& window)
 	//	sf::Text temp_text;
 	sf::Sprite* temp_player = new sf::Sprite();
 	sf::Sprite* temp_led = new sf::Sprite();
+	temp_led->setTexture(*led[0]);
 	for (int i = 0; i < player_count; i++)
 	{
 		temp_player->setTexture(*avatars[2 * i]);
 		temp_player->setPosition(780 + i * 62, 11);
 		window.draw(*temp_player);
-	}
-	for (int i = player_count; i < PLAYERS; i++)
-	{
-		temp_player->setTexture(*avatars[2 * i + 1]);
-		temp_player->setPosition(50 * i, 25);
-		window.draw(*temp_player);
-	}
-	temp_led->setTexture(*led[2]);
-	temp_led->setPosition(818, 9);
-	window.draw(*temp_led);
-	temp_led->setTexture(*led[0]);
-	for (int i = 1; i < player_count; i++)
-	{
 		temp_led->setPosition(818 + i * 62, 9);
 		window.draw(*temp_led);
 	}
 	temp_led->setTexture(*led[1]);
 	for (int i = player_count; i < PLAYERS; i++)
 	{
+		temp_player->setTexture(*avatars[2 * i + 1]);
+		temp_player->setPosition(50 * i, 25);
+		window.draw(*temp_player);
 		temp_led->setPosition(818 + i * 62, 9);
 		window.draw(*temp_led);
 	}
+	temp_led->setTexture(*led[2]);
+	temp_led->setPosition(818 + 62 * current_player, 9);
+	window.draw(*temp_led);
 	delete(temp_led);
 	delete(temp_player);
 }
 
-void userbar::next_player(sf::RenderWindow& window)
+void userbar::next_player()
 {
-	sf::Sprite temp_led;
-	temp_led.setTexture(*led[0]);
-	temp_led.setPosition(818 + current_player * 62, 9);
-	window.draw(temp_led);
-	temp_led.setTexture(*led[2]);
 	current_player = (current_player + 1) % player_count;
-	temp_led.setPosition(818 + current_player * 62, 9);
-	window.draw(temp_led);
 }
 
 userbar::~userbar()

@@ -22,6 +22,7 @@ player* board::players[PLAYERS];
 player* board::current;
 sf::RenderWindow* board::mainWindow;
 userbar* board::user_bar;
+bool board::rolled = false;
 
 void board::buildGameField(std::fstream& fielddata){
 	//create gamefield sprite
@@ -148,14 +149,17 @@ void board::DrawGamefield(){
 
 void board::serveClick(int x, int y){
 	int roll;
-	if (DICE1_X<x && x<DICE2_X + DICE_SIZE && y>DICE1_Y && y < DICE1_Y + DICE_SIZE){
+	if (rolled == false && DICE1_X<x && x<DICE2_X + DICE_SIZE && y>DICE1_Y && y < DICE1_Y + DICE_SIZE){
 		roll = dice::RollMe(mainWindow, Dices, sizeof(Dices) / sizeof(Dices[0]));
 		current->Move(roll);
 		current->GetCurrentField()->renderMe(teamName, fieldName, fieldColor,fieldContent);
 		current = ((players[current->getNumber()] != NULL) && (current->getNumber()!=PLAYERS))? players[current->getNumber()] : players[0];
+		rolled = true;
 	}
-	if (900 < x && x<1013 && y>559 && y < 620)
-		user_bar->next_player(*mainWindow);
-
+	if (rolled == true && 900 < x && x < 1013 && y>559 && y < 620)
+	{
+		user_bar->next_player();
+		rolled = false;
+	}
 	renderClickedField(x, y);
 }
