@@ -3,15 +3,15 @@
 #include <SFML/Graphics.hpp>
 #include "const.h"
 #include "CircularList.h"
-class Field;
-class Player;
+class field;
+class player;
 class userbar;
 
 
 
-class Board{
+class board{
 private:
-	static CircularList<Field*> fields;
+	static CircularList<field*> fields;
 	static sf::Texture gamefieldTX;
 	static sf::Texture fieldInfoTX;
 	static sf::Texture bgrTx;
@@ -26,8 +26,8 @@ private:
 	static sf::Font font;
 	static sf::ConvexShape fieldColor; 
 	static sf::Sprite* Dices[2];
-	static Player* players[PLAYERS];
-	static Player* current;
+	static player* players[PLAYERS];
+	static player* current;
 	static sf::RenderWindow* mainWindow;
 	static userbar* user_bar;
 	static bool rolled;
@@ -39,5 +39,5 @@ public:
 	static void buildGameField(std::fstream& fielddata);
 	static bool renderClickedField(short x, short y);
 	static void dispose();
-	static void drawGamefield();
+	static void DrawGamefield();
 };

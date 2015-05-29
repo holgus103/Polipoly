@@ -3,30 +3,30 @@
 #include "CircularIterator.cpp"
 #include <Windows.h>
 
-Player::Player(int numberIn, std::string TexPath,CircularList<Field*>& list){
-	it = CircularList<Field*>::CircularIterator::CircularIterator(list);
+player::player(int numberIn, std::string TexPath,CircularList<field*>& list){
+	it = CircularList<field*>::CircularIterator::CircularIterator(list);
 	cash = INITIAL_CASH;
 	ECTS = 10;
 	number = numberIn;
-	playerTx.loadFromFile(TexPath);
-	player.setTexture(playerTx);
+	PlayerTx.loadFromFile(TexPath);
+	Player.setTexture(PlayerTx);
 	//current->SetPosition(this);
-	(*it)->setPosition(this);
+	(*it)->SetPosition(this);
 }
-void Player::Move(int Roll){
+void player::Move(int Roll){
 	for (int i = 0; i < Roll; i++){
 		it++;
 		//current = current->next;
-		(*it)->setPosition(this);
+		(*it)->SetPosition(this);
 		//current->SetPosition(this);
-		Board::drawGamefield();
+		board::DrawGamefield();
 		Sleep(MOVE_INTERVAL);
 	}
-	(*it)->enterTheFieldtrix(*this);
+	(*it)->EnterTheFieldtrix(*this);
 	//current->EnterTheFieldtrix(*this);
 	
 }
-bool Player::Acquire(int amount){
+bool player::Acquire(int amount){
 	if (amount > ECTS)
 		return false;
 	else
@@ -34,7 +34,7 @@ bool Player::Acquire(int amount){
 	return true;
 }
 
-bool Player::Transfer(Player& Indepted,int amount){
+bool player::Transfer(player& Indepted,int amount){
 	if (Indepted.cash < amount)
 		return false;
 	else{
@@ -44,7 +44,7 @@ bool Player::Transfer(Player& Indepted,int amount){
 	}
 }
 
-void Player::drawMe(sf::RenderWindow& window,sf::Font& font, sf::Sprite& bgr){
+void player::drawMe(sf::RenderWindow& window,sf::Font& font, sf::Sprite& bgr){
 	sf::Text temp;
 	int x = PLAYERS_X + (number - 1) * 62;
 	temp.setFont(font);
