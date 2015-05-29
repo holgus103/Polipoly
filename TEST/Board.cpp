@@ -2,8 +2,9 @@
 #include "fields.h"
 #include "Dice.h"
 #include "userbar.h"
+#include "CircularList.cpp"
 
-field* board::start;
+CircularList<field*> board::fields;
 sf::Texture board::gamefieldTX;
 sf::Texture board::fieldInfoTX;
 sf::Texture board::bgrTx;
@@ -72,28 +73,26 @@ void board::buildGameField(std::fstream& fielddata){
 	field* temp = NULL;
 	int price;
 	fielddata >> price;
-	if (price == 0)
-		start = new field(fielddata, temp);
-	else
-		start = new CommercialField(fielddata, temp, price);
-	//start = new field(fielddata, NULL);
-	temp = start;
+	if (price == 0){
+		fields += new field(fielddata);
+	}
+	else{
+		fields += new CommercialField(fielddata, price);
+	}
 	for (int i = 0; i < GAMEFIELD_SIZE - 1; i++){
 		fielddata >> price;
-		if (price == 0)
-			temp->next = new field(fielddata, temp);
-		else
-			temp->next = new CommercialField(fielddata, temp, price);
-		temp = temp->next;
+		if (price == 0){
+			fields += new field(fielddata);
+		}
+		else{
+			fields += new CommercialField(fielddata, price);
+		}
 	}
-	temp->next = start;
-	start->prev = temp;
-
 	//initialize players
-	players[0] = new player(1, PLAYER_1_PATH);
-	players[1] = new player(2, PLAYER_2_PATH);
-	players[2] = new player(3, PLAYER_3_PATH);
-	players[3] = new player(4, PLAYER_4_PATH);
+	players[0] = new player(1, PLAYER_1_PATH,fields);
+	players[1] = new player(2, PLAYER_2_PATH,fields);
+	players[2] = new player(3, PLAYER_3_PATH,fields);
+	players[3] = new player(4, PLAYER_4_PATH,fields);
 	current = players[0];
 	user_bar = new userbar(4);
 	user_bar->load_textures();
@@ -102,23 +101,20 @@ void board::buildGameField(std::fstream& fielddata){
 
 bool board::renderClickedField(short x, short y)
 {
-	field* temp = start;
+	CircularList<field*>::CircularIterator it(fields);
+	//field* temp = start;
 	do{
-		if (temp->belongs(x, y)){
-			temp->renderMe(teamName, fieldName, fieldColor,fieldContent);
+		if ((*it)->belongs(x, y)){
+			(*it)->renderMe(teamName, fieldName, fieldColor,fieldContent);
 			return true;
 		}
-		temp = temp->next;
-	} while (temp != start);
+	} while (!it++);
 	return false;
 }
+// disposes the memory allocated by the main board class
 void board::dispose(){
-	start->prev->next = NULL;
-	while (start->next!= NULL){
-		start = start->next;
-		delete start->prev;
-	}
-	delete start;
+
+//dispose players
 	for (int i = 0; i < PLAYERS; i++){
 		if (players[i] == NULL)
 			break;

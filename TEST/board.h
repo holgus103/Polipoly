@@ -2,6 +2,7 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include "const.h"
+#include "CircularList.h"
 class field;
 class player;
 class userbar;
@@ -10,7 +11,7 @@ class userbar;
 
 class board{
 private:
-	static field* start;
+	static CircularList<field*> fields;
 	static sf::Texture gamefieldTX;
 	static sf::Texture fieldInfoTX;
 	static sf::Texture bgrTx;
@@ -38,6 +39,5 @@ public:
 	static void buildGameField(std::fstream& fielddata);
 	static bool renderClickedField(short x, short y);
 	static void dispose();
-	static field* getStart(){ return start; }
 	static void DrawGamefield();
 };

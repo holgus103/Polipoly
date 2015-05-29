@@ -16,9 +16,8 @@ protected:
 
 public:
 	virtual void renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::ConvexShape& field, sf::Text& fieldContent);
-	field(std::fstream& fielddata, field* prev);
+	field(std::fstream& fielddata);
 	bool belongs(short x, short y);
-	field* next, *prev;
 	virtual bool PayDay(player& Chaplin);
 	void SetPosition(player* occupant);
 	virtual ~field();
@@ -32,7 +31,7 @@ public:
 	virtual void renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::ConvexShape& field, sf::Text& fieldContent);
 	bool BuyMe(player& buyer);
 	virtual bool PayDay(player& Chaplin);
-	CommercialField(std::fstream& fielddata, field* prev, int price);
+	CommercialField(std::fstream& fielddata,int price);
 	virtual ~CommercialField();
 	virtual void EnterTheFieldtrix(player& Neo);
 };

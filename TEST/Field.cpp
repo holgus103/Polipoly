@@ -16,7 +16,7 @@
 		field.setFillColor(color);
 		fieldContent.setString("");
 	};
-	field::field(std::fstream& fielddata,field* newPrev){
+	field::field(std::fstream& fielddata){
 		unsigned int RGBA;
 		fielddata >> team;
 		putSpaces(team);
@@ -28,7 +28,6 @@
 		fielddata >> xr;
 		fielddata >> yu;
 		fielddata >> yd;
-		prev = newPrev;
 	}
 
 	void field::SetPosition(player* occupant){

@@ -1,7 +1,7 @@
 #include "fields.h"
 #include <Windows.h>
 
-CommercialField::CommercialField(std::fstream& fielddata, field* prev, int priceIn):field(fielddata,prev){
+CommercialField::CommercialField(std::fstream& fielddata, int priceIn):field(fielddata){
 	owner = NULL;
 	price = priceIn;
 }

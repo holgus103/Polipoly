@@ -1,5 +1,6 @@
 #pragma once
 #include "board.h"
+#include "CircularList.h"
 #include <string>
 #include <SFML/Graphics.hpp>
 
@@ -8,16 +9,15 @@ private:
 	int number;
 	sf::Sprite Player;
 	sf::Texture PlayerTx;
-	field* current;
 	int ECTS, cash;
 
 public:
+	CircularList<field*>::CircularIterator it;
 	//player* next;
-	player(int numberIn, std::string TexPath);
+	player(int numberIn, std::string TexPath,CircularList<field*>& list);
 	sf::Sprite& getPlayerSprite(){ return Player; }
 	int getNumber(){ return number;}
-	field* GetCurrentField(){ return current; }
-	void SetCurrentField(field* newField){ current = newField; }
+	field* GetCurrentField(){ return *it; }
 	bool Acquire(int amount);
 	void Move(int Roll);
 	bool Transfer(player& Indepted, int amount);

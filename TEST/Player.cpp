@@ -1,24 +1,29 @@
 #include "player.h"
 #include "fields.h"
+#include "CircularIterator.cpp"
 #include <Windows.h>
 
-player::player(int numberIn, std::string TexPath){
+player::player(int numberIn, std::string TexPath,CircularList<field*>& list){
+	it = CircularList<field*>::CircularIterator::CircularIterator(list);
 	cash = INITIAL_CASH;
 	ECTS = 10;
 	number = numberIn;
 	PlayerTx.loadFromFile(TexPath);
 	Player.setTexture(PlayerTx);
-	current = board::getStart();
-	current->SetPosition(this);
+	//current->SetPosition(this);
+	(*it)->SetPosition(this);
 }
 void player::Move(int Roll){
 	for (int i = 0; i < Roll; i++){
-		current = current->next;
-		current->SetPosition(this);
+		it++;
+		//current = current->next;
+		(*it)->SetPosition(this);
+		//current->SetPosition(this);
 		board::DrawGamefield();
 		Sleep(MOVE_INTERVAL);
 	}
-	current->EnterTheFieldtrix(*this);
+	(*it)->EnterTheFieldtrix(*this);
+	//current->EnterTheFieldtrix(*this);
 	
 }
 bool player::Acquire(int amount){
