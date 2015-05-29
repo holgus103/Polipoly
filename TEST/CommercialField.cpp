@@ -1,14 +1,14 @@
 #include "fields.h"
 #include <Windows.h>
 
-CommercialField::CommercialField(std::fstream& fielddata, int priceIn):field(fielddata){
+CommercialField::CommercialField(std::fstream& fielddata, int priceIn):Field(fielddata){
 	owner = NULL;
 	price = priceIn;
 }
 
 CommercialField::~CommercialField(){}
 
-bool CommercialField::BuyMe(player& buyer){
+bool CommercialField::buyMe(Player& buyer){
 	if (!buyer.Acquire(price))
 		return false;
 	else
@@ -16,14 +16,14 @@ bool CommercialField::BuyMe(player& buyer){
 	return true;
 }
 
-bool CommercialField::PayDay(player& Indepted){
+bool CommercialField::payDay(Player& Indepted){
 	return owner->Transfer(Indepted, 50);
 }
 
-void CommercialField::EnterTheFieldtrix(player& Neo){
+void CommercialField::enterTheFieldtrix(Player& Neo){
 	if (owner == NULL){
 		if (IDOK == MessageBox(NULL, ("Czy chcesz kupic pole " + name).c_str(), "Zakup", MB_OKCANCEL))
-			if (BuyMe(Neo))
+			if (buyMe(Neo))
 				MessageBox(NULL, ("Kupiles pole " + name).c_str(), "Zakup udany", MB_OK);
 			else
 				MessageBox(NULL, "Nie masz dosc ECTS", "Zakup nieudany", MB_OK);
@@ -32,7 +32,7 @@ void CommercialField::EnterTheFieldtrix(player& Neo){
 		}
 	}
 	else
-		if (PayDay(Neo))
+		if (payDay(Neo))
 		{
 			MessageBox(NULL, ("Zaplaciles graczowi numer " + std::to_string(owner->getNumber())).c_str(), "Oplata", MB_OK);
 		}
@@ -41,7 +41,7 @@ void CommercialField::EnterTheFieldtrix(player& Neo){
 
 void CommercialField::renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::ConvexShape& field, sf::Text& fieldContent){
 	std::string my_info;
-	field::renderMe(fieldteam, fieldname, field, fieldContent);
+	Field::renderMe(fieldteam, fieldname, field, fieldContent);
 	if (owner != NULL){
 		my_info = "Wlasciciel: " +std::to_string(owner->getNumber());
 	}
