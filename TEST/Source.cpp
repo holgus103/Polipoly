@@ -17,8 +17,8 @@ int main()
 	int roll = 0;
 	std::fstream fielddata(FIELDDATA_PATH,std::fstream::in);
 	sf::RenderWindow window(sf::VideoMode(SCREEN_X, SCREEN_Y), APP_TITLE);
-	board::buildGameField(fielddata);
-	board::setWindow(window);
+	Board::buildGameField(fielddata);
+	Board::setWindow(window);
 	sf::Vector2u screen_size;
 	while (window.isOpen())
 	{
@@ -30,7 +30,7 @@ int main()
 				if (event.mouseButton.button == sf::Mouse::Left)
 				{
 					screen_size = window.getSize();
-					board::serveClick(event.mouseButton.x * SCREEN_X / screen_size.x, event.mouseButton.y * SCREEN_Y / screen_size.y);
+					Board::serveClick(event.mouseButton.x * SCREEN_X / screen_size.x, event.mouseButton.y * SCREEN_Y / screen_size.y);
 				}
 			}
 			if (event.type == sf::Event::Closed)
@@ -38,10 +38,10 @@ int main()
 		}
 		
 		window.clear(sf::Color::Black);
-		board::DrawGamefield();
+		Board::drawGamefield();
 	}
 
-	board::dispose();
+	Board::dispose();
 	fielddata.close();
 	return 0;
 }

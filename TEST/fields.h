@@ -5,7 +5,7 @@
 #include <fstream>
 #include "player.h"
 
-class field{
+class Field{
 protected:
 	short xl, xr, yu, yd;
 	std::string team;
@@ -16,26 +16,22 @@ protected:
 
 public:
 	virtual void renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::ConvexShape& field, sf::Text& fieldContent);
-	field(std::fstream& fielddata);
+	Field(std::fstream& fielddata);
 	bool belongs(short x, short y);
-	virtual bool PayDay(player& Chaplin);
-	void SetPosition(player* occupant);
-	virtual ~field();
-	virtual void EnterTheFieldtrix(player& Neo);
+	virtual bool payDay(Player& Chaplin);
+	void setPosition(Player* occupant);
+	virtual ~Field();
+	virtual void enterTheFieldtrix(Player& Neo);
 };
 
-class CommercialField:public field{
-	player* owner;
+class CommercialField:public Field{
+	Player* owner;
 	int price;
 public:
 	virtual void renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::ConvexShape& field, sf::Text& fieldContent);
-	bool BuyMe(player& buyer);
-	virtual bool PayDay(player& Chaplin);
+	bool buyMe(Player& buyer);
+	virtual bool payDay(Player& Chaplin);
 	CommercialField(std::fstream& fielddata,int price);
 	virtual ~CommercialField();
-	virtual void EnterTheFieldtrix(player& Neo);
-};
-
-class TakeAChangeOnMe:public field{
-
+	virtual void enterTheFieldtrix(Player& Neo);
 };

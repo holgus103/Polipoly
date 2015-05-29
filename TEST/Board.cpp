@@ -1,31 +1,31 @@
-#include "board.h"
+#include "Board.h"
 #include "fields.h"
 #include "Dice.h"
 #include "userbar.h"
 #include "CircularList.cpp"
 
-CircularList<field*> board::fields;
-sf::Texture board::gamefieldTX;
-sf::Texture board::fieldInfoTX;
-sf::Texture board::bgrTx;
-sf::Sprite board::gamefield;
-sf::Sprite board::fieldInfo;
-sf::Sprite* board::Dices[2];
-sf::Sprite board::dicePic1;
-sf::Sprite board::dicePic2;
-sf::Sprite board::bgr;
-sf::Text board::teamName;
-sf::Text board::fieldName;
-sf::Text board::fieldContent;
-sf::Font board::font;
-sf::ConvexShape board::fieldColor;
-player* board::players[PLAYERS];
-player* board::current;
-sf::RenderWindow* board::mainWindow;
-userbar* board::user_bar;
-bool board::rolled = false;
+CircularList<Field*> Board::fields;
+sf::Texture Board::gamefieldTX;
+sf::Texture Board::fieldInfoTX;
+sf::Texture Board::bgrTx;
+sf::Sprite Board::gamefield;
+sf::Sprite Board::fieldInfo;
+sf::Sprite* Board::Dices[2];
+sf::Sprite Board::dicePic1;
+sf::Sprite Board::dicePic2;
+sf::Sprite Board::bgr;
+sf::Text Board::teamName;
+sf::Text Board::fieldName;
+sf::Text Board::fieldContent;
+sf::Font Board::font;
+sf::ConvexShape Board::fieldColor;
+Player* Board::players[PLAYERS];
+Player* Board::current;
+sf::RenderWindow* Board::mainWindow;
+userbar* Board::user_bar;
+bool Board::rolled = false;
 
-void board::buildGameField(std::fstream& fielddata){
+void Board::buildGameField(std::fstream& fielddata){
 	//create gamefield sprite
 	gamefieldTX.loadFromFile(GAMEFIELD_PATH);
 	gamefield.setTexture(gamefieldTX);
@@ -64,17 +64,16 @@ void board::buildGameField(std::fstream& fielddata){
 	//prepare the dices
 	dicePic1.setPosition(DICE1_X, DICE1_Y);
 	dicePic2.setPosition(DICE2_X, DICE2_Y);
-	dice::LoadTextures();
+	dice::loadTextures();
 	Dices[0] = &dicePic1;
 	Dices[1] = &dicePic2;
-	dice::SetDicesIdle(Dices, sizeof(Dices) / sizeof(Dices[0]));
+	dice::setDicesIdle(Dices, sizeof(Dices) / sizeof(Dices[0]));
 
 	//build the gamefield list 
-	field* temp = NULL;
 	int price;
 	fielddata >> price;
 	if (price == 0){
-		fields += new field(fielddata);
+		fields += new Field(fielddata);
 	}
 	else{
 		fields += new CommercialField(fielddata, price);
@@ -82,26 +81,26 @@ void board::buildGameField(std::fstream& fielddata){
 	for (int i = 0; i < GAMEFIELD_SIZE - 1; i++){
 		fielddata >> price;
 		if (price == 0){
-			fields += new field(fielddata);
+			fields += new Field(fielddata);
 		}
 		else{
 			fields += new CommercialField(fielddata, price);
 		}
 	}
 	//initialize players
-	players[0] = new player(1, PLAYER_1_PATH,fields);
-	players[1] = new player(2, PLAYER_2_PATH,fields);
-	players[2] = new player(3, PLAYER_3_PATH,fields);
-	players[3] = new player(4, PLAYER_4_PATH,fields);
+	players[0] = new Player(1, PLAYER_1_PATH,fields);
+	players[1] = new Player(2, PLAYER_2_PATH,fields);
+	players[2] = new Player(3, PLAYER_3_PATH,fields);
+	players[3] = new Player(4, PLAYER_4_PATH,fields);
 	current = players[0];
 	user_bar = new userbar(4);
 	user_bar->load_textures();
 
 }
 
-bool board::renderClickedField(short x, short y)
+bool Board::renderClickedField(short x, short y)
 {
-	CircularList<field*>::CircularIterator it(fields);
+	CircularList<Field*>::CircularIterator it(fields);
 	//field* temp = start;
 	do{
 		if ((*it)->belongs(x, y)){
@@ -111,8 +110,8 @@ bool board::renderClickedField(short x, short y)
 	} while (!it++);
 	return false;
 }
-// disposes the memory allocated by the main board class
-void board::dispose(){
+// disposes the memory allocated by the main Board class
+void Board::dispose(){
 
 //dispose players
 	for (int i = 0; i < PLAYERS; i++){
@@ -122,7 +121,7 @@ void board::dispose(){
 	}
 }
 
-void board::DrawGamefield(){
+void Board::drawGamefield(){
 	mainWindow->draw(gamefield);
 //	mainWindow->draw(fieldInfo);
 	mainWindow->draw(fieldColor);
@@ -143,10 +142,10 @@ void board::DrawGamefield(){
 	mainWindow->display();
 }
 
-void board::serveClick(int x, int y){
+void Board::serveClick(int x, int y){
 	int roll;
 	if (rolled == false && DICE1_X<x && x<DICE2_X + DICE_SIZE && y>DICE1_Y && y < DICE1_Y + DICE_SIZE){
-		roll = dice::RollMe(mainWindow, Dices, sizeof(Dices) / sizeof(Dices[0]));
+		roll = dice::rollMe(mainWindow, Dices, sizeof(Dices) / sizeof(Dices[0]));
 		current->Move(roll);
 		current->GetCurrentField()->renderMe(teamName, fieldName, fieldColor,fieldContent);
 		current = ((players[current->getNumber()] != NULL) && (current->getNumber()!=PLAYERS))? players[current->getNumber()] : players[0];
