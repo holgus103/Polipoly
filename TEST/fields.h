@@ -20,7 +20,7 @@ public:
 	bool belongs(short x, short y);
 	virtual bool payDay(Player& Chaplin);
 	void setPosition(Player* occupant);
-	virtual ~Field();
+	//virtual ~Field();
 	virtual void enterTheFieldtrix(Player& Neo);
 };
 
@@ -31,15 +31,15 @@ public:
 	virtual void renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::ConvexShape& field, sf::Text& fieldContent);
 	bool buyMe(Player& buyer);
 	virtual bool payDay(Player& Chaplin);
-	CommercialField(std::fstream& fielddata,int price);
-	virtual ~CommercialField();
+	CommercialField(std::fstream& fielddata);
+	//virtual ~CommercialField();
 	virtual void enterTheFieldtrix(Player& Neo);
 };
 
 class MoneyField :public Field{
 	short amount;
 public:
-	MoneyField(std::streambuf& fielddata, int amount);
-	virtual ~MoneyField();
+	MoneyField(std::fstream& fielddata);
+	//virtual ~MoneyField();
 	virtual void enterTheFieldtrix(Player& Neo){ Neo.giftsAndFines(amount);}
 };

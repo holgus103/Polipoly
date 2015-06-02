@@ -70,21 +70,20 @@ void Board::buildGameField(std::fstream& fielddata){
 	dice::setDicesIdle(Dices, sizeof(Dices) / sizeof(Dices[0]));
 
 	//build the gamefield list 
-	int price;
-	fielddata >> price;
-	if (price == 0){
-		fields += new Field(fielddata);
-	}
-	else{
-		fields += new CommercialField(fielddata, price);
-	}
+	int type;
 	for (int i = 0; i < GAMEFIELD_SIZE - 1; i++){
-		fielddata >> price;
-		if (price == 0){
+		fielddata >> type;
+		if (type == FREE){
 			fields += new Field(fielddata);
 		}
-		else{
-			fields += new CommercialField(fielddata, price);
+		if (type == COMMERCIAL){
+			fields += new CommercialField(fielddata);
+		}
+		if (type == CHANCE){
+			//to do
+		}
+		if (type == BONUS){
+			fields += new MoneyField(fielddata);
 		}
 	}
 	//initialize players

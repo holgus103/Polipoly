@@ -37,6 +37,6 @@
 		y = yu + (floor(number / 3) * 2 + 1)*(yd - yu) / 4 -PIN_HEIGHT/2;
 		(occupant->getPlayerSprite()).setPosition(x, y);
 	}
-	Field::~Field(){}
+	//Field::~Field(){}
 	void Field::enterTheFieldtrix(Player& Neo){}
 	bool Field::payDay(Player& Chaplin){ return true; }

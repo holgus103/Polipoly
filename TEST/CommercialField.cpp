@@ -1,12 +1,13 @@
 #include "Fields.h"
 #include <Windows.h>
 
-CommercialField::CommercialField(std::fstream& fielddata, int priceIn):Field(fielddata){
+CommercialField::CommercialField(std::fstream& fielddata):Field(fielddata){
+
 	owner = NULL;
-	price = priceIn;
+	fielddata >> price;
 }
 
-CommercialField::~CommercialField(){}
+//~CommercialField::~CommercialField(){}
 
 bool CommercialField::buyMe(Player& buyer){
 	if (!buyer.acquire(price))
