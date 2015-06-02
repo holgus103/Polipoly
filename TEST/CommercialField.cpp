@@ -1,4 +1,4 @@
-#include "fields.h"
+#include "Fields.h"
 #include <Windows.h>
 
 CommercialField::CommercialField(std::fstream& fielddata, int priceIn):Field(fielddata){
@@ -9,7 +9,7 @@ CommercialField::CommercialField(std::fstream& fielddata, int priceIn):Field(fie
 CommercialField::~CommercialField(){}
 
 bool CommercialField::buyMe(Player& buyer){
-	if (!buyer.Acquire(price))
+	if (!buyer.acquire(price))
 		return false;
 	else
 		owner = &buyer;
@@ -17,7 +17,7 @@ bool CommercialField::buyMe(Player& buyer){
 }
 
 bool CommercialField::payDay(Player& Indepted){
-	return owner->Transfer(Indepted, 50);
+	return owner->transfer(Indepted, 50);
 }
 
 void CommercialField::enterTheFieldtrix(Player& Neo){

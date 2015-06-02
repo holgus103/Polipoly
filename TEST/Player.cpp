@@ -1,6 +1,5 @@
-#include "player.h"
-#include "fields.h"
-#include "CircularIterator.cpp"
+#include "Player.h"
+#include "Fields.h"
 #include <Windows.h>
 
 Player::Player(int numberIn, std::string TexPath,CircularList<Field*>& list){
@@ -13,7 +12,7 @@ Player::Player(int numberIn, std::string TexPath,CircularList<Field*>& list){
 	//current->SetPosition(this);
 	(*it)->setPosition(this);
 }
-void Player::Move(int Roll){
+void Player::move(int Roll){
 	for (int i = 0; i < Roll; i++){
 		it++;
 		//current = current->next;
@@ -26,7 +25,7 @@ void Player::Move(int Roll){
 	//current->EnterTheFieldtrix(*this);
 	
 }
-bool Player::Acquire(int amount){
+bool Player::acquire(int amount){
 	if (amount > ECTS)
 		return false;
 	else
@@ -34,7 +33,7 @@ bool Player::Acquire(int amount){
 	return true;
 }
 
-bool Player::Transfer(Player& Indepted,int amount){
+bool Player::transfer(Player& Indepted,int amount){
 	if (Indepted.cash < amount)
 		return false;
 	else{
@@ -43,6 +42,7 @@ bool Player::Transfer(Player& Indepted,int amount){
 		return true;
 	}
 }
+
 
 void Player::drawMe(sf::RenderWindow& window,sf::Font& font, sf::Sprite& bgr){
 	sf::Text temp;

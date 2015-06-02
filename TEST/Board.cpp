@@ -1,8 +1,8 @@
 #include "Board.h"
-#include "fields.h"
+#include "Fields.h"
 #include "Dice.h"
 #include "userbar.h"
-#include "CircularList.cpp"
+
 
 CircularList<Field*> Board::fields;
 sf::Texture Board::gamefieldTX;
@@ -146,8 +146,8 @@ void Board::serveClick(int x, int y){
 	int roll;
 	if (rolled == false && DICE1_X<x && x<DICE2_X + DICE_SIZE && y>DICE1_Y && y < DICE1_Y + DICE_SIZE){
 		roll = dice::rollMe(mainWindow, Dices, sizeof(Dices) / sizeof(Dices[0]));
-		current->Move(roll);
-		current->GetCurrentField()->renderMe(teamName, fieldName, fieldColor,fieldContent);
+		current->move(roll);
+		current->getCurrentField()->renderMe(teamName, fieldName, fieldColor,fieldContent);
 		current = ((players[current->getNumber()] != NULL) && (current->getNumber()!=PLAYERS))? players[current->getNumber()] : players[0];
 		rolled = true;
 	}

@@ -2,10 +2,10 @@
 #include <iostream>
 #include <time.h>
 #include <functional>
-#include "board.h"
-#include "player.h"
+#include "Board.h"
+#include "Player.h"
 //#include <vld.h>
-#include "fields.h"
+#include "Fields.h"
 
 
 

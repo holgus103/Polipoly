@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "const.h"
 #include <fstream>
-#include "player.h"
+#include "Player.h"
 
 class Field{
 protected:
@@ -34,4 +34,12 @@ public:
 	CommercialField(std::fstream& fielddata,int price);
 	virtual ~CommercialField();
 	virtual void enterTheFieldtrix(Player& Neo);
+};
+
+class MoneyField :public Field{
+	short amount;
+public:
+	MoneyField(std::streambuf& fielddata, int amount);
+	virtual ~MoneyField();
+	virtual void enterTheFieldtrix(Player& Neo){ Neo.giftsAndFines(amount);}
 };
