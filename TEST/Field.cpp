@@ -38,5 +38,3 @@
 		(occupant->getPlayerSprite()).setPosition(x, y);
 	}
 	//Field::~Field(){}
-	void Field::enterTheFieldtrix(Player& Neo){}
-	bool Field::payDay(Player& Chaplin){ return true; }

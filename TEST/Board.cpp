@@ -82,8 +82,11 @@ void Board::buildGameField(std::fstream& fielddata){
 		if (type == CHANCE){
 			//to do
 		}
-		if (type == BONUS){
-			fields += new MoneyField(fielddata);
+		if (type == PENEALTY){
+			fields += new PenealtyField(fielddata);
+		}
+		if (type == START){
+			fields += new StartField(fielddata);
 		}
 	}
 	//initialize players

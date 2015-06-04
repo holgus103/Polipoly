@@ -17,6 +17,7 @@ void Player::move(int Roll){
 		it++;
 		//current = current->next;
 		(*it)->setPosition(this);
+		(*it)->onStepOn(*this);
 		//current->SetPosition(this);
 		Board::drawGamefield();
 		Sleep(MOVE_INTERVAL);

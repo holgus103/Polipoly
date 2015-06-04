@@ -61,5 +61,6 @@ enum FieldType{
 	FREE = 1,
 	COMMERCIAL = 2,
 	CHANCE = 3,
-	BONUS = 4,
+	PENEALTY = 4,
+	START = 5,
 };
