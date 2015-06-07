@@ -6,6 +6,7 @@
 class Field;
 class Player;
 class userbar;
+class Messenger;
 
 
 
@@ -30,6 +31,7 @@ private:
 	static Player* current;
 	static sf::RenderWindow* mainWindow;
 	static userbar* user_bar;
+	static Messenger* msger;
 	static bool rolled;
 
 

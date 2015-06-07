@@ -4,6 +4,7 @@
 #define APP_TITLE "Polipoly"
 #define FIELDINFO_TEX_PATH "field.jpg"
 #define FIELDDATA_PATH "fielddata.txt"
+#define MSG_DATA_PATH "messages.txt"
 #define DICE_PIC_ONE "Dice_1.png"
 #define DICE_PIC_TWO "Dice_2.png"
 #define DICE_PIC_THREE "Dice_3.png"
@@ -24,6 +25,8 @@
 #define USERBAR_LED2_PATH "LED2.png"
 #define USERBAR_LED3_PATH "LED3.png"
 #define BTN_SKIP_PATH "SkipRoundButton.png"
+#define MSG_BG_PATH "messenger.jpg"
+#define MSG_BG_POSITION 205
 #define PLAYERS_X 787
 #define PLAYERS_Y 48
 #define PLAYER_BGR_X 130

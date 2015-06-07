@@ -23,6 +23,7 @@ Player* Board::players[PLAYERS];
 Player* Board::current;
 sf::RenderWindow* Board::mainWindow;
 userbar* Board::user_bar;
+Messenger* Board::msger;
 bool Board::rolled = false;
 
 void Board::buildGameField(std::fstream& fielddata){
@@ -97,7 +98,7 @@ void Board::buildGameField(std::fstream& fielddata){
 	current = players[0];
 	user_bar = new userbar(4);
 	user_bar->load_textures();
-
+	msger = new Messenger();
 }
 
 bool Board::renderClickedField(short x, short y)

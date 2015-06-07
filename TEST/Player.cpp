@@ -51,11 +51,11 @@ void Player::drawMe(sf::RenderWindow& window,sf::Font& font, sf::Sprite& bgr){
 	temp.setFont(font);
 	temp.setCharacterSize(CONTENT_TEXT_SIZE);
 	temp.setColor(sf::Color::Black);
-	temp.setPosition(x, PLAYERS_Y);
+	temp.setPosition(x, PLAYERS_Y + 22);
 	temp.setString(std::to_string(this->ECTS));
 	window.draw(temp);
 	temp.setString(std::to_string(this->cash));
-	temp.setPosition(x, PLAYERS_Y + 22);
+	temp.setPosition(x, PLAYERS_Y);
 	window.draw(temp);
 
 }
