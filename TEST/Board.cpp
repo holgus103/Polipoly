@@ -2,7 +2,7 @@
 #include "Fields.h"
 #include "Dice.h"
 #include "userbar.h"
-
+#include "messenger.h"
 
 CircularList<Field*> Board::fields;
 sf::Texture Board::gamefieldTX;
@@ -98,7 +98,7 @@ void Board::buildGameField(std::fstream& fielddata){
 	current = players[0];
 	user_bar = new userbar(4);
 	user_bar->load_textures();
-	msger = new Messenger(mainWindow);
+	msger = new Messenger();//mainWindow);
 }
 
 bool Board::renderClickedField(short x, short y)
