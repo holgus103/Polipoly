@@ -1,5 +1,7 @@
 #include "Fields.h"
 #include <Windows.h>
+#include "board.h"
+#include "messenger.h"
 
 CommercialField::CommercialField(std::fstream& fielddata):Field(fielddata){
 
@@ -23,7 +25,7 @@ bool CommercialField::payDay(Player& Indepted){
 
 void CommercialField::enterTheFieldtrix(Player& Neo){
 	if (owner == NULL){
-
+		Board::msger->drawMsgBox();
 		if (IDOK == MessageBox(NULL, ("Czy chcesz kupic pole " + name).c_str(), "Zakup", MB_OKCANCEL))
 			if (buyMe(Neo))
 				MessageBox(NULL, ("Kupiles pole " + name).c_str(), "Zakup udany", MB_OK);

@@ -11,7 +11,7 @@ private:
 	sf::Texture* background;
 	sf::RenderWindow& window;
 public:
-	void drawMsgBox(sf::RenderWindow& window);
+	void drawMsgBox();
 	void drawBuyMessage(sf::RenderWindow& window, std::string fieldName);
 	Messenger(sf::RenderWindow& w);
 };
