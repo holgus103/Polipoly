@@ -13,11 +13,11 @@ void Messenger::drawMsgBox()
 void Messenger::drawBuyMessage(sf::RenderWindow& window, std::string fieldName)
 {
 	sf::Text temp;
-
 }
 
-Messenger::Messenger(sf::RenderWindow& w) : window(w)
+Messenger::Messenger(sf::RenderWindow& w, std::fstream& textes) : window(w)
 {
 	background = new sf::Texture;
 	background->loadFromFile(MSG_BG_PATH);
+	textes >> buy_title;
 }

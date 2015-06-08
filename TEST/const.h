@@ -59,6 +59,7 @@
 #define PLAYERS 4
 #define INITIAL_CASH 1500
 #define MOVE_INTERVAL 500
+#define CHANCES_COUNT 10
 
 enum FieldType{
 	FREE = 1,

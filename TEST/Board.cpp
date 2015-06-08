@@ -26,7 +26,7 @@ userbar* Board::user_bar;
 Messenger* Board::msger;
 bool Board::rolled = false;
 
-void Board::buildGameField(std::fstream& fielddata){
+void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata){
 	//create gamefield sprite
 	gamefieldTX.loadFromFile(GAMEFIELD_PATH);
 	gamefield.setTexture(gamefieldTX);

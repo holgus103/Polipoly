@@ -18,8 +18,8 @@ int main()
 	std::fstream fielddata(FIELDDATA_PATH,std::fstream::in);
 	std::fstream msgdata(MSG_DATA_PATH, std::fstream::in);
 	sf::RenderWindow window(sf::VideoMode(SCREEN_X, SCREEN_Y), APP_TITLE);
-	Board::buildGameField(fielddata);
 	Board::setWindow(window);
+	Board::buildGameField(fielddata, msgdata);
 	sf::Vector2u screen_size;
 	while (window.isOpen())
 	{

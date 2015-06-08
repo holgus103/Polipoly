@@ -29,7 +29,7 @@ private:
 	static sf::Sprite* Dices[2];
 	static Player* players[PLAYERS];
 	static Player* current;
-	static sf::RenderWindow* mainWindow;
+	
 	static userbar* user_bar;
 	static bool rolled;
 
@@ -37,9 +37,10 @@ private:
 public:
 	static void setWindow(sf::RenderWindow& myWindow){ mainWindow = &myWindow; }
 	static void serveClick(int x, int y);
-	static void buildGameField(std::fstream& fielddata);
+	static void buildGameField(std::fstream& fielddata, std::fstream& msgdata);
 	static bool renderClickedField(short x, short y);
 	static void dispose();
 	static void drawGamefield();
+	static sf::RenderWindow* mainWindow;
 	static Messenger* msger;
 };
