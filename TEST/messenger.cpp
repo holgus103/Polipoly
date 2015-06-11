@@ -1,5 +1,6 @@
 #include "messenger.h"
 #include "const.h"
+#include "fstream"
 
 void Messenger::drawMsgBox()
 {
