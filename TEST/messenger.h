@@ -13,5 +13,5 @@ private:
 public:
 	void drawMsgBox();
 	void drawBuyMessage(sf::RenderWindow& window, std::string fieldName);
-	Messenger(sf::RenderWindow& w);
+	Messenger(sf::RenderWindow& w, std::fstream& textes);
 };

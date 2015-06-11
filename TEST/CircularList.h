@@ -1,5 +1,6 @@
 #pragma once
 #include <list>
+#include <algorithm>
 
 template <typename t>
 class  CircularList{
@@ -10,6 +11,10 @@ public:
 	}
 	typename std::list<t>::iterator begin(){ return coreList.begin(); }
 	typename std::list<t>::iterator end(){ return coreList.end(); }
+	void rndm()
+	{
+		std::random_shuffle(coreList.begin(), coreList.end());
+	}
 	class CircularIterator{
 		typename std::list< t >::iterator pointer;
 		typename std::list< t >::iterator begin;
