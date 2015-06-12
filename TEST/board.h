@@ -7,7 +7,8 @@ class Field;
 class Player;
 class userbar;
 class Messenger;
-
+class Chance;
+class Stack;
 
 
 class Board{
@@ -32,15 +33,16 @@ private:
 	
 	static userbar* user_bar;
 	static bool rolled;
-
+	
 
 public:
 	static void setWindow(sf::RenderWindow& myWindow){ mainWindow = &myWindow; }
 	static void serveClick(int x, int y);
-	static void buildGameField(std::fstream& fielddata, std::fstream& msgdata);
+	static void buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::fstream& chancesdata);
 	static bool renderClickedField(short x, short y);
 	static void dispose();
 	static void drawGamefield();
 	static sf::RenderWindow* mainWindow;
 	static Messenger* msger;
+	static Stack* chancesStack;
 };

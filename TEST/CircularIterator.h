@@ -3,9 +3,10 @@
 
 template < typename t>
 class CircularIterator{
-	typename iterator<list<t>> pointer;
+	typename iterator<vector<t>> pointer;
 	CircularIterator();
 public:
 	t& operator*();
 	void operator++(int);
+	void operator--(int);
 };

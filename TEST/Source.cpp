@@ -17,9 +17,10 @@ int main()
 	int roll = 0;
 	std::fstream fielddata(FIELDDATA_PATH,std::fstream::in);
 	std::fstream msgdata(MSG_DATA_PATH, std::fstream::in);
+	std::fstream chancesdata(CHANCE_DATA_PATH, std::fstream::in);
 	sf::RenderWindow window(sf::VideoMode(SCREEN_X, SCREEN_Y), APP_TITLE);
 	Board::setWindow(window);
-	Board::buildGameField(fielddata, msgdata);
+	Board::buildGameField(fielddata, msgdata, chancesdata);
 	sf::Vector2u screen_size;
 	while (window.isOpen())
 	{

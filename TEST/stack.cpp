@@ -1,14 +1,23 @@
+#include "const.h"
 #include "stack.h"
 
-Stack::Stack()
+Stack::Stack(std::fstream& chancesdata)
 {
-	for (int i = 0; i < CHANCES_COUNT; i++)
+	chancesdata >> chancesCount;
+	for (int i = 0; i < chancesCount; i++)
+	{
+		int type;
 		indexes += i;
+		chancesdata >> type;
+		if (type == TRAVEL){
+			chances.push_back(new TravellingChance(chancesdata));
+		}
+	}
 	indexes.rndm();
 }
 
-int Stack::giveNext()
+void Stack::startNext(Player& currentPlayer)
 {
 	iter++;
-	return *iter;
+	chances[*iter]->tryYourLuck(currentPlayer);
 }

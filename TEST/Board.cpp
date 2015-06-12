@@ -3,6 +3,8 @@
 #include "Dice.h"
 #include "userbar.h"
 #include "messenger.h"
+#include "Chances.h"
+#include "stack.h"
 
 CircularList<Field*> Board::fields;
 sf::Texture Board::gamefieldTX;
@@ -25,8 +27,9 @@ sf::RenderWindow* Board::mainWindow;
 userbar* Board::user_bar;
 Messenger* Board::msger;
 bool Board::rolled = false;
+Stack* Board::chancesStack;
 
-void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata){
+void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::fstream& chancesdata){
 	//create gamefield sprite
 	gamefieldTX.loadFromFile(GAMEFIELD_PATH);
 	gamefield.setTexture(gamefieldTX);
@@ -72,7 +75,7 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata){
 
 	//build the gamefield list 
 	int type;
-	for (int i = 0; i < GAMEFIELD_SIZE - 1; i++){
+	for (int i = 0; i < GAMEFIELD_SIZE; i++){
 		fielddata >> type;
 		if (type == FREE){
 			fields += new Field(fielddata);
@@ -81,7 +84,7 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata){
 			fields += new CommercialField(fielddata);
 		}
 		if (type == CHANCE){
-			//to do
+			fields += new ChanceField(fielddata);
 		}
 		if (type == PENEALTY){
 			fields += new PenealtyField(fielddata);
@@ -90,6 +93,9 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata){
 			fields += new StartField(fielddata);
 		}
 	}
+
+	//build the chances stack 
+
 	//initialize players
 	players[0] = new Player(1, PLAYER_1_PATH,fields);
 	players[1] = new Player(2, PLAYER_2_PATH,fields);
@@ -99,6 +105,7 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata){
 	user_bar = new userbar(4);
 	user_bar->load_textures();
 	msger = new Messenger(*mainWindow, msgdata);
+	chancesStack = new Stack(chancesdata);
 }
 
 bool Board::renderClickedField(short x, short y)
@@ -149,7 +156,7 @@ void Board::serveClick(int x, int y){
 	int roll;
 	if (rolled == false && DICE1_X<x && x<DICE2_X + DICE_SIZE && y>DICE1_Y && y < DICE1_Y + DICE_SIZE){
 		roll = dice::rollMe(mainWindow, Dices, sizeof(Dices) / sizeof(Dices[0]));
-		current->move(roll);
+		current->move(roll, true);
 		current->getCurrentField()->renderMe(teamName, fieldName, fieldColor,fieldContent);
 		current = ((players[current->getNumber()] != NULL) && (current->getNumber()!=PLAYERS))? players[current->getNumber()] : players[0];
 		rolled = true;

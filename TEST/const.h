@@ -5,6 +5,7 @@
 #define FIELDINFO_TEX_PATH "field.jpg"
 #define FIELDDATA_PATH "fielddata.txt"
 #define MSG_DATA_PATH "messages.txt"
+#define CHANCE_DATA_PATH "chances.txt"
 #define DICE_PIC_ONE "Dice_1.png"
 #define DICE_PIC_TWO "Dice_2.png"
 #define DICE_PIC_THREE "Dice_3.png"
@@ -67,4 +68,10 @@ enum FieldType{
 	CHANCE = 3,
 	PENEALTY = 4,
 	START = 5,
+};
+
+enum ChanceType{
+	TRAVEL = 1,
+	TELEPORT = 2,
+	WALLET = 3,
 };

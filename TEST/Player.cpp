@@ -12,12 +12,13 @@ Player::Player(int numberIn, std::string TexPath,CircularList<Field*>& list){
 	//current->SetPosition(this);
 	(*it)->setPosition(this);
 }
-void Player::move(int Roll){
+void Player::move(int Roll, bool actions){
 	for (int i = 0; i < Roll; i++){
 		it++;
 		//current = current->next;
 		(*it)->setPosition(this);
-		(*it)->onStepOn(*this);
+		if (actions)
+			(*it)->onStepOn(*this);
 		//current->SetPosition(this);
 		Board::drawGamefield();
 		Sleep(MOVE_INTERVAL);

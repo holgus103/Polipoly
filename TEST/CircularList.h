@@ -29,6 +29,16 @@ public:
 					pointer = begin;
 					return true;
 				}
+
+				return false;
+			}
+			bool operator--(int){
+				pointer--;
+				if (pointer == begin){
+					pointer = end;
+					return true;
+				}
+
 				return false;
 			}
 	};

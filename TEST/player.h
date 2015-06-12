@@ -19,7 +19,7 @@ public:
 	int getNumber(){ return number;}
 	Field* getCurrentField(){ return *it; }
 	bool acquire(int amount);
-	void move(int Roll);
+	void move(int Roll, bool actions);
 	bool transfer(Player& Indepted, int amount);
 	bool giftsAndFines(int amount){ return (cash += amount) < 0; }
 	void drawMe(sf::RenderWindow& window, sf::Font& font, sf::Sprite& bgr);

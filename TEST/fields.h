@@ -52,3 +52,10 @@ public:
 	virtual void onStepOn(Player& occupant);
 	virtual ~StartField(){};
 };
+
+class ChanceField : public Field{
+public:
+	ChanceField(std::fstream& fielddata);
+	virtual void onStepOn(Player& occupant);
+	virtual ~ChanceField(){};
+};
