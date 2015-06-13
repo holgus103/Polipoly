@@ -9,11 +9,13 @@ Stack::Stack(std::fstream& chancesdata)
 		int type;
 		indexes += i;
 		chancesdata >> type;
-		if (type == TRAVEL){
+		if (type == TRAVEL)
+		{
 			chances.push_back(new TravellingChance(chancesdata));
 		}
 	}
 	indexes.rndm();
+	iter = CircularList<int>::CircularIterator::CircularIterator(indexes);
 }
 
 void Stack::startNext(Player& currentPlayer)

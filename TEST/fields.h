@@ -56,6 +56,6 @@ public:
 class ChanceField : public Field{
 public:
 	ChanceField(std::fstream& fielddata);
-	virtual void onStepOn(Player& occupant);
+	virtual void enterTheFieldtrix(Player& occupant);
 	virtual ~ChanceField(){};
 };

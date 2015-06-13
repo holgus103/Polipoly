@@ -1,11 +1,11 @@
 5 Start Nowy_semestr 0 663 764 4 104 400
 2 ZTI Podstawy_Informatyki 4294902015 663 764 105 166 1
-1 Szansa ??? 0 663 764 167 228
+3 Szansa ??? 0 663 764 167 228
 2 ZTI Metody_Statystyczne 4294902015 663 764 229 290 1
 4 Mandat Przykro_mi,_kolego 0 663 764 291 352 -400
 2 Jezyki Jezyk_angielski 0 663 764 353 414 4
 2 ZTiPSK Matematyka_Dyskretna 4269868031 663 764 415 476 2
-1 Szansa ??? 0 663 764 477 538
+3 Szansa ??? 0 663 764 477 538
 2 ZTiPSK Systemy_Operacyjne 4269868031 663 764 539 600 2
 2 ZTiPSK Metody_Numeryczne 4269868031 663 764 601 662 2
 1 KAC Znowu_sie_upiles? 0 663 764 663 764
@@ -31,10 +31,10 @@
 1 Popijawa Pospij_sobie 0 4 104 4 104
 2 ZMiTAC_II Konstrukcja_Ukladów_Cyfrowych 234500351 105 166 4 104 6
 2 ZMiTAC_II Podstawy_Cyfrowej_Transmisji_Danych 234500351 167 228 4 104 6
-1 Szansa ??? 0 229 290 4 104
+3 Szansa ??? 0 229 290 4 104
 2 ZMiTAC_II Systemy_Mikroprogramowalne_i_Wbudowane 234500351 291 352 4 104 6
 2 Jezyki Jezyk_hiszpanski 0 353 414 4 104 4
-1 Szansa ??? 0 415 476 4 104
+3 Szansa ??? 0 415 476 4 104
 2 Elektronicy Podstawy_Elektrotechniki 2684675071 477 538 4 104 7
 1 Kurs_BHP W_ramach_formalnosci 0 539 601 4 104
 2 Elektronicy Elektronika_i_Miernictwo 2684675071 602 662 4 104 8

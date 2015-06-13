@@ -26,7 +26,7 @@
 #define USERBAR_LED2_PATH "LED2.png"
 #define USERBAR_LED3_PATH "LED3.png"
 #define BTN_SKIP_PATH "SkipRoundButton.png"
-#define MSG_BG_PATH "messenger.jpg"
+#define MSG_BG_PATH "messenger-beta.jpg"
 #define MSG_BG_POSITION 205
 #define PLAYERS_X 787
 #define PLAYERS_Y 48
@@ -47,10 +47,12 @@
 #define FIELDNAME_X 774
 #define FIELDNAME_Y 130
 #define GAMEFIELD_SIZE 40
+// dice coordinates
 #define DICE1_X 775
 #define DICE1_Y 560
 #define DICE2_X 835 
 #define DICE2_Y 560
+
 #define FIELDNAME_TEXT_SIZE 13
 #define TEAMNAME_TEXT_SIZE 12
 #define CONTENT_TEXT_SIZE 10
@@ -62,6 +64,18 @@
 #define MOVE_INTERVAL 500
 #define CHANCES_COUNT 10
 
+
+//msgbox button coordinates
+//ok button //20+205,100+205, 297+205,205+337
+#define OK_XL 225
+#define OK_XR 305
+#define OK_YU 502
+#define OK_YD 542
+//cancel button // 205+257,337+205,205+297,205+337
+#define CANCEL_XL 462
+#define CANCEL_XR 542
+#define CANCEL_YU 502
+#define CANCEL_YD 542
 enum FieldType{
 	FREE = 1,
 	COMMERCIAL = 2,
@@ -74,4 +88,9 @@ enum ChanceType{
 	TRAVEL = 1,
 	TELEPORT = 2,
 	WALLET = 3,
+};
+
+enum MsgType{
+	OK = 1,
+	OKCANCEL = 2,
 };

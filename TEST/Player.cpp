@@ -9,23 +9,18 @@ Player::Player(int numberIn, std::string TexPath,CircularList<Field*>& list){
 	number = numberIn;
 	playerTx.loadFromFile(TexPath);
 	player.setTexture(playerTx);
-	//current->SetPosition(this);
 	(*it)->setPosition(this);
 }
 void Player::move(int Roll, bool actions){
 	for (int i = 0; i < Roll; i++){
 		it++;
-		//current = current->next;
 		(*it)->setPosition(this);
-		if (actions)
+		if (actions)// senior Marcin, co to jest actions i po co to komu?
 			(*it)->onStepOn(*this);
-		//current->SetPosition(this);
 		Board::drawGamefield();
 		Sleep(MOVE_INTERVAL);
 	}
 	(*it)->enterTheFieldtrix(*this);
-	//current->EnterTheFieldtrix(*this);
-	
 }
 bool Player::acquire(int amount){
 	if (amount > ECTS)

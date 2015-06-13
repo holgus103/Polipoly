@@ -17,7 +17,7 @@
 	for (int i = 0; i < dices; i++)
 		sum += value[i];
 	delete[] value;
-	return sum+dices;
+	return 1;// sum + dices;
 }
 
  void dice::setDicesIdle(sf::Sprite* diceFields[], int dices){

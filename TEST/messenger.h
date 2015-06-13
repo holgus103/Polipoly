@@ -10,8 +10,9 @@ private:
 	std::string buy_message;
 	sf::Texture* background;
 	sf::RenderWindow& window;
+	bool serviceLoop(MsgType);
 public:
-	void drawMsgBox();
+	bool drawMsgBox(std::string&, MsgType);
 	void drawBuyMessage(sf::RenderWindow& window, std::string fieldName);
 	Messenger(sf::RenderWindow& w, std::fstream& textes);
 };

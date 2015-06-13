@@ -25,12 +25,13 @@ bool CommercialField::payDay(Player& Indepted){
 
 void CommercialField::enterTheFieldtrix(Player& Neo){
 	if (owner == NULL){
-		Board::msger->drawMsgBox();
-		if (IDOK == MessageBox(NULL, ("Czy chcesz kupic pole " + name).c_str(), "Zakup", MB_OKCANCEL))
+		if (Board::msger->drawMsgBox("Czy chcesz kupic pole " + name, OKCANCEL)){
+			//if (IDOK == MessageBox(NULL, ("Czy chcesz kupic pole " + name).c_str(), "Zakup", MB_OKCANCEL))
 			if (buyMe(Neo))
 				MessageBox(NULL, ("Kupiles pole " + name).c_str(), "Zakup udany", MB_OK);
 			else
 				MessageBox(NULL, "Nie masz dosc ECTS", "Zakup nieudany", MB_OK);
+		}
 		else{
 			return;
 		}
