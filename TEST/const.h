@@ -28,6 +28,7 @@
 #define USERBAR_LED3_PATH "LED3.png"
 #define BTN_SKIP_PATH "SkipRoundButton.png"
 #define MSG_BG_PATH "messenger.jpg"
+#define MENU_BGR "MenuBg.jpg"
 #define MSG_BG_POSITION 205
 #define PLAYERS_X 787
 #define PLAYERS_Y 48
@@ -84,10 +85,13 @@
 #define NEXTP_XR 1013
 #define NEXTP_YU 559
 #define NEXTP_YD 620
-
+//button img paths
 #define MSG_YES_PATH "YesButton.png"
 #define MSG_NO_PATH "NoButton.png"
 #define MSG_OK_PATH "OKButton.png"
+#define MSG_2P_PATH "2PButton.png"
+#define MSG_3P_PATH "3PButton.png"
+#define MSG_4P_PATH "4PButton.png"
 
 #define MSG_BUTTON_YU 502
 #define MSG_BUTTON_YD 542
@@ -125,4 +129,11 @@ enum ChanceType{
 enum MsgType{
 	OK = 1,
 	OKCANCEL = 2,
+	MENU = 3,
+};
+
+enum Response{
+	_YES = 2,
+	_NO = 4,
+	_OK = 3,
 };

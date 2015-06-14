@@ -20,12 +20,12 @@ bool CommercialField::buyMe(Player& buyer){
 }
 
 bool CommercialField::payDay(Player& Indepted){
-	return owner->transfer(Indepted, 50);
+	return owner->transfer(Indepted, price*10);
 }
 
 void CommercialField::enterTheFieldtrix(Player& Neo){
 	if (owner == NULL){
-		if (Board::msger->drawMsgBox("Czy chcesz kupic pole " + name + "?", (std::string)"Potwierdzenie zakupu", OKCANCEL)){
+		if (_YES==Board::msger->drawMsgBox("Czy chcesz kupic pole " + name + "?", (std::string)"Potwierdzenie zakupu", OKCANCEL)){
 			//if (IDOK == MessageBox(NULL, ("Czy chcesz kupic pole " + name).c_str(), "Zakup", MB_OKCANCEL))
 			if (buyMe(Neo))
 				Board::msger->drawMsgBox("Kupiles pole " + name + ".", (std::string)"Zakup udany", OK);

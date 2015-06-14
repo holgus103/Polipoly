@@ -32,6 +32,7 @@ Stack* Board::chancesStack;
 Button* Board::nextButton;
 
 void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::fstream& chancesdata){
+	std::string paths[4];
 	//create gamefield sprite
 	gamefieldTX.loadFromFile(GAMEFIELD_PATH);
 	gamefield.setTexture(gamefieldTX);
@@ -99,21 +100,34 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::
 		}
 	}
 
-	//build the chances stack 
+	paths[0] = PLAYER_1_PATH;
+	paths[1] = PLAYER_2_PATH;
+	paths[2] = PLAYER_3_PATH;
+	paths[3] = PLAYER_4_PATH;
 
-	//initialize players
-	players[0] = new Player(1, PLAYER_1_PATH,fields);
-	players[1] = new Player(2, PLAYER_2_PATH,fields);
-	players[2] = new Player(3, PLAYER_3_PATH,fields);
-	players[3] = new Player(4, PLAYER_4_PATH,fields);
-	current = players[0];
-	current->setState(1);
-	user_bar = new userbar(4);
-	user_bar->load_textures();
-	msger = new Messenger(*mainWindow, msgdata);
+
 	chancesStack = new Stack(chancesdata);
 	nextButton = new Button(NEXTP_PATH, NEXTP_XL, NEXTP_XR, NEXTP_YU, NEXTP_YD);
+	msger = new Messenger(*mainWindow, msgdata);
+	//initialize players
+	Response response = msger->drawMsgBox((std::string)"Wybierz liczbe graczy", (std::string)"MENU", MENU);
+	for (int i = 0; i < PLAYERS; i++){
+		if (i < response)
+			players[i] = new Player(i + 1, paths[i], fields);
+		else
+			players[i] = NULL;
+	}
+	/*players[0] = new Player(1, PLAYER_1_PATH,fields);
+	players[1] = new Player(2, PLAYER_2_PATH,fields);
+	players[2] = new Player(3, PLAYER_3_PATH,fields);
+	players[3] = new Player(4, PLAYER_4_PATH,fields);*/
+	msger->msgMode();
+	user_bar = new userbar(response);
+	user_bar->load_textures();
+	current = players[0];
+	current->setState(1);
 }
+
 
 bool Board::renderClickedField(short x, short y)
 {
@@ -154,8 +168,9 @@ void Board::drawGamefield(){
 		mainWindow->draw(players[i]->getPlayerSprite());
 		players[i]->drawMe(*mainWindow, font,bgr);
 	}
-	mainWindow->draw((players[0]->getPlayerSprite()));
-	user_bar->drawUserbar(*mainWindow);
+	//if (players[0]!= NULL)
+	//mainWindow->draw((players[0]->getPlayerSprite()));
+		user_bar->drawUserbar(*mainWindow);
 	mainWindow->display();
 }
 
@@ -181,4 +196,17 @@ void Board::serveClick(int x, int y){
 		rolled = false;
 	}
 	renderClickedField(x, y);
+}
+
+void Board::drawBgr(){
+	sf::Texture* bgrTx;
+	sf::Sprite* bgr;
+	bgrTx = new sf::Texture();
+	bgr = new sf::Sprite();
+
+	bgrTx->loadFromFile(MENU_BGR);
+	bgr->setTexture(*bgrTx);
+	Board::mainWindow->draw(*bgr);
+	delete bgr;
+	delete bgrTx;
 }

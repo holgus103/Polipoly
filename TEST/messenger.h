@@ -11,14 +11,16 @@ private:
 	std::string buy_message;
 	sf::Texture* background;
 	sf::RenderWindow& window;
-	bool serviceLoop(MsgType);
+	Response serviceLoop(MsgType);
 	Button* yesButton;
 	Button* noButton;
 	Button* okButton;
 	sf::Font* font;
 public:
-	bool drawMsgBox(std::string&, std::string&, MsgType);
+	Response drawMsgBox(std::string&, std::string&, MsgType);
+	//Rsponse drawMen
 	void drawBuyMessage(sf::RenderWindow& window, std::string fieldName);
+	void msgMode();
 	Messenger(sf::RenderWindow& w, std::fstream& textes);
 	~Messenger();
 };

@@ -47,4 +47,5 @@ public:
 	static Messenger* msger;
 	static Stack* chancesStack;
 	static Player* players[PLAYERS];
+	static void drawBgr();
 };

@@ -26,6 +26,12 @@ Button::Button(std::string path, int nlx, int nrx, int nuy, int ndy)
 	pic->loadFromFile(path);
 }
 
+void Button::chancePic(std::string path){
+	delete pic;
+	pic = new sf::Texture;
+	pic->loadFromFile(path);
+}
+
 Button::~Button()
 {
 	delete (pic);
