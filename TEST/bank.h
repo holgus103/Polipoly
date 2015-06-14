@@ -11,6 +11,9 @@ private:
 	Button* exitBank;
 	Button* plus;
 	Button* minus;
+	Button* buy;
+	Button* sell;
+	sf::Font* font;
 	sf::Texture* counter;
 	int howMuch;
 public:

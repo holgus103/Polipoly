@@ -45,11 +45,11 @@ void userbar::drawUserbar(sf::RenderWindow& window)
 		temp_led->setPosition(818 + i * 62, 9);
 		window.draw(*temp_led);
 	}
-	temp_led->setTexture(*led[1]);
+	temp_led->setTexture(*led[0]);
 	for (int i = player_count; i < PLAYERS; i++)
 	{
 		temp_player->setTexture(*avatars[2 * i + 1]);
-		temp_player->setPosition(50 * i, 25);
+		temp_player->setPosition(780 + i * 62, 11);
 		window.draw(*temp_player);
 		temp_led->setPosition(818 + i * 62, 9);
 		window.draw(*temp_led);

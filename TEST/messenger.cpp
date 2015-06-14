@@ -95,4 +95,5 @@ Messenger::~Messenger()
 	delete(yesButton);
 	delete(noButton);
 	delete(okButton);
+	delete(font);
 }

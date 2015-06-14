@@ -58,6 +58,7 @@
 #define FIELDNAME_TEXT_SIZE 13
 #define TEAMNAME_TEXT_SIZE 12
 #define CONTENT_TEXT_SIZE 10
+#define BANK_TEXT_SIZE 24
 #define PIN_WIDTH 26
 #define PIN_HEIGHT 26
 #define DICE_SIZE 60
@@ -130,9 +131,24 @@
 #define BANK_PLUS_YU 493
 #define BANK_PLUS_YD 544
 
+#define BANK_SELL_PATH "Sell.png"
+#define BANK_SELL_XL 840
+#define BANK_SELL_XR 901
+#define BANK_SELL_YU 427
+#define BANK_SELL_YD 478
+
+#define BANK_BUY_PATH "Buy.png"
+#define BANK_BUY_XL 933
+#define BANK_BUY_XR 993
+#define BANK_BUY_YU 427
+#define BANK_BUY_YD 478
+
 #define BANK_COUNTER_PATH "Counter.png"
-#define BANK_COUNTER_X 900
-#define BANK_COUNTER_Y 493
+#define BANK_COUNTER_X 901
+#define BANK_COUNTER_Y 494
+
+#define BANK_COUNTER_CONTENT_X 912
+#define BANK_COUNTER_CONTENT_Y 507
 
 enum FieldType{
 	FREE = 1,
