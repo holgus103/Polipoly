@@ -36,6 +36,7 @@ void Player::teleport(std::string target)
 {
 	do
 		it--;
+		
 	while (target != (*it)->getName());
 	(*it)->setPosition(this);
 	Board::drawGamefield();

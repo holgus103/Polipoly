@@ -160,6 +160,7 @@ void Board::serveClick(int x, int y){
 	int roll;
 	if (rolled == false && DICE1_X<x && x<DICE2_X + DICE_SIZE && y>DICE1_Y && y < DICE1_Y + DICE_SIZE){
 		roll = dice::rollMe(mainWindow, Dices, sizeof(Dices) / sizeof(Dices[0]));
+		
 		current->move(roll, true);
 		current->getCurrentField()->renderMe(teamName, fieldName, fieldColor,fieldContent);
 		

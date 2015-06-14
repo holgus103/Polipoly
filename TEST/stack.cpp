@@ -17,6 +17,10 @@ Stack::Stack(std::fstream& chancesdata)
 		{
 			chances.push_back(new WalletChance(chancesdata));
 		}
+		if (type == TELEPORT)
+		{
+			chances.push_back(new TeleportChance(chancesdata));
+		}
 	}
 	indexes.rndm();
 	iter = CircularList<int>::CircularIterator::CircularIterator(indexes);
