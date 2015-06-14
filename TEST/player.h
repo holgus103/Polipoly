@@ -10,7 +10,7 @@ private:
 	sf::Sprite player;
 	sf::Texture playerTx;
 	int ECTS, cash;
-
+	int state;
 public:
 	CircularList<Field*>::CircularIterator it;
 	//player* next;
@@ -20,7 +20,11 @@ public:
 	Field* getCurrentField(){ return *it; }
 	bool acquire(int amount);
 	void move(int Roll, bool actions);
+	void teleport(std::string);
 	bool transfer(Player& Indepted, int amount);
 	bool giftsAndFines(int amount){ return (cash += amount) < 0; }
 	void drawMe(sf::RenderWindow& window, sf::Font& font, sf::Sprite& bgr);
+	int getState();
+	void setState(int a);
+	bool isPlaying();
 };

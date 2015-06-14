@@ -10,11 +10,10 @@ private:
 	int player_count;
 public:
 	sf::Texture* avatars[8];
-	sf::Texture* led[2];
+	sf::Texture* led[4];
 	userbar(int how_many);
-	void start_up(sf::RenderWindow& window);
+	void drawUserbar(sf::RenderWindow& window);
 	void load_textures();
-	void next_player();
 //	void update(int player, double cash, int ects, sf::RenderWindow& window);
 	~userbar();
 };

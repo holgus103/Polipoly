@@ -23,6 +23,14 @@ public:
 	virtual void tryYourLuck(Player& target);
 };
 
+class TeleportChance :public Chance
+{
+	std::string targetName;
+public:
+	TeleportChance(std::fstream& fielddata);
+	virtual void tryYourLuck(Player& target);
+};
+
 class WalletChance :public Chance
 {
 	int money;

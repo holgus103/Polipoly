@@ -92,6 +92,9 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::
 		if (type == START){
 			fields += new StartField(fielddata);
 		}
+		if (type == POLICE){
+			fields += new PoliceField(fielddata);
+		}
 	}
 
 	//build the chances stack 
@@ -102,6 +105,7 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::
 	players[2] = new Player(3, PLAYER_3_PATH,fields);
 	players[3] = new Player(4, PLAYER_4_PATH,fields);
 	current = players[0];
+	current->setState(1);
 	user_bar = new userbar(4);
 	user_bar->load_textures();
 	msger = new Messenger(*mainWindow, msgdata);
@@ -148,7 +152,7 @@ void Board::drawGamefield(){
 		players[i]->drawMe(*mainWindow, font,bgr);
 	}
 	mainWindow->draw((players[0]->getPlayerSprite()));
-	user_bar->start_up(*mainWindow);
+	user_bar->drawUserbar(*mainWindow);
 	mainWindow->display();
 }
 
@@ -158,12 +162,18 @@ void Board::serveClick(int x, int y){
 		roll = dice::rollMe(mainWindow, Dices, sizeof(Dices) / sizeof(Dices[0]));
 		current->move(roll, true);
 		current->getCurrentField()->renderMe(teamName, fieldName, fieldColor,fieldContent);
-		current = ((players[current->getNumber()] != NULL) && (current->getNumber()!=PLAYERS))? players[current->getNumber()] : players[0];
+		
 		rolled = true;
 	}
 	if (rolled == true && 900 < x && x < 1013 && y>559 && y < 620)
 	{
-		user_bar->next_player();
+		if (current->getState() == 1)
+			current->setState(2);
+
+		do			
+			current = ((players[current->getNumber()] != NULL) && (current->getNumber() != PLAYERS)) ? players[current->getNumber()] : players[0];
+		while (current->isPlaying() == false);
+		current->setState(1);
 		rolled = false;
 	}
 	renderClickedField(x, y);

@@ -13,6 +13,10 @@ Stack::Stack(std::fstream& chancesdata)
 		{
 			chances.push_back(new TravellingChance(chancesdata));
 		}
+		if (type == WALLET)
+		{
+			chances.push_back(new WalletChance(chancesdata));
+		}
 	}
 	indexes.rndm();
 	iter = CircularList<int>::CircularIterator::CircularIterator(indexes);

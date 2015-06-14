@@ -33,12 +33,12 @@ public:
 				return false;
 			}
 			bool operator--(int){
-				pointer--;
 				if (pointer == begin){
 					pointer = end;
+					pointer--;
 					return true;
 				}
-
+				pointer--;
 				return false;
 			}
 	};

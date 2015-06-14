@@ -23,6 +23,7 @@ public:
 	virtual ~Field(){};
 	virtual void enterTheFieldtrix(Player& Neo){}
 	virtual void onStepOn(Player& occupant){}
+	std::string getName();
 };
 
 class CommercialField:public Field{
@@ -58,4 +59,12 @@ public:
 	ChanceField(std::fstream& fielddata);
 	virtual void enterTheFieldtrix(Player& occupant);
 	virtual ~ChanceField(){};
+};
+
+class PoliceField : public Field{
+	std::string targetName;
+public:
+	PoliceField(std::fstream& fielddata);
+	virtual void enterTheFieldtrix(Player& occupant);
+	virtual ~PoliceField(){};
 };

@@ -10,6 +10,7 @@ Player::Player(int numberIn, std::string TexPath,CircularList<Field*>& list){
 	playerTx.loadFromFile(TexPath);
 	player.setTexture(playerTx);
 	(*it)->setPosition(this);
+	state = 2;
 }
 void Player::move(int Roll, bool actions){
 	for (int i = 0; i < Roll; i++){
@@ -20,8 +21,27 @@ void Player::move(int Roll, bool actions){
 		Board::drawGamefield();
 		Sleep(MOVE_INTERVAL);
 	}
+	for (int i = 0; i > Roll; i--){
+		it--;
+		(*it)->setPosition(this);
+		if (actions)
+			(*it)->onStepOn(*this);
+		Board::drawGamefield();
+		Sleep(MOVE_INTERVAL);
+	}
 	(*it)->enterTheFieldtrix(*this);
 }
+
+void Player::teleport(std::string target)
+{
+	do
+		it--;
+	while (target != (*it)->getName());
+	(*it)->setPosition(this);
+	Board::drawGamefield();
+	(*it)->enterTheFieldtrix(*this);
+}
+
 bool Player::acquire(int amount){
 	if (amount > ECTS)
 		return false;
@@ -53,5 +73,25 @@ void Player::drawMe(sf::RenderWindow& window,sf::Font& font, sf::Sprite& bgr){
 	temp.setString(std::to_string(this->cash));
 	temp.setPosition(x, PLAYERS_Y);
 	window.draw(temp);
+}
 
+int Player::getState()
+{
+	if (state > 2)
+		return 3;
+	return state;
+}
+
+void Player::setState(int a)
+{
+	state = a;
+}
+
+bool Player::isPlaying()
+{
+	if (state == 2)
+		return true;
+	if (state > 2)
+		state--;
+	return false;
 }

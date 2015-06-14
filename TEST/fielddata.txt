@@ -28,7 +28,7 @@
 2 Powtórka Algebra 67103487 4 104 229 290 5
 2 Dziekanat Moze_trzeba_oddac_indeks? 0 4 104 167 228 3
 2 Powtórka Analiza_Matematyczna 67103487 4 104 105 166 6
-1 Popijawa Pospij_sobie 0 4 104 4 104
+6 Popijawa Pospij_sobie 0 4 104 4 104 KAC
 2 ZMiTAC_II Konstrukcja_Ukladów_Cyfrowych 234500351 105 166 4 104 6
 2 ZMiTAC_II Podstawy_Cyfrowej_Transmisji_Danych 234500351 167 228 4 104 6
 3 Szansa ??? 0 229 290 4 104

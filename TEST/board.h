@@ -28,7 +28,7 @@ private:
 	static sf::Font font;
 	static sf::ConvexShape fieldColor; 
 	static sf::Sprite* Dices[2];
-	static Player* players[PLAYERS];
+	
 	static Player* current;
 	
 	static userbar* user_bar;
@@ -45,4 +45,5 @@ public:
 	static sf::RenderWindow* mainWindow;
 	static Messenger* msger;
 	static Stack* chancesStack;
+	static Player* players[PLAYERS];
 };

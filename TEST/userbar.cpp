@@ -1,12 +1,13 @@
 #include "userbar.h"
+#include "board.h"
+#include "player.h"
 
 userbar::userbar(int how_many)
 {
 	player_count = how_many;
-	current_player = 0;
 	for (int i = 0; i < 8; i++)
 		avatars[i] = new sf::Texture;
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 4; i++)
 		led[i] = new sf::Texture;
 }
 
@@ -20,20 +21,25 @@ void userbar::load_textures()
 	avatars[5]->loadFromFile(PLAYER_3B_PATH);
 	avatars[6]->loadFromFile(PLAYER_4_PATH);
 	avatars[7]->loadFromFile(PLAYER_4B_PATH);
-	led[0]->loadFromFile(USERBAR_LED1_PATH);
-	led[1]->loadFromFile(USERBAR_LED2_PATH);
-	led[2]->loadFromFile(USERBAR_LED3_PATH);
+	led[0]->loadFromFile(USERBAR_LED2_PATH);
+	led[1]->loadFromFile(USERBAR_LED3_PATH);
+	led[2]->loadFromFile(USERBAR_LED0_PATH);
+	led[3]->loadFromFile(USERBAR_LED1_PATH);
 }
 
-void userbar::start_up(sf::RenderWindow& window)
+void userbar::drawUserbar(sf::RenderWindow& window)
 {
 	//	sf::Text temp_text;
 	sf::Sprite* temp_player = new sf::Sprite();
 	sf::Sprite* temp_led = new sf::Sprite();
-	temp_led->setTexture(*led[0]);
 	for (int i = 0; i < player_count; i++)
 	{
-		temp_player->setTexture(*avatars[2 * i]);
+		int temp_state = Board::players[i]->getState();
+		temp_led->setTexture(*led[temp_state]);
+		if (temp_state == 0)
+			temp_player->setTexture(*avatars[2 * i + 1]);
+		else
+			temp_player->setTexture(*avatars[2 * i]);
 		temp_player->setPosition(780 + i * 62, 11);
 		window.draw(*temp_player);
 		temp_led->setPosition(818 + i * 62, 9);
@@ -48,16 +54,10 @@ void userbar::start_up(sf::RenderWindow& window)
 		temp_led->setPosition(818 + i * 62, 9);
 		window.draw(*temp_led);
 	}
-	temp_led->setTexture(*led[2]);
-	temp_led->setPosition(818 + 62 * current_player, 9);
-	window.draw(*temp_led);
+
+
 	delete(temp_led);
 	delete(temp_player);
-}
-
-void userbar::next_player()
-{
-	current_player = (current_player + 1) % player_count;
 }
 
 userbar::~userbar()

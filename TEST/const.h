@@ -22,11 +22,13 @@
 #define PLAYER_3B_PATH "Pionek3b.png"
 #define PLAYER_4B_PATH "Pionek4b.png"
 #define PLAYER_BGR_PATH "playerbgr.png"
+#define USERBAR_LED0_PATH "LED0.png"
 #define USERBAR_LED1_PATH "LED1.png"
 #define USERBAR_LED2_PATH "LED2.png"
 #define USERBAR_LED3_PATH "LED3.png"
 #define BTN_SKIP_PATH "SkipRoundButton.png"
-#define MSG_BG_PATH "messenger-beta.jpg"
+#define MSG_BG_PATH "messenger.jpg"
+#define MSG_BG_PATH2 "messenger2.jpg"
 #define MSG_BG_POSITION 205
 #define PLAYERS_X 787
 #define PLAYERS_Y 48
@@ -61,7 +63,7 @@
 #define DICE_SIZE 60
 #define PLAYERS 4
 #define INITIAL_CASH 1500
-#define MOVE_INTERVAL 500
+#define MOVE_INTERVAL 100
 #define CHANCES_COUNT 10
 
 
@@ -82,6 +84,7 @@ enum FieldType{
 	CHANCE = 3,
 	PENEALTY = 4,
 	START = 5,
+	POLICE = 6,
 };
 
 enum ChanceType{

@@ -38,3 +38,8 @@
 		(occupant->getPlayerSprite()).setPosition(x, y);
 	}
 	//Field::~Field(){}
+
+	std::string Field::getName()
+	{
+		return name;
+	}
