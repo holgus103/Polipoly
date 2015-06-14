@@ -5,6 +5,7 @@
 #include "messenger.h"
 #include "Chances.h"
 #include "stack.h"
+#include "button.h"
 
 CircularList<Field*> Board::fields;
 sf::Texture Board::gamefieldTX;
@@ -28,6 +29,7 @@ userbar* Board::user_bar;
 Messenger* Board::msger;
 bool Board::rolled = false;
 Stack* Board::chancesStack;
+Button* Board::nextButton;
 
 void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::fstream& chancesdata){
 	//create gamefield sprite
@@ -110,6 +112,7 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::
 	user_bar->load_textures();
 	msger = new Messenger(*mainWindow, msgdata);
 	chancesStack = new Stack(chancesdata);
+	nextButton = new Button(NEXTP_PATH, NEXTP_XL, NEXTP_XR, NEXTP_YU, NEXTP_YD);
 }
 
 bool Board::renderClickedField(short x, short y)
@@ -144,7 +147,7 @@ void Board::drawGamefield(){
 	mainWindow->draw(fieldContent);
 	mainWindow->draw(dicePic1);
 	mainWindow->draw(dicePic2);
-	
+	nextButton->drawButton(*mainWindow);
 	for (int i = 0; i < PLAYERS; i++){
 		if (players[i] == NULL)
 			break;
@@ -166,7 +169,7 @@ void Board::serveClick(int x, int y){
 		
 		rolled = true;
 	}
-	if (rolled == true && 900 < x && x < 1013 && y>559 && y < 620)
+	if (rolled == true && nextButton->belongs(x, y))
 	{
 		if (current->getState() == 1)
 			current->setState(2);

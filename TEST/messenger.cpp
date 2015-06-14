@@ -3,15 +3,31 @@
 #include "fstream"
 #include "board.h"
 
-bool Messenger::drawMsgBox(std::string& text, MsgType type)
+bool Messenger::drawMsgBox(std::string& text, std::string& title, MsgType type)
 {
 	
 	sf::Sprite* temp = new sf::Sprite();
+	sf::Text* temp2 = new sf::Text();
+	window.clear(); // cleanup needed (otherwise bugs occur)
 	temp->setTexture(*background);
 	temp->setPosition(MSG_BG_POSITION, MSG_BG_POSITION);
-	window.clear(); // cleanup needed (otherwise bugs occur)
+	temp2->setPosition(MSG_TITLE_X, MSG_TITLE_Y);
+	temp2->setString(title);
+	window.draw(*temp2);
+	temp2->setPosition(MSG_TEXT_X, MSG_TEXT_Y);
+	temp2->setString(text);
+	window.draw(*temp2);
 	Board::drawGamefield();
 	window.draw(*temp);
+
+	if (type == OKCANCEL)
+	{
+		yesButton->drawButton(window);
+		noButton->drawButton(window);
+	}
+	else
+		okButton->drawButton(window);
+	
 	window.display();
 	delete(temp);
 	return serviceLoop(type);
@@ -25,6 +41,10 @@ Messenger::Messenger(sf::RenderWindow& w, std::fstream& textes) : window(w)
 {
 	background = new sf::Texture;
 	background->loadFromFile(MSG_BG_PATH);
+	yesButton = new Button(MSG_YES_PATH, MSG_YES_XL, MSG_YES_XR, MSG_BUTTON_YU, MSG_BUTTON_YD);
+	noButton = new Button(MSG_NO_PATH, MSG_NO_XL, MSG_NO_XR, MSG_BUTTON_YU, MSG_BUTTON_YD);
+	okButton = new Button(MSG_OK_PATH, MSG_OK_XL, MSG_OK_XR, MSG_BUTTON_YU, MSG_BUTTON_YD);
+
 	textes >> buy_title;
 }
 
@@ -37,15 +57,24 @@ bool Messenger::serviceLoop(MsgType type){// ok and cancel button support implem
 		if (event.mouseButton.button == sf::Mouse::Left)
 		{
 			screen_size = window.getSize();//20+205,100+205, 297+205,205+337
-			if ((event.mouseButton.y * SCREEN_Y / screen_size.y)<OK_YD && (event.mouseButton.y * SCREEN_Y / screen_size.y)>OK_YU){
-				if ((event.mouseButton.x * SCREEN_X / screen_size.x)>OK_XL && (event.mouseButton.x * SCREEN_X / screen_size.x)<OK_XR){
-					return true;//ok button pressed
-				}// 205+257,337+205,205+297,205+337
-				if (type == OKCANCEL &&(event.mouseButton.x * SCREEN_X / screen_size.x)>CANCEL_XL && (event.mouseButton.x * SCREEN_X / screen_size.x)<CANCEL_XR){
-					return false;//cancel button pressed
-				}
+			if (type == OKCANCEL)
+			{
+				if (yesButton->belongs(event.mouseButton.x * SCREEN_X / screen_size.x, event.mouseButton.y * SCREEN_Y / screen_size.y))
+					return true;
+				if (noButton->belongs(event.mouseButton.x * SCREEN_X / screen_size.x, event.mouseButton.y * SCREEN_Y / screen_size.y))
+					return false;
 			}
-			
+			else
+				if (okButton->belongs(event.mouseButton.x * SCREEN_X / screen_size.x, event.mouseButton.y * SCREEN_Y / screen_size.y))
+					return true;			
 		}
 	}
+}
+
+Messenger::~Messenger()
+{
+	delete(background);
+	delete(yesButton);
+	delete(noButton);
+	delete(okButton);
 }

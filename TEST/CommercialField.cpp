@@ -25,7 +25,7 @@ bool CommercialField::payDay(Player& Indepted){
 
 void CommercialField::enterTheFieldtrix(Player& Neo){
 	if (owner == NULL){
-		if (Board::msger->drawMsgBox("Czy chcesz kupic pole " + name, OKCANCEL)){
+		if (Board::msger->drawMsgBox("Czy chcesz kupic pole " + name, (std::string)"Potwierdzenie zakupu", OKCANCEL)){
 			//if (IDOK == MessageBox(NULL, ("Czy chcesz kupic pole " + name).c_str(), "Zakup", MB_OKCANCEL))
 			if (buyMe(Neo))
 				MessageBox(NULL, ("Kupiles pole " + name).c_str(), "Zakup udany", MB_OK);

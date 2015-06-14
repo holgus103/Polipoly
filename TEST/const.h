@@ -28,7 +28,6 @@
 #define USERBAR_LED3_PATH "LED3.png"
 #define BTN_SKIP_PATH "SkipRoundButton.png"
 #define MSG_BG_PATH "messenger.jpg"
-#define MSG_BG_PATH2 "messenger2.jpg"
 #define MSG_BG_POSITION 205
 #define PLAYERS_X 787
 #define PLAYERS_Y 48
@@ -46,7 +45,7 @@
 #define SCREEN_Y 768
 #define TEAMNAME_X 802
 #define TEAMNAME_Y 103
-#define FIELDNAME_X 774
+#define FIELDNAME_X 780
 #define FIELDNAME_Y 130
 #define GAMEFIELD_SIZE 40
 // dice coordinates
@@ -78,6 +77,36 @@
 #define CANCEL_XR 542
 #define CANCEL_YU 502
 #define CANCEL_YD 542
+
+
+#define NEXTP_PATH "SkipRoundButton.png"
+#define NEXTP_XL 900
+#define NEXTP_XR 1013
+#define NEXTP_YU 559
+#define NEXTP_YD 620
+
+#define MSG_YES_PATH "YesButton.png"
+#define MSG_NO_PATH "NoButton.png"
+#define MSG_OK_PATH "OKButton.png"
+
+#define MSG_BUTTON_YU 502
+#define MSG_BUTTON_YD 542
+
+#define MSG_YES_XL 225
+#define MSG_YES_XR 305
+
+#define MSG_NO_XL 462
+#define MSG_NO_XR 542
+
+#define MSG_OK_XL 344
+#define MSG_OK_XR 424
+
+#define MSG_TITLE_X 253
+#define MSG_TITLE_Y 270
+
+#define MSG_TEXT_X 212
+#define MSG_TEXT_Y 305
+
 enum FieldType{
 	FREE = 1,
 	COMMERCIAL = 2,

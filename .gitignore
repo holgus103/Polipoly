@@ -16,14 +16,12 @@ TEST/Debug/vc120.pdb
 TEST/TEST.vcxproj
 TEST/TEST.zip
 *.7z
-*.png
 Polipoly/Debug/Polipoly.ilk
 *.pdb
 *.bmp
 Polipoly/Polipoly.v12.suo
 *.vcxproj
 *.sdf
-.jpg
 Polipoly/fielddata.txt
 *.ilk
 TEST/Polipoly.v12.suo

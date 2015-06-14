@@ -9,7 +9,7 @@ class userbar;
 class Messenger;
 class Chance;
 class Stack;
-
+class Button;
 
 class Board{
 private:
@@ -28,6 +28,7 @@ private:
 	static sf::Font font;
 	static sf::ConvexShape fieldColor; 
 	static sf::Sprite* Dices[2];
+	static Button* nextButton;
 	
 	static Player* current;
 	
