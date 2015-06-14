@@ -66,11 +66,23 @@ bool Bank::visitBank(sf::RenderWindow& window, Player& client)
 				return 0;
 			}
 			if (plus->belongs(temp_x, temp_y))
+			{
 				howMuch++;
+				window.draw(*temp);
+				temp2->setString(std::to_string(howMuch) + " ECTS");
+				window.draw(*temp2);
+				window.display();
+			}
 
 			if (minus->belongs(temp_x, temp_y))
 				if (howMuch > 1)
+				{
 					howMuch--;
+					window.draw(*temp);
+					temp2->setString(std::to_string(howMuch) + " ECTS");
+					window.draw(*temp2);
+					window.display();
+				}
 
 		}
 	}
