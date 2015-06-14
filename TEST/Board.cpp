@@ -129,11 +129,10 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::
 	user_bar->load_textures();
 	current = players[0];
 	current->setState(1);
-	chancesStack = new Stack(chancesdata);
+
 	gameBank = new Bank();
 	nextButton = new Button(NEXTP_PATH, NEXTP_XL, NEXTP_XR, NEXTP_YU, NEXTP_YD);
 	bankEnter = new Button(BANK_ENTER_PATH, BANK_ENTER_XL, BANK_ENTER_XR, BANK_ENTER_YU, BANK_ENTER_YD);
->>>>>>> origin/master
 }
 
 

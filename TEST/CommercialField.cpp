@@ -20,11 +20,8 @@ bool CommercialField::buyMe(Player& buyer){
 }
 
 bool CommercialField::payDay(Player& Indepted){
-<<<<<<< HEAD
 	return owner->transfer(Indepted, price*10);
-=======
-	return owner->transfer(Indepted, price * 10);
->>>>>>> origin/master
+
 }
 
 void CommercialField::enterTheFieldtrix(Player& Neo){
