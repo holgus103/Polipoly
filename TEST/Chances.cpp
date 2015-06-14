@@ -1,4 +1,5 @@
 #include "Chances.h"
+#include "messenger.h"
 
 void Chance::putSpaces(std::string& input)
 {

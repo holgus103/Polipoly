@@ -1,5 +1,6 @@
 #include "Chances.h"
 #include <Windows.h>
+#include "messenger.h"
 
 TravellingChance::TravellingChance(std::fstream& fielddata) :Chance(fielddata){
 	fielddata >> steps;
@@ -8,6 +9,6 @@ TravellingChance::TravellingChance(std::fstream& fielddata) :Chance(fielddata){
 
 void TravellingChance::tryYourLuck(Player& target)
 {
-	MessageBox(NULL, (message).c_str(), "Szansa", MB_OK);
+	Board::msger->drawMsgBox(message, (std::string) "Szansa", OK);
 	target.move(steps, actions);
 }

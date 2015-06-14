@@ -1,5 +1,6 @@
 #include "Chances.h"
 #include <Windows.h>
+#include "messenger.h"
 
 WalletChance::WalletChance(std::fstream& fielddata) :Chance(fielddata){
 	fielddata >> money;
@@ -7,6 +8,6 @@ WalletChance::WalletChance(std::fstream& fielddata) :Chance(fielddata){
 
 void WalletChance::tryYourLuck(Player& target)
 {
-	MessageBox(NULL, (message).c_str(), "Szansa", MB_OK);
+	Board::msger->drawMsgBox(message, (std::string) "Szansa", OK);
 	target.giftsAndFines(money);
 }

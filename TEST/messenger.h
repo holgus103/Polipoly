@@ -15,6 +15,7 @@ private:
 	Button* yesButton;
 	Button* noButton;
 	Button* okButton;
+	sf::Font* font;
 public:
 	bool drawMsgBox(std::string&, std::string&, MsgType);
 	void drawBuyMessage(sf::RenderWindow& window, std::string fieldName);
