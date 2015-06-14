@@ -11,6 +11,7 @@ private:
 	sf::Texture playerTx;
 	int ECTS, cash;
 	int state;
+	bool crossedStart;
 public:
 	CircularList<Field*>::CircularIterator it;
 	//player* next;
@@ -27,4 +28,5 @@ public:
 	int getState();
 	void setState(int a);
 	bool isPlaying();
+	void setCrossedStart(bool);
 };

@@ -6,6 +6,7 @@
 #include "Chances.h"
 #include "stack.h"
 #include "button.h"
+#include "bank.h"
 
 CircularList<Field*> Board::fields;
 sf::Texture Board::gamefieldTX;
@@ -29,7 +30,9 @@ userbar* Board::user_bar;
 Messenger* Board::msger;
 bool Board::rolled = false;
 Stack* Board::chancesStack;
+Bank* Board::gameBank;
 Button* Board::nextButton;
+Button* Board::bankEnter;
 
 void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::fstream& chancesdata){
 	//create gamefield sprite
@@ -112,7 +115,9 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::
 	user_bar->load_textures();
 	msger = new Messenger(*mainWindow, msgdata);
 	chancesStack = new Stack(chancesdata);
+	gameBank = new Bank();
 	nextButton = new Button(NEXTP_PATH, NEXTP_XL, NEXTP_XR, NEXTP_YU, NEXTP_YD);
+	bankEnter = new Button(BANK_ENTER_PATH, BANK_ENTER_XL, BANK_ENTER_XR, BANK_ENTER_YU, BANK_ENTER_YD);
 }
 
 bool Board::renderClickedField(short x, short y)
@@ -136,6 +141,15 @@ void Board::dispose(){
 			break;
 		delete (players[i]);
 	}
+	delete(current);
+	delete(mainWindow);
+	delete(user_bar);
+	delete(msger);
+	delete(chancesStack);
+	delete(nextButton);
+	delete(bankEnter);
+
+
 }
 
 void Board::drawGamefield(){
@@ -148,6 +162,7 @@ void Board::drawGamefield(){
 	mainWindow->draw(dicePic1);
 	mainWindow->draw(dicePic2);
 	nextButton->drawButton(*mainWindow);
+	bankEnter->drawButton(*mainWindow);
 	for (int i = 0; i < PLAYERS; i++){
 		if (players[i] == NULL)
 			break;
@@ -180,5 +195,7 @@ void Board::serveClick(int x, int y){
 		current->setState(1);
 		rolled = false;
 	}
+	if (bankEnter->belongs(x, y))
+		gameBank->visitBank(*mainWindow, *current);
 	renderClickedField(x, y);
 }

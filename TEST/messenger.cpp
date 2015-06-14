@@ -35,6 +35,7 @@ bool Messenger::drawMsgBox(std::string& text, std::string& title, MsgType type)
 	
 	window.display();
 	delete(temp);
+	delete(temp2);
 	return serviceLoop(type);
 }
 void Messenger::drawBuyMessage(sf::RenderWindow& window, std::string fieldName)

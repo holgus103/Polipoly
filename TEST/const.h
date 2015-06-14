@@ -107,6 +107,29 @@
 #define MSG_TEXT_X 212
 #define MSG_TEXT_Y 305
 
+#define BANK_ENTER_PATH "Bank.png"
+#define BANK_EXIT_PATH "BankExit.png"
+#define BANK_ENTER_XL 774
+#define BANK_ENTER_XR 835
+#define BANK_ENTER_YU 427
+#define BANK_ENTER_YD 478
+
+#define BANK_MINUS_PATH "Minus.png"
+#define BANK_MINUS_XL 774
+#define BANK_MINUS_XR 835
+#define BANK_MINUS_YU 493
+#define BANK_MINUS_YD 544
+
+#define BANK_PLUS_PATH "Plus.png"
+#define BANK_PLUS_XL 834
+#define BANK_PLUS_XR 895
+#define BANK_PLUS_YU 493
+#define BANK_PLUS_YD 544
+
+#define BANK_COUNTER_PATH "Counter.png"
+#define BANK_COUNTER_X 900
+#define BANK_COUNTER_Y 493
+
 enum FieldType{
 	FREE = 1,
 	COMMERCIAL = 2,

@@ -20,7 +20,7 @@ bool CommercialField::buyMe(Player& buyer){
 }
 
 bool CommercialField::payDay(Player& Indepted){
-	return owner->transfer(Indepted, 50);
+	return owner->transfer(Indepted, price * 10);
 }
 
 void CommercialField::enterTheFieldtrix(Player& Neo){
