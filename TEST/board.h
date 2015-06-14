@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "const.h"
 #include "CircularList.h"
+
 class Field;
 class Player;
 class userbar;
@@ -10,6 +11,7 @@ class Messenger;
 class Chance;
 class Stack;
 class Button;
+class Bank;
 
 class Board{
 private:
@@ -28,7 +30,9 @@ private:
 	static sf::Font font;
 	static sf::ConvexShape fieldColor; 
 	static sf::Sprite* Dices[2];
+	static Bank* gameBank;
 	static Button* nextButton;
+	static Button* bankEnter;
 	
 	static Player* current;
 	
