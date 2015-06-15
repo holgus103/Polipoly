@@ -1,6 +1,7 @@
 ﻿#include "board.h"
 #include "bank.h"
 #include "const.h"
+#include <Windows.h>
 
 Bank::Bank()
 {
@@ -55,6 +56,7 @@ bool Bank::visitBank(sf::RenderWindow& window, Player& client)
 		window.display();
 	while (true){
 		window.pollEvent(event);
+		if (event.type == sf::Event::MouseButtonPressed)
 		if (event.mouseButton.button == sf::Mouse::Left)
 		{
 			screen_size = window.getSize();//20+205,100+205, 297+205,205+337
@@ -72,18 +74,16 @@ bool Bank::visitBank(sf::RenderWindow& window, Player& client)
 				temp2->setString(std::to_string(howMuch) + " ECTS");
 				window.draw(*temp2);
 				window.display();
+				Sleep(100);
 			}
 
 			if (minus->belongs(temp_x, temp_y))
 				if (howMuch > 1)
-				{
 					howMuch--;
-					window.draw(*temp);
-					temp2->setString(std::to_string(howMuch) + " ECTS");
-					window.draw(*temp2);
-					window.display();
-				}
-
+				window.draw(*temp);
+				temp2->setString(std::to_string(howMuch) + " ECTS");
+				window.draw(*temp2);
+				window.display();
 		}
 	}
 

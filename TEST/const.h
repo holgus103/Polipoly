@@ -139,7 +139,7 @@
 
 #define BANK_BUY_PATH "Buy.png"
 #define BANK_BUY_XL 933
-#define BANK_BUY_XR 993
+#define BANK_BUY_XR 986
 #define BANK_BUY_YU 427
 #define BANK_BUY_YD 478
 
