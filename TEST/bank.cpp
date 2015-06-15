@@ -46,7 +46,7 @@ bool Bank::visitBank(sf::RenderWindow& window, Player& client)
 	//bool open = true;
 	Board::drawGamefield();
 		window.draw(*temp);
-		temp2->setString(std::to_string(howMuch) + " ECTS");
+		temp2->setString(std::to_string(howMuch));
 		window.draw(*temp2);
 		exitBank->drawButton(window);
 		plus->drawButton(window);
@@ -71,19 +71,32 @@ bool Bank::visitBank(sf::RenderWindow& window, Player& client)
 			{
 				howMuch++;
 				window.draw(*temp);
-				temp2->setString(std::to_string(howMuch) + " ECTS");
+				temp2->setString(std::to_string(howMuch));
 				window.draw(*temp2);
+				exitBank->drawButton(window);
+				plus->drawButton(window);
+				minus->drawButton(window);
+				buy->drawButton(window);
+				sell->drawButton(window);
 				window.display();
 				Sleep(100);
 			}
 
 			if (minus->belongs(temp_x, temp_y))
+			{
 				if (howMuch > 1)
 					howMuch--;
 				window.draw(*temp);
-				temp2->setString(std::to_string(howMuch) + " ECTS");
+				temp2->setString(std::to_string(howMuch));
 				window.draw(*temp2);
+				exitBank->drawButton(window);
+				plus->drawButton(window);
+				minus->drawButton(window);
+				buy->drawButton(window);
+				sell->drawButton(window);
 				window.display();
+				Sleep(100);
+			}
 		}
 	}
 
