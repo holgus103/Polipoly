@@ -4,8 +4,12 @@
 void Chance::putSpaces(std::string& input)
 {
 	for (int i = 0; i < input.length(); i++)
+	{
 		if (input[i] == '_')
 			input[i] = ' ';
+		if (input[i] == '#')
+			input[i] = '\n';
+	}
 }
 
 Chance::Chance(std::fstream& Fielddata)

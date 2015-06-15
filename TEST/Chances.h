@@ -38,3 +38,26 @@ public:
 	WalletChance(std::fstream& fielddata);
 	virtual void tryYourLuck(Player& target);
 };
+
+class JailChance :public Chance
+{
+	std::string prisonName;
+public:
+	JailChance(std::fstream& fielddata);
+	virtual void tryYourLuck(Player& target);
+};
+
+class BetChance :public Chance
+{
+	int money;
+public:
+	BetChance(std::fstream& fielddata);
+	virtual void tryYourLuck(Player& target);
+};
+
+class BuffChance :public Chance
+{
+public:
+	BuffChance(std::fstream& fielddata);
+	virtual void tryYourLuck(Player& target);
+};

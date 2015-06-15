@@ -237,7 +237,7 @@ void Board::serveClick(int x, int y){
 		if (setsInfo[clickedField->getSetId()]->compareOwners(current->getNumber()))
 			if (setsInfo[clickedField->getSetId()]->canUpgrade(clickedField->getLevel()))
 			{
-				if (current->acquire2(clickedField->getUpgValue()) == false)
+				if (current->giftsAndFines(clickedField->getUpgValue()) == false)
 					Board::msger->drawMsgBox((std::string) "Nie posiadasz wystarczajaco pieniedzy.", (std::string) "Brak funduszy", OK);
 			}
 			else

@@ -21,6 +21,18 @@ Stack::Stack(std::fstream& chancesdata)
 		{
 			chances.push_back(new TeleportChance(chancesdata));
 		}
+		if (type == JAIL)
+		{
+			chances.push_back(new JailChance(chancesdata));
+		}
+		if (type == BET)
+		{
+			chances.push_back(new BetChance(chancesdata));
+		}
+		if (type == BUFF)
+		{
+			chances.push_back(new BuffChance(chancesdata));
+		}
 	}
 	indexes.rndm();
 	iter = CircularList<int>::CircularIterator::CircularIterator(indexes);

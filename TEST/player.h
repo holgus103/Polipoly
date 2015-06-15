@@ -12,6 +12,7 @@ private:
 	int ECTS, cash;
 	int state;
 	bool crossedStart;
+	int immune;
 public:
 	CircularList<Field*>::CircularIterator it;
 	//player* next;
@@ -20,7 +21,7 @@ public:
 	int getNumber(){ return number;}
 	Field* getCurrentField(){ return *it; }
 	bool acquire(int amount);
-	bool acquire2(int amount);
+//	bool acquire2(int amount);
 	void move(int Roll, bool actions);
 	void teleport(std::string);
 	bool transfer(Player& Indepted, int amount);
@@ -32,4 +33,6 @@ public:
 	void setCrossedStart(bool);
 	bool getCrossedStart();
 	int capability(exValue type);
+	void addImmunity();
+	bool isImmune();
 };

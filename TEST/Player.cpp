@@ -11,6 +11,7 @@ Player::Player(int numberIn, std::string TexPath,CircularList<Field*>& list){
 	player.setTexture(playerTx);
 	(*it)->setPosition(this);
 	state = 2;
+	immune = 0;
 }
 void Player::move(int Roll, bool actions){
 	for (int i = 0; i < Roll; i++){
@@ -24,8 +25,6 @@ void Player::move(int Roll, bool actions){
 	for (int i = 0; i > Roll; i--){
 		it--;
 		(*it)->setPosition(this);
-		if (actions)
-			(*it)->onStepOn(*this);
 		Board::drawGamefield();
 		Sleep(MOVE_INTERVAL);
 	}
@@ -40,6 +39,7 @@ void Player::teleport(std::string target)
 	while (target != (*it)->getName());
 	(*it)->setPosition(this);
 	Board::drawGamefield();
+	(*it)->onStepOn(*this);
 	(*it)->enterTheFieldtrix(*this);
 }
 
@@ -51,15 +51,9 @@ bool Player::acquire(int amount){
 	return true;
 }
 
-bool Player::acquire2(int amount){
-	if (amount > cash)
-		return false;
-	else
-		cash -= amount;
-	return true;
-}
-
 bool Player::transfer(Player& Indepted,int amount){
+	if (this == &Indepted)
+		return true;
 	if (Indepted.cash < amount)
 		return false;
 	else{
@@ -122,4 +116,17 @@ int Player::capability(exValue type)
 	if (crossedStart)
 		return cash / ECTS_BUY_PRICE2;
 	return cash / ECTS_BUY_PRICE;
+}
+
+void Player::addImmunity()
+{
+	immune++;
+}
+
+bool Player::isImmune()
+{
+	if (immune == 0)
+		return false;
+	immune--;
+	return true;
 }

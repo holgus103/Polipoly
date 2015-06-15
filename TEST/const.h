@@ -177,6 +177,9 @@ enum ChanceType{
 	TRAVEL = 1,
 	TELEPORT = 2,
 	WALLET = 3,
+	JAIL = 4,
+	BET = 5,
+	BUFF = 6,
 };
 
 enum MsgType{

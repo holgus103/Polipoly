@@ -71,6 +71,8 @@ public:
 
 class PoliceField : public Field{
 	std::string targetName;
+	std::string message;
+	std::string message2;
 public:
 	PoliceField(std::fstream& fielddata);
 	virtual void enterTheFieldtrix(Player& occupant);

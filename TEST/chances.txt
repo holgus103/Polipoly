@@ -1,4 +1,35 @@
-3
+34
 1 Cofnij_siÍ_o_trzy_pola. -3 0
-3 Wygra≥eú_wydzia≥owy_turniej_CS:GO.\nPobierz_150_z≥. 150
-2 Ciú_na_PE. Podstawy_Elektrotechniki
+3 Wygra≥eú_wydzia≥owy_turniej_CS:GO.#Otrzymujesz_150_z≥. 150
+2 Idü_na_Podstawy_Elektrotechniki. Podstawy_Elektrotechniki
+3 Okradziono_ciÍ_w_autobusie.#Straci≥eú_150_z≥. -150
+3 Wygra≥eú_uczelniany_konkurs_piÍknoúci.#Otrzymujesz_100_z≥. 100
+3 Mandat_za_wyprzedzanie_na_schodach.#Kara_15_z≥. -15
+2 Idü_na_Jezyk_niemiecki. Jezyk_niemiecki
+2 Idü_na_Inzynierie_Oprogramowania. Inzynieria_Oprogramowania
+2 Idü_na_Start. Nowy_semestr
+4 Przesadziles_z_nalewka_dziadiunia.#Odespij_2_kolejki. Nowy_semestr
+3 Kupiles_przeprosinowy_bukiet_dla_dziewczyny.#Za_20_z≥. -20
+3 Znalazles_na_ulicy_50_z≥. 50
+3 Wplaciles_100_z≥_na_akcje_ochrony_golebi. -100
+3 Dales_korepetycje_z_chinskiego.#Zarobiles_20_z≥. 20
+3 Zaplaciles_50_zl_za_trojke_z_WF. 50
+3 Pracowales_w_weekend.#Zarobiles_100_z≥ 100
+3 Pomylka_w_dziekanacie.#Otrzymujesz_10_z≥. 10
+3 Sprzedales_konto_w_LoLu.#Otrzymujesz_100_z≥ 100
+3 Sprzedales_nowe_jordnay_mlodszego_brata.#Zarobiles_200_z≥ 200
+2 Idü_Podstawy_Informatyki. Podstawy_Informatyki
+3 Wyludziles_od_babci_50_z≥_na_chleb. 50
+3 Oplata_za_warunek_z_WF.#50_z≥. 50
+2 Idü_na_Jezyki_Assemblerowe. Jezyki_Assemblerowe
+3 Sprzedales_projekt_za_25_z≥. 25
+5 Masz_urodziny.#Pobierz_20_z≥_od_kazdego_gracza. 20
+5 Wygrales_zaklad.#Pobierz_10_z≥_od_kazdego_gracza. 10
+2 Idü_na_Start. Nowy_semestr
+4 Grales_caly_tydzien_bez_przerwy_w_Minecrafta.#Odespij_2_kolejki. Nowy_semestr
+1 Cofnij_siÍ_o_piec_pol. -5 0
+1 Cofnij_siÍ_o_siedem_pol. -7 0
+1 Przesun_sie_do_przodu_o_trzy_pola. 3 0
+1 Przesun_sie_do_przodu_o_piec_pol. 5 0
+1 Przesun_sie_do_przodu_o_siedem_pol. 7 0
+6 Otrzymujesz_specjalnego_buffa.#Nie_bedziesz_musial_odsypiac_nastepnej_imprezy.#Buff_zostanie_automatycznie_wykorzystany_przy_najblizszej_potrzebie.
