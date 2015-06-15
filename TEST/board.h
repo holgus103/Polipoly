@@ -13,6 +13,7 @@ class Stack;
 class Button;
 class Bank;
 class FieldSet;
+class CommercialField;
 
 class Board{
 private:
@@ -34,7 +35,7 @@ private:
 	static Bank* gameBank;
 	static Button* nextButton;
 	static Button* bankEnter;
-	
+	static CommercialField* clickedField;
 	static Player* current;
 	
 	static userbar* user_bar;
@@ -46,7 +47,7 @@ public:
 	static void setWindow(sf::RenderWindow& myWindow){ mainWindow = &myWindow; }
 	static void serveClick(int x, int y);
 	static void buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::fstream& chancesdata);
-	static bool renderClickedField(short x, short y);
+	static Field* renderClickedField(short x, short y);
 	static void dispose();
 	static void drawGamefield();
 	static sf::RenderWindow* mainWindow;

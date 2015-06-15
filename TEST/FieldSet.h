@@ -6,9 +6,10 @@ class FieldSet
 {
 private:
 	int id;
-	std::vector<CommercialField&> wektor;
+	std::vector<CommercialField*> wektor;
 public:
-	void operator+=(CommercialField& data);
+	void operator+=(CommercialField* data);
 	bool compareOwners(int wantedId);
+	bool canUpgrade(int level);
 	FieldSet(int);
 };

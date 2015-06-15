@@ -7,6 +7,7 @@
 #include "stack.h"
 #include "button.h"
 #include "bank.h"
+#include "FieldSet.h"
 
 CircularList<Field*> Board::fields;
 sf::Texture Board::gamefieldTX;
@@ -34,6 +35,7 @@ Bank* Board::gameBank;
 Button* Board::nextButton;
 Button* Board::bankEnter;
 FieldSet* Board::setsInfo[SETS_COUNT];
+CommercialField* Board::clickedField;
 
 void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::fstream& chancesdata){
 	std::string paths[4];
@@ -142,17 +144,17 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::
 }
 
 
-bool Board::renderClickedField(short x, short y)
+Field* Board::renderClickedField(short x, short y)
 {
 	CircularList<Field*>::CircularIterator it(fields);
 	//field* temp = start;
 	do{
 		if ((*it)->belongs(x, y)){
 			(*it)->renderMe(teamName, fieldName, fieldColor,fieldContent);
-			return true;
+			return (*it);
 		}
 	} while (!it++);
-	return false;
+	return NULL;
 }
 // disposes the memory allocated by the main Board class
 void Board::dispose(){
@@ -219,7 +221,7 @@ void Board::serveClick(int x, int y){
 	}
 	if (bankEnter->belongs(x, y))
 		gameBank->visitBank(*mainWindow, *current);
-	renderClickedField(x, y);
+	clickedField = (CommercialField*)renderClickedField(x, y);
 }
 
 void Board::drawBgr(){

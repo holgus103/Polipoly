@@ -30,7 +30,9 @@ class CommercialField:public Field{
 	Player* owner;
 	int price;
 	int setId;
+	int level;
 public:
+	int multiplier(int);
 	virtual void renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::ConvexShape& field, sf::Text& fieldContent);
 	bool buyMe(Player& buyer);
 	virtual bool payDay(Player& Chaplin);

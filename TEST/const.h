@@ -154,7 +154,7 @@
 #define ECTS_BUY_PRICE 65
 #define ECTS_SELL_PRICE 35
 
-#define SETS_COUNT 8
+#define SETS_COUNT 9
 
 enum FieldType{
 	FREE = 1,
