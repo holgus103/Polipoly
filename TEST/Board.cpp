@@ -34,8 +34,9 @@ Stack* Board::chancesStack;
 Bank* Board::gameBank;
 Button* Board::nextButton;
 Button* Board::bankEnter;
+Button* Board::upgrade;
 FieldSet* Board::setsInfo[SETS_COUNT];
-CommercialField* Board::clickedField;
+CommercialField* Board::clickedField = NULL;
 
 void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::fstream& chancesdata){
 	std::string paths[4];
@@ -141,17 +142,21 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::
 	gameBank = new Bank();
 	nextButton = new Button(NEXTP_PATH, NEXTP_XL, NEXTP_XR, NEXTP_YU, NEXTP_YD);
 	bankEnter = new Button(BANK_ENTER_PATH, BANK_ENTER_XL, BANK_ENTER_XR, BANK_ENTER_YU, BANK_ENTER_YD);
+	upgrade = new Button(UPG_PATH, UPG_XL, UPG_XR, UPG_YU, UPG_YD);
 }
 
 
-Field* Board::renderClickedField(short x, short y)
+CommercialField* Board::renderClickedField(short x, short y)
 {
 	CircularList<Field*>::CircularIterator it(fields);
 	//field* temp = start;
 	do{
 		if ((*it)->belongs(x, y)){
 			(*it)->renderMe(teamName, fieldName, fieldColor,fieldContent);
-			return (*it);
+			std::string tempek = typeid(**it).name();
+			if ((std::string)typeid(**it).name() == (std::string)"class CommercialField")
+				return (CommercialField*)(*it);
+			return NULL;
 		}
 	} while (!it++);
 	return NULL;
@@ -170,7 +175,7 @@ void Board::dispose(){
 	delete(chancesStack);
 	delete(nextButton);
 	delete(bankEnter);
-
+	delete(upgrade);
 
 }
 
@@ -185,6 +190,9 @@ void Board::drawGamefield(){
 	mainWindow->draw(dicePic2);
 	nextButton->drawButton(*mainWindow);
 	bankEnter->drawButton(*mainWindow);
+	if (clickedField != NULL)
+		upgrade->drawButton(*mainWindow);
+
 	for (int i = 0; i < PLAYERS; i++){
 		if (players[i] == NULL)
 			break;
@@ -219,9 +227,21 @@ void Board::serveClick(int x, int y){
 		current->setCrossedStart(false);
 		rolled = false;
 	}
+	if (clickedField != NULL && upgrade->belongs(x, y))
+		if (setsInfo[clickedField->getSetId()]->compareOwners(current->getNumber()))
+			if (setsInfo[clickedField->getSetId()]->canUpgrade(clickedField->getLevel()))
+			{
+				if (current->acquire2(clickedField->getUpgValue()) == false)
+					Board::msger->drawMsgBox((std::string) "Nie posiadasz wystarczajaco pieniedzy.", (std::string) "Brak funduszy", OK);
+			}
+			else
+				Board::msger->drawMsgBox((std::string) "Najpierw ulepsz pozostale przedmioty.", (std::string) "Nie mozna ulepszyc", OK);
+		else
+			Board::msger->drawMsgBox((std::string) "Nie jestes kierownikiem zakladu.", (std::string) "Brak uprawnien", OK);
+
 	if (bankEnter->belongs(x, y))
 		gameBank->visitBank(*mainWindow, *current);
-	clickedField = (CommercialField*)renderClickedField(x, y);
+	clickedField = renderClickedField(x, y);
 }
 
 void Board::drawBgr(){

@@ -20,6 +20,7 @@ public:
 	int getNumber(){ return number;}
 	Field* getCurrentField(){ return *it; }
 	bool acquire(int amount);
+	bool acquire2(int amount);
 	void move(int Roll, bool actions);
 	void teleport(std::string);
 	bool transfer(Player& Indepted, int amount);

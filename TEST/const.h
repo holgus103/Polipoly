@@ -156,6 +156,12 @@
 
 #define SETS_COUNT 9
 
+#define UPG_PATH "Upgrade.png"
+#define UPG_XL 900
+#define UPG_XR 1013
+#define UPG_YU 261
+#define UPG_YD 322
+
 enum FieldType{
 	FREE = 1,
 	COMMERCIAL = 2,

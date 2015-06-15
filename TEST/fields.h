@@ -4,6 +4,7 @@
 #include "const.h"
 #include <fstream>
 #include "Player.h"
+#include <typeinfo>
 
 class Field{
 protected:
@@ -40,6 +41,9 @@ public:
 	virtual ~CommercialField(){};
 	virtual void enterTheFieldtrix(Player& Neo);
 	int getOwnerId();
+	int getSetId();
+	int getLevel();
+	int getUpgValue();
 };
 
 class PenealtyField :public Field{

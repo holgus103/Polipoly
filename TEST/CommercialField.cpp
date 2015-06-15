@@ -84,3 +84,18 @@ int CommercialField::getOwnerId()
 		return 0;
 	return owner->getNumber();
 }
+
+int CommercialField::getSetId()
+{
+	return setId;
+}
+
+int CommercialField::getLevel()
+{
+	return level;
+}
+
+int CommercialField::getUpgValue()
+{
+	return 25 * price*(level + 1);
+}

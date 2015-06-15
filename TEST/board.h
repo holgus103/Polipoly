@@ -35,6 +35,7 @@ private:
 	static Bank* gameBank;
 	static Button* nextButton;
 	static Button* bankEnter;
+	static Button* upgrade;
 	static CommercialField* clickedField;
 	static Player* current;
 	
@@ -47,7 +48,7 @@ public:
 	static void setWindow(sf::RenderWindow& myWindow){ mainWindow = &myWindow; }
 	static void serveClick(int x, int y);
 	static void buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::fstream& chancesdata);
-	static Field* renderClickedField(short x, short y);
+	static CommercialField* renderClickedField(short x, short y);
 	static void dispose();
 	static void drawGamefield();
 	static sf::RenderWindow* mainWindow;

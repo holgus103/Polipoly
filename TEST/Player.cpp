@@ -51,6 +51,14 @@ bool Player::acquire(int amount){
 	return true;
 }
 
+bool Player::acquire2(int amount){
+	if (amount > cash)
+		return false;
+	else
+		cash -= amount;
+	return true;
+}
+
 bool Player::transfer(Player& Indepted,int amount){
 	if (Indepted.cash < amount)
 		return false;
