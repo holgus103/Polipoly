@@ -67,7 +67,7 @@ bool Bank::visitBank(sf::RenderWindow& window, Player& client)
 				delete(temp2);
 				return 0;
 			}
-			if (plus->belongs(temp_x, temp_y))
+			if (plus->belongs(temp_x, temp_y) && client.capability(ECTS) > howMuch)
 			{
 				howMuch++;
 				window.draw(*temp);
@@ -82,10 +82,9 @@ bool Bank::visitBank(sf::RenderWindow& window, Player& client)
 				Sleep(100);
 			}
 
-			if (minus->belongs(temp_x, temp_y))
+			if (minus->belongs(temp_x, temp_y) && howMuch > 0)
 			{
-				if (howMuch > 1)
-					howMuch--;
+				howMuch--;
 				window.draw(*temp);
 				temp2->setString(std::to_string(howMuch));
 				window.draw(*temp2);
@@ -96,6 +95,21 @@ bool Bank::visitBank(sf::RenderWindow& window, Player& client)
 				sell->drawButton(window);
 				window.display();
 				Sleep(100);
+			}
+			if (buy->belongs(temp_x, temp_y))
+			{
+				client.acquire(-howMuch);
+				if (client.getCrossedStart())
+					client.giftsAndFines(-howMuch*ECTS_BUY_PRICE2);
+				else
+					client.giftsAndFines(-howMuch*ECTS_BUY_PRICE);
+				return 0;
+			}
+			if (sell->belongs(temp_x, temp_y))
+			{
+				client.acquire(howMuch);
+				client.giftsAndFines(howMuch*ECTS_SELL_PRICE);
+				return 0;
 			}
 		}
 	}

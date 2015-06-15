@@ -96,3 +96,22 @@ bool Player::isPlaying()
 		state--;
 	return false;
 }
+
+void Player::setCrossedStart(bool a)
+{
+	crossedStart = a;
+}
+
+bool Player::getCrossedStart()
+{
+	return crossedStart;
+}
+
+int Player::capability(exValue type)
+{
+	if (type == ECTS)
+		return ECTS * ECTS_SELL_PRICE;
+	if (crossedStart)
+		return cash / ECTS_BUY_PRICE2;
+	return cash / ECTS_BUY_PRICE;
+}

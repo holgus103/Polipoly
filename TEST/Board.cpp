@@ -208,6 +208,7 @@ void Board::serveClick(int x, int y){
 			current = ((players[current->getNumber()] != NULL) && (current->getNumber() != PLAYERS)) ? players[current->getNumber()] : players[0];
 		while (current->isPlaying() == false);
 		current->setState(1);
+		current->setCrossedStart(false);
 		rolled = false;
 	}
 	if (bankEnter->belongs(x, y))

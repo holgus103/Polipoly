@@ -29,4 +29,6 @@ public:
 	void setState(int a);
 	bool isPlaying();
 	void setCrossedStart(bool);
+	bool getCrossedStart();
+	int capability(exValue type);
 };

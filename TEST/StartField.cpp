@@ -8,4 +8,5 @@ StartField::StartField(std::fstream& fielddata) :Field(fielddata)
 void StartField::onStepOn(Player& occupant)
 { 
 	occupant.giftsAndFines(bonus);
+	occupant.setCrossedStart(true);
 }

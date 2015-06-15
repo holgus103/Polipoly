@@ -150,6 +150,10 @@
 #define BANK_COUNTER_CONTENT_X 912
 #define BANK_COUNTER_CONTENT_Y 507
 
+#define ECTS_BUY_PRICE2 50
+#define ECTS_BUY_PRICE 65
+#define ECTS_SELL_PRICE 35
+
 enum FieldType{
 	FREE = 1,
 	COMMERCIAL = 2,
@@ -175,4 +179,9 @@ enum Response{
 	_YES = 2,
 	_NO = 4,
 	_OK = 3,
+};
+
+enum exValue{
+	ECTS = 1,
+	DOLLARS = 2,
 };
