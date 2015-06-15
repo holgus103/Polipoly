@@ -10,7 +10,7 @@
 2 ZTiPSK Metody_Numeryczne 4269868031 663 764 601 662 2 1
 1 KAC Odpoczynek 0 663 764 663 764
 2 Zespól_Oprogramowania_(III_sem) Inzynieria_Oprogramowania 4278387455 602 662 663 764 3 2
-2 WF Sport_to_zdrowie 0 539 601 663 764 3 8
+7 WF Sport_to_zdrowie 0 539 601 663 764 3
 2 Zespól_Oprogramowania_(III_sem) Oblicznia_Równolegle 4278387455 477 538 663 764 3 2
 2 Zespól_Oprogramowania_(III_sem) Bazy_Danych 4278387455 415 476 663 764 3 2
 2 Jezyki Jezyk_niemiecki 0 353 414 663 764 4 8
@@ -26,7 +26,7 @@
 2 Jezyki Jezyk_rosyjski 0 4 104 353 414 4 8
 2 Powtórka Fizyka 67103487 4 104 291 352 5 5
 2 Powtórka Algebra 67103487 4 104 229 290 5 5
-2 Dziekanat Moze_trzeba_oddac_indeks? 0 4 104 167 228 3 8
+7 Dziekanat Moze_trzeba_oddac_indeks? 0 4 104 167 228 3
 2 Powtórka Analiza_Matematyczna 67103487 4 104 105 166 6 5
 6 Popijawa Pospij_sobie 0 4 104 4 104 Odpoczynek
 2 ZMiTAC_II Konstrukcja_Ukladów_Cyfrowych 234500351 105 166 4 104 6 6

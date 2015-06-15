@@ -76,3 +76,15 @@ public:
 	virtual void enterTheFieldtrix(Player& occupant);
 	virtual ~PoliceField(){};
 };
+
+class RollingField :public Field{
+	Player* owner;
+	int price;
+public:
+	virtual void renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::ConvexShape& field, sf::Text& fieldContent);
+	bool buyMe(Player& buyer);
+	virtual bool payDay(Player& Chaplin, int rolled);
+	RollingField(std::fstream& fielddata);
+	virtual ~RollingField(){};
+	virtual void enterTheFieldtrix(Player& Neo);
+};

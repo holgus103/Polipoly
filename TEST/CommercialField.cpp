@@ -74,7 +74,7 @@ void CommercialField::renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::Con
 	else{
 		my_info = "Wolne";
 	}
-	my_info = my_info + "\n Cena: " + std::to_string(price) + " ECTS\n Poziom: " + std::to_string(level) + " \n Cena za wejscie: " + std::to_string(25 * price*multiplier(level)) + " \n Cena ulepszenia: " + std::to_string(25 * price*(level + 1));
+	my_info = my_info + "\nCena: " + std::to_string(price) + " ECTS\nPoziom: " + std::to_string(level) + " \nCena za wejscie: " + std::to_string(25 * price*multiplier(level)) + " \nCena ulepszenia: " + std::to_string(25 * price*(level + 1));
 	fieldContent.setString(my_info);
 }
 

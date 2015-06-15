@@ -37,6 +37,7 @@ Button* Board::bankEnter;
 Button* Board::upgrade;
 FieldSet* Board::setsInfo[SETS_COUNT];
 CommercialField* Board::clickedField = NULL;
+int Board::roll;
 
 void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::fstream& chancesdata){
 	std::string paths[4];
@@ -108,6 +109,9 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::
 		}
 		if (type == POLICE){
 			fields += new PoliceField(fielddata);
+		}
+		if (type == ROLLING){
+			fields += new RollingField(fielddata);
 		}
 	}
 	
@@ -206,7 +210,6 @@ void Board::drawGamefield(){
 }
 
 void Board::serveClick(int x, int y){
-	int roll;
 	if (rolled == false && DICE1_X<x && x<DICE2_X + DICE_SIZE && y>DICE1_Y && y < DICE1_Y + DICE_SIZE){
 		roll = dice::rollMe(mainWindow, Dices, sizeof(Dices) / sizeof(Dices[0]));
 		

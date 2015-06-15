@@ -169,6 +169,7 @@ enum FieldType{
 	PENEALTY = 4,
 	START = 5,
 	POLICE = 6,
+	ROLLING = 7,
 };
 
 enum ChanceType{

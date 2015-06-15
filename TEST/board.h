@@ -56,5 +56,6 @@ public:
 	static Stack* chancesStack;
 	static Player* players[PLAYERS];
 	static FieldSet* setsInfo[SETS_COUNT];
+	static int roll;
 	static void drawBgr();
 };
