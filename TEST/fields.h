@@ -29,6 +29,7 @@ public:
 class CommercialField:public Field{
 	Player* owner;
 	int price;
+	int setId;
 public:
 	virtual void renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::ConvexShape& field, sf::Text& fieldContent);
 	bool buyMe(Player& buyer);
@@ -36,6 +37,7 @@ public:
 	CommercialField(std::fstream& fielddata);
 	virtual ~CommercialField(){};
 	virtual void enterTheFieldtrix(Player& Neo);
+	int getOwnerId();
 };
 
 class PenealtyField :public Field{

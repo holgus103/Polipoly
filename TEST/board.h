@@ -12,6 +12,7 @@ class Chance;
 class Stack;
 class Button;
 class Bank;
+class FieldSet;
 
 class Board{
 private:
@@ -39,6 +40,7 @@ private:
 	static userbar* user_bar;
 	static bool rolled;
 	
+	
 
 public:
 	static void setWindow(sf::RenderWindow& myWindow){ mainWindow = &myWindow; }
@@ -51,5 +53,6 @@ public:
 	static Messenger* msger;
 	static Stack* chancesStack;
 	static Player* players[PLAYERS];
+	static FieldSet* setsInfo[SETS_COUNT];
 	static void drawBgr();
 };

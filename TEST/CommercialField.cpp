@@ -2,11 +2,14 @@
 #include <Windows.h>
 #include "board.h"
 #include "messenger.h"
+#include "FieldSet.h"
 
 CommercialField::CommercialField(std::fstream& fielddata):Field(fielddata){
 
 	owner = NULL;
 	fielddata >> price;
+	fielddata >> setId;
+//	*Board::setsInfo[setId] += (*this);
 }
 
 //~CommercialField::~CommercialField(){}
@@ -56,4 +59,11 @@ void CommercialField::renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::Con
 	}
 	fieldContent.setString(my_info);
 
+}
+
+int CommercialField::getOwnerId()
+{
+	if (owner == NULL)
+		return 0;
+	return owner->getNumber;
 }

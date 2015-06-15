@@ -33,6 +33,7 @@ Stack* Board::chancesStack;
 Bank* Board::gameBank;
 Button* Board::nextButton;
 Button* Board::bankEnter;
+FieldSet* Board::setsInfo[SETS_COUNT];
 
 void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::fstream& chancesdata){
 	std::string paths[4];
@@ -81,6 +82,10 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::
 
 	//build the gamefield list 
 	int type;
+	for (int i = 0; i < SETS_COUNT; i++)
+	{
+		setsInfo[i] = new FieldSet(i);
+	}
 	for (int i = 0; i < GAMEFIELD_SIZE; i++){
 		fielddata >> type;
 		if (type == FREE){
@@ -102,6 +107,7 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::
 			fields += new PoliceField(fielddata);
 		}
 	}
+	
 
 	paths[0] = PLAYER_1_PATH;
 	paths[1] = PLAYER_2_PATH;
