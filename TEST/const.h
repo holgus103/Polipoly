@@ -154,7 +154,7 @@
 #define ECTS_BUY_PRICE 65
 #define ECTS_SELL_PRICE 35
 
-#define SETS_COUNT 9
+#define SETS_COUNT 8
 
 #define UPG_PATH "Upgrade.png"
 #define UPG_XL 900
@@ -170,6 +170,7 @@ enum FieldType{
 	START = 5,
 	POLICE = 6,
 	ROLLING = 7,
+	LANGUAGE = 8,
 };
 
 enum ChanceType{

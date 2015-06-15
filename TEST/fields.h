@@ -88,3 +88,17 @@ public:
 	virtual ~RollingField(){};
 	virtual void enterTheFieldtrix(Player& Neo);
 };
+
+class LanguageField :public Field{
+	Player* owner;
+	int price;
+	int value();
+public:
+	virtual void renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::ConvexShape& field, sf::Text& fieldContent);
+	bool buyMe(Player& buyer);
+	virtual bool payDay(Player& Chaplin);
+	LanguageField(std::fstream& fielddata);
+	virtual ~LanguageField(){};
+	virtual void enterTheFieldtrix(Player& Neo);
+	int getOwnerId();
+};

@@ -113,6 +113,9 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::
 		if (type == ROLLING){
 			fields += new RollingField(fielddata);
 		}
+		if (type == LANGUAGE){
+			fields += new LanguageField(fielddata);
+		}
 	}
 	
 

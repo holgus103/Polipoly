@@ -17,7 +17,6 @@ class CommercialField;
 
 class Board{
 private:
-	static CircularList<Field*> fields;
 	static sf::Texture gamefieldTX;
 	static sf::Texture fieldInfoTX;
 	static sf::Texture bgrTx;
@@ -56,6 +55,7 @@ public:
 	static Stack* chancesStack;
 	static Player* players[PLAYERS];
 	static FieldSet* setsInfo[SETS_COUNT];
+	static CircularList<Field*> fields;
 	static int roll;
 	static void drawBgr();
 };
