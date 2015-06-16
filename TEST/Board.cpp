@@ -35,6 +35,7 @@ Bank* Board::gameBank;
 Button* Board::nextButton;
 Button* Board::bankEnter;
 Button* Board::upgrade;
+Button* Board::resign;
 FieldSet* Board::setsInfo[SETS_COUNT];
 CommercialField* Board::clickedField = NULL;
 int Board::roll;
@@ -151,6 +152,7 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::
 	nextButton = new Button(NEXTP_PATH, NEXTP_XL, NEXTP_XR, NEXTP_YU, NEXTP_YD);
 	bankEnter = new Button(BANK_ENTER_PATH, BANK_ENTER_XL, BANK_ENTER_XR, BANK_ENTER_YU, BANK_ENTER_YD);
 	upgrade = new Button(UPG_PATH, UPG_XL, UPG_XR, UPG_YU, UPG_YD);
+	resign = new Button(RSGN_PATH, RSGN_XL, RSGN_XR, RSGN_YU, RSGN_YD);
 }
 
 
@@ -161,7 +163,6 @@ CommercialField* Board::renderClickedField(short x, short y)
 	do{
 		if ((*it)->belongs(x, y)){
 			(*it)->renderMe(teamName, fieldName, fieldColor,fieldContent);
-			std::string tempek = typeid(**it).name();
 			if ((std::string)typeid(**it).name() == (std::string)"class CommercialField")
 				return (CommercialField*)(*it);
 			return NULL;
@@ -191,7 +192,7 @@ void Board::dispose(){
 	delete(bankEnter);
 	delete(upgrade);
 	delete(gameBank);
-
+	delete(resign);
 }
 
 void Board::drawGamefield(){
@@ -204,6 +205,7 @@ void Board::drawGamefield(){
 	mainWindow->draw(dicePic2);
 	nextButton->drawButton(*mainWindow);
 	bankEnter->drawButton(*mainWindow);
+	resign->drawButton(*mainWindow);
 	if (clickedField != NULL)
 		upgrade->drawButton(*mainWindow);
 
@@ -230,15 +232,10 @@ void Board::serveClick(int x, int y){
 	}
 	if (rolled == true && nextButton->belongs(x, y))
 	{
-		if (current->getState() == 1)
-			current->setState(2);
-
-		do			
-			current = ((players[current->getNumber()] != NULL) && (current->getNumber() != PLAYERS)) ? players[current->getNumber()] : players[0];
-		while (current->isPlaying() == false);
-		current->setState(1);
-		current->setCrossedStart(false);
-		rolled = false;
+		if (Board::nextPlayer())
+			rolled = false;
+		else
+			Board::msger->drawMsgBox((std::string) "Pozdro.", (std::string) "Koniec", OK);
 	}
 	if (clickedField != NULL && upgrade->belongs(x, y))
 		if (setsInfo[clickedField->getSetId()]->compareOwners(current->getNumber()))
@@ -254,6 +251,12 @@ void Board::serveClick(int x, int y){
 
 	if (bankEnter->belongs(x, y))
 		gameBank->visitBank(*mainWindow, *current);
+	if (resign->belongs(x, y))
+	{
+		current->bankrupt();
+		rolled = true;
+	}
+		
 	clickedField = renderClickedField(x, y);
 }
 
@@ -268,4 +271,26 @@ void Board::drawBgr(){
 	Board::mainWindow->draw(*bgr);
 	delete bgr;
 	delete bgrTx;
+}
+
+bool Board::nextPlayer()
+{
+	if (current->getState() == 1)
+		current->setState(2);
+	int temp = current->getNumber();
+	for (int i = 0; i < PLAYERS; i++)
+	{
+		current = ((players[current->getNumber()] != NULL) && (current->getNumber() != PLAYERS)) ? players[current->getNumber()] : players[0];
+		if (current->isPlaying() == true)
+			if (current->getNumber() == temp)
+				return false;
+			else
+			{
+				current->setState(1);
+				current->setCrossedStart(false);
+				return true;
+			}
+	}
+	return false;
+	
 }

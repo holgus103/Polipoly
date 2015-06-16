@@ -9,5 +9,6 @@ WalletChance::WalletChance(std::fstream& fielddata) :Chance(fielddata){
 void WalletChance::tryYourLuck(Player& target)
 {
 	Board::msger->drawMsgBox(message, (std::string) "Szansa", OK);
-	target.giftsAndFines(money);
+	if (target.giftsAndFines(money) == false)
+		target.bankrupt();
 }

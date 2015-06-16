@@ -65,7 +65,7 @@ void CommercialField::enterTheFieldtrix(Player& Neo){
 			}
 			else{
 				Board::msger->drawMsgBox((std::string)"Smuta! Nie masz hajsu, wiec odpadasz z gry!", (std::string)"Smutek", OK);
-				//delete &Neo;
+				Neo.bankrupt();
 			}
 		}
 
@@ -104,4 +104,10 @@ int CommercialField::getLevel()
 int CommercialField::getUpgValue()
 {
 	return 25 * price*(level + 1);
+}
+
+void CommercialField::free()
+{
+	owner = NULL;
+	level = 0;
 }

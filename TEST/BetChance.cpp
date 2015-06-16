@@ -11,5 +11,7 @@ void BetChance::tryYourLuck(Player& target)
 {
 	Board::msger->drawMsgBox(message, (std::string) "Szansa", OK);
 	for (int i = 0; i < 4; i++)
-		target.transfer(*Board::players[i], money);
+		if (Board::players[i] != NULL)
+				target.transfer(*Board::players[i], money);
+//		Board::players[i]->transfer(target, money);
 }

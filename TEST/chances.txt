@@ -1,4 +1,4 @@
-34
+35
 1 Cofnij_siÍ_o_trzy_pola. -3 0
 3 Wygra≥eú_wydzia≥owy_turniej_CS:GO.#Otrzymujesz_150_z≥. 150
 2 Idü_na_Podstawy_Elektrotechniki. Podstawy_Elektrotechniki
@@ -8,7 +8,7 @@
 2 Idü_na_Jezyk_niemiecki. Jezyk_niemiecki
 2 Idü_na_Inzynierie_Oprogramowania. Inzynieria_Oprogramowania
 2 Idü_na_Start. Nowy_semestr
-4 Przesadziles_z_nalewka_dziadiunia.#Odespij_2_kolejki. Nowy_semestr
+4 Przesadziles_z_nalewka_dziadiunia.#Odespij_2_kolejki. Odpoczynek
 3 Kupiles_przeprosinowy_bukiet_dla_dziewczyny.#Za_20_z≥. -20
 3 Znalazles_na_ulicy_50_z≥. 50
 3 Wplaciles_100_z≥_na_akcje_ochrony_golebi. -100
@@ -26,10 +26,11 @@
 5 Masz_urodziny.#Pobierz_20_z≥_od_kazdego_gracza. 20
 5 Wygrales_zaklad.#Pobierz_10_z≥_od_kazdego_gracza. 10
 2 Idü_na_Start. Nowy_semestr
-4 Grales_caly_tydzien_bez_przerwy_w_Minecrafta.#Odespij_2_kolejki. Nowy_semestr
+4 Grales_caly_tydzien_bez_przerwy_w_Minecrafta.#Odespij_2_kolejki. Odpoczynek
 1 Cofnij_siÍ_o_piec_pol. -5 0
 1 Cofnij_siÍ_o_siedem_pol. -7 0
-1 Przesun_sie_do_przodu_o_trzy_pola. 3 0
-1 Przesun_sie_do_przodu_o_piec_pol. 5 0
-1 Przesun_sie_do_przodu_o_siedem_pol. 7 0
-6 Otrzymujesz_specjalnego_buffa.#Nie_bedziesz_musial_odsypiac_nastepnej_imprezy.#Buff_zostanie_automatycznie_wykorzystany_przy_najblizszej_potrzebie.
+1 Przesun_sie_do_przodu_o_trzy_pola. 3 1
+1 Przesun_sie_do_przodu_o_piec_pol. 5 1
+1 Przesun_sie_do_przodu_o_siedem_pol. 7 1
+6 Otrzymujesz_specjalnego_buffa.#Nie_bedziesz_musial_odsypiac_nastepnej_imprezy.#Buff_zostanie_automatycznie_wykorzystany_w_pierwszej_potrzebie.
+6 Otrzymujesz_specjalnego_buffa.#Nie_bedziesz_musial_odsypiac_nastepnej_imprezy.#Buff_zostanie_automatycznie_wykorzystany_w_pierwszej_potrzebie.

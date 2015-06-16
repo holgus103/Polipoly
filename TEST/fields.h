@@ -43,6 +43,7 @@ public:
 	int getSetId();
 	int getLevel();
 	int getUpgValue();
+	void free();
 };
 
 class PenealtyField :public Field{
@@ -88,6 +89,8 @@ public:
 	RollingField(std::fstream& fielddata);
 	virtual ~RollingField(){};
 	virtual void enterTheFieldtrix(Player& Neo);
+	int getOwnerId();
+	void free();
 };
 
 class LanguageField :public Field{
@@ -102,4 +105,5 @@ public:
 	virtual ~LanguageField(){};
 	virtual void enterTheFieldtrix(Player& Neo);
 	int getOwnerId();
+	void free();
 };

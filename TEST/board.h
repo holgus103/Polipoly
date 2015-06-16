@@ -35,6 +35,7 @@ private:
 	static Button* nextButton;
 	static Button* bankEnter;
 	static Button* upgrade;
+	static Button* resign;
 	static CommercialField* clickedField;
 	static Player* current;
 	
@@ -58,4 +59,5 @@ public:
 	static CircularList<Field*> fields;
 	static int roll;
 	static void drawBgr();
+	static bool nextPlayer();
 };

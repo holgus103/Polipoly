@@ -3,6 +3,13 @@
 #include "board.h"
 #include "messenger.h"
 
+int RollingField::getOwnerId()
+{
+	if (owner == NULL)
+		return 0;
+	return owner->getNumber();
+}
+
 RollingField::RollingField(std::fstream& fielddata) :Field(fielddata){
 
 	owner = NULL;
@@ -40,6 +47,11 @@ void RollingField::enterTheFieldtrix(Player& Neo){
 		{
 		Board::msger->drawMsgBox("Zaplaciles graczowi numer " + std::to_string(owner->getNumber()), (std::string) "Oplata", OK);
 		}
+		else
+		{
+			Board::msger->drawMsgBox((std::string)"Smuta! Nie masz hajsu, wiec odpadasz z gry!", (std::string)"Smutek", OK);
+			Neo.bankrupt();
+		}
 
 }
 
@@ -54,4 +66,9 @@ void RollingField::renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::Convex
 	}
 	my_info = my_info + "\nCena: " + std::to_string(price) + " ECTS\nCena za wejscie: pieciokrotnosc\nsumy wyrzuconych oczek";
 	fieldContent.setString(my_info);
+}
+
+void RollingField::free()
+{
+	owner = NULL;
 }

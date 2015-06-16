@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Fields.h"
 #include <Windows.h>
+#include "messenger.h"
 
 Player::Player(int numberIn, std::string TexPath,CircularList<Field*>& list){
 	it = CircularList<Field*>::CircularIterator::CircularIterator(list);
@@ -25,6 +26,8 @@ void Player::move(int Roll, bool actions){
 	for (int i = 0; i > Roll; i--){
 		it--;
 		(*it)->setPosition(this);
+		if (actions)
+			(*it)->onStepOn(*this);
 		Board::drawGamefield();
 		Sleep(MOVE_INTERVAL);
 	}
@@ -52,8 +55,28 @@ bool Player::acquire(int amount){
 }
 
 bool Player::transfer(Player& Indepted,int amount){
+	if (Indepted.getNumber() == number)
+		return true;
 	if (Indepted.cash < amount)
+	{
+		int tempECTS = Indepted.ECTS;
+		int tempCash = Indepted.cash;
+		for (int i = 0; i < tempECTS; i++)
+		{
+			Indepted.ECTS--;
+			Indepted.cash += ECTS_SELL_PRICE;
+			if (Indepted.cash < amount)
+			{
+				Indepted.cash -= amount;
+				cash += amount;
+				return true;
+			}
+		}
+		cash += Indepted.cash;
+		ECTS = tempECTS;
+		cash = tempCash;
 		return false;
+	}
 	else{
 		Indepted.cash -= amount;
 		cash += amount;
@@ -61,6 +84,31 @@ bool Player::transfer(Player& Indepted,int amount){
 	}
 }
 
+bool Player::giftsAndFines(int amount)
+{
+	if (cash < -amount)
+	{
+		int tempECTS = ECTS;
+		int tempCash = cash;
+		for (int i = 0; i < tempECTS; i++)
+		{
+			ECTS--;
+			cash += ECTS_SELL_PRICE;
+			if (cash < amount)
+			{
+				cash += amount;
+				return true;
+			}
+		}
+		ECTS = tempECTS;
+		cash = tempCash;
+		return false;
+	}
+	else{
+		cash += amount;
+		return true;
+	}
+}
 
 void Player::drawMe(sf::RenderWindow& window,sf::Font& font, sf::Sprite& bgr){
 	sf::Text temp;
@@ -127,4 +175,36 @@ bool Player::isImmune()
 		return false;
 	immune--;
 	return true;
+}
+
+void Player::bankrupt()
+{
+	CommercialField* temp1;
+	LanguageField* temp2;
+	RollingField* temp3;
+	CircularList<Field*>::CircularIterator it(Board::fields);
+	do{
+		if ((std::string)typeid(**it).name() == (std::string)"class CommercialField")
+		{
+			temp1 = (CommercialField*)(*it);
+			if (temp1->getOwnerId() == number)
+				temp1->free();
+		}
+		if ((std::string)typeid(**it).name() == (std::string)"class LanguageField")
+		{
+			temp2 = (LanguageField*)(*it);
+			if (temp2->getOwnerId() == number)
+				temp2->free();
+		}
+		if ((std::string)typeid(**it).name() == (std::string)"class RollingField")
+		{
+			temp3 = (RollingField*)(*it);
+			if (temp3->getOwnerId() == number)
+				temp3->free();
+		}
+	} while (!it++);
+	state = 0;
+	cash = 0;
+	ECTS = 0;
+	Board::msger->drawMsgBox((std::string)"Gracz " + std::to_string(number) + (std::string)" zostal wyeliminowany.", (std::string)"Zycie", OK);
 }

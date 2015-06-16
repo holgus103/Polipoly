@@ -72,6 +72,11 @@ void LanguageField::enterTheFieldtrix(Player& Neo){
 		{
 		Board::msger->drawMsgBox("Zaplaciles graczowi numer " + std::to_string(owner->getNumber()), (std::string) "Oplata", OK);
 		}
+		else
+		{
+			Board::msger->drawMsgBox((std::string)"Smuta! Nie masz hajsu, wiec odpadasz z gry!", (std::string)"Smutek", OK);
+			Neo.bankrupt();
+		}
 
 }
 
@@ -86,4 +91,9 @@ void LanguageField::renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::Conve
 	}
 	my_info = my_info + "\nCena: " + std::to_string(price) + " ECTS\nCena za wejscie: " + std::to_string(value());
 	fieldContent.setString(my_info);
+}
+
+void LanguageField::free()
+{
+	owner = NULL;
 }

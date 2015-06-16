@@ -25,7 +25,7 @@ public:
 	void move(int Roll, bool actions);
 	void teleport(std::string);
 	bool transfer(Player& Indepted, int amount);
-	bool giftsAndFines(int amount){ return (cash += amount) < 0; }
+	bool giftsAndFines(int amount);
 	void drawMe(sf::RenderWindow& window, sf::Font& font, sf::Sprite& bgr);
 	int getState();
 	void setState(int a);
@@ -35,4 +35,5 @@ public:
 	int capability(exValue type);
 	void addImmunity();
 	bool isImmune();
+	void bankrupt();
 };

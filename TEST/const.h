@@ -162,6 +162,12 @@
 #define UPG_YU 261
 #define UPG_YD 322
 
+#define RSGN_PATH "GiveUp.png"
+#define RSGN_XL 774
+#define RSGN_XR 895
+#define RSGN_YU 261
+#define RSGN_YD 322
+
 enum FieldType{
 	FREE = 1,
 	COMMERCIAL = 2,
