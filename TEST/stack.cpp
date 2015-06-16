@@ -43,3 +43,9 @@ void Stack::startNext(Player& currentPlayer)
 	iter++;
 	chances[*iter]->tryYourLuck(currentPlayer);
 }
+
+Stack::~Stack(){
+	for (std::vector<Chance*>::iterator i = chances.begin(); i != chances.end(); i++){
+		delete *i;
+	}
+}

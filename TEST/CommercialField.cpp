@@ -58,9 +58,15 @@ void CommercialField::enterTheFieldtrix(Player& Neo){
 		}
 	}
 	else
-		if (payDay(Neo))
-		{
-		Board::msger->drawMsgBox("Zaplaciles graczowi numer " + std::to_string(owner->getNumber()), (std::string) "Oplata", OK);
+		if (owner != &Neo){
+			if (payDay(Neo))
+			{
+				Board::msger->drawMsgBox("Zaplaciles graczowi numer " + std::to_string(owner->getNumber()), (std::string) "Oplata", OK);
+			}
+			else{
+				Board::msger->drawMsgBox((std::string)"Smuta! Nie masz hajsu, wiec odpadasz z gry!", (std::string)"Smutek", OK);
+				//delete &Neo;
+			}
 		}
 
 }

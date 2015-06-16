@@ -4,7 +4,7 @@
 #include <functional>
 #include "Board.h"
 #include "Player.h"
-//#include <vld.h>
+#include <vld.h>
 #include "Fields.h"
 
 

@@ -11,5 +11,6 @@ private:
 	int chancesCount;
 public:
 	Stack(std::fstream& chancesdata);
+	~Stack();
 	void startNext(Player& currentPlayer);
 };

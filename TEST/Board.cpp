@@ -170,8 +170,11 @@ CommercialField* Board::renderClickedField(short x, short y)
 }
 // disposes the memory allocated by the main Board class
 void Board::dispose(){
-
-//dispose players
+	CircularList<Field*>::CircularIterator it(fields);
+	//dispose players
+	do{
+		delete *it;
+	} while (!it++);
 	for (int i = 0; i < PLAYERS; i++){
 		if (players[i] == NULL)
 			break;
@@ -188,7 +191,6 @@ void Board::dispose(){
 
 void Board::drawGamefield(){
 	mainWindow->draw(gamefield);
-//	mainWindow->draw(fieldInfo);
 	mainWindow->draw(fieldColor);
 	mainWindow->draw(teamName);
 	mainWindow->draw(fieldName);
