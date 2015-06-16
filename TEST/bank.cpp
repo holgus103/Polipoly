@@ -24,6 +24,7 @@ Bank::~Bank()
 	delete(counter);
 	delete(sell);
 	delete(buy);
+	delete(font);
 
 }
 

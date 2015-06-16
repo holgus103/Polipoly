@@ -13,7 +13,6 @@ protected:
 	std::string name;
 	sf::Color color;
 	void putSpaces(std::string& input);
-	//player* occupant;
 
 public:
 	virtual void renderMe(sf::Text& fieldteam, sf::Text& fieldname, sf::ConvexShape& field, sf::Text& fieldContent);

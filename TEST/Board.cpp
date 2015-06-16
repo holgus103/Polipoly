@@ -98,6 +98,7 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::
 		if (type == COMMERCIAL){
 			fields += new CommercialField(fielddata);
 		}
+			
 		if (type == CHANCE){
 			fields += new ChanceField(fielddata);
 		}
@@ -126,10 +127,10 @@ void Board::buildGameField(std::fstream& fielddata, std::fstream& msgdata, std::
 
 
 	chancesStack = new Stack(chancesdata);
-	nextButton = new Button(NEXTP_PATH, NEXTP_XL, NEXTP_XR, NEXTP_YU, NEXTP_YD);
 	msger = new Messenger(*mainWindow, msgdata);
 	//initialize players
 	Response response = msger->drawMsgBox((std::string)"Wybierz liczbe graczy", (std::string)"MENU", MENU);
+	//Response response = (Response)2;
 	for (int i = 0; i < PLAYERS; i++){
 		if (i < response)
 			players[i] = new Player(i + 1, paths[i], fields);
@@ -180,12 +181,16 @@ void Board::dispose(){
 			break;
 		delete (players[i]);
 	}
+	for(int i = 0; i < SETS_COUNT; i++){
+		delete setsInfo[i];
+	}
 	delete(user_bar);
 	delete(msger);
 	delete(chancesStack);
 	delete(nextButton);
 	delete(bankEnter);
 	delete(upgrade);
+	delete(gameBank);
 
 }
 
