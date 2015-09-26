@@ -6,6 +6,7 @@
 #include "Player.h"
 //#include <vld.h>
 #include "Fields.h"
+#include "Networking.h"
 
 
 
@@ -13,7 +14,9 @@
 
 int main()
 {
-	srand(time(NULL));
+	std::string asd;
+	std::cin >> asd;
+	/*srand(time(NULL));
 	int roll = 0;
 	std::fstream fielddata(FIELDDATA_PATH,std::fstream::in);
 	std::fstream msgdata(MSG_DATA_PATH, std::fstream::in);
@@ -45,6 +48,9 @@ int main()
 
 	Board::dispose();
 	fielddata.close();
-	msgdata.close();
+	msgdata.close();*/
+	Networking test;
+	test.init(asd);
+
 	return 0;
 }

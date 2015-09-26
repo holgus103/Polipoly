@@ -168,6 +168,8 @@
 #define RSGN_YU 261
 #define RSGN_YD 322
 
+#define PORT 33333
+
 enum FieldType{
 	FREE = 1,
 	COMMERCIAL = 2,

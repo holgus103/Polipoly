@@ -57,7 +57,7 @@ void CommercialField::enterTheFieldtrix(Player& Neo){
 			return;
 		}
 	}
-	else
+	else{
 		if (owner != &Neo){
 			if (payDay(Neo))
 			{
@@ -68,6 +68,7 @@ void CommercialField::enterTheFieldtrix(Player& Neo){
 				Neo.bankrupt();
 			}
 		}
+	}
 
 }
 

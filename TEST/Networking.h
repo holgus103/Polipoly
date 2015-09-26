@@ -7,4 +7,5 @@ class Networking{
 	sf::Packet input;
 public:
 	Networking();
+	bool init(std::string);
 };

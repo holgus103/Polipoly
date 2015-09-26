@@ -1,0 +1,40 @@
+5 Start Nowy_semestr 0 663 764 4 104 300
+2 ZTI Podstawy_Informatyki 4294902015 663 764 105 166 1 0
+3 Szansa ??? 0 663 764 167 228
+2 ZTI Metody_Statystyczne 4294902015 663 764 229 290 1 0
+4 Mandat Przykro_mi,_kolego 0 663 764 291 352 -200
+8 Jezyki Jezyk_angielski 0 663 764 353 414 4
+2 ZTiPSK Matematyka_Dyskretna 4269868031 663 764 415 476 2 1
+3 Szansa ??? 0 663 764 477 538
+2 ZTiPSK Systemy_Operacyjne 4269868031 663 764 539 600 2 1
+2 ZTiPSK Metody_Numeryczne 4269868031 663 764 601 662 2 1
+1 KAC Odpoczynek 0 663 764 663 764
+2 Zespól_Oprogramowania_(III_sem) Inzynieria_Oprogramowania 4278387455 602 662 663 764 3 2
+7 WF Sport_to_zdrowie 0 539 601 663 764 3
+2 Zespól_Oprogramowania_(III_sem) Oblicznia_Równolegle 4278387455 477 538 663 764 3 2
+2 Zespól_Oprogramowania_(III_sem) Bazy_Danych 4278387455 415 476 663 764 3 2
+8 Jezyki Jezyk_niemiecki 0 353 414 663 764 4
+2 Zespól_Oprogramowania_(I,II_sem) Algorytmy_i_Struktury_Danych 222167039 291 352 663 764 4 3
+1 Szansa ??? 0 229 290 663 764
+2 Zespól_Oprogramowania_(I,II_sem) Podstawy_Programowania_Komputerów 222167039 167 228 663 764 4 3
+2 Zespól_Oprogramowania_(I,II_sem) Programowanie_Komputerów 222167039 105 166 663 764 4 3
+1 Ferie Czas_na_relaks 0 4 104 663 764
+2 ZMiTAC Teoria_Ukladów_Cyfrowych 395321343 4 104 601 662 4 4
+1 Szansa ??? 0 4 104 539 600
+2 ZMiTAC Arytmetyka_Systemów_Cyfrowych 395321343 4 104 477 538 4 4
+2 ZMiTAC Jezyki_Assemblerowe 395321343 4 104 415 476 5 4
+8 Jezyki Jezyk_rosyjski 0 4 104 353 414 4
+2 Powtórka Fizyka 67103487 4 104 291 352 5 5
+2 Powtórka Algebra 67103487 4 104 229 290 5 5
+7 Dziekanat Moze_trzeba_oddac_indeks? 0 4 104 167 228 3
+2 Powtórka Analiza_Matematyczna 67103487 4 104 105 166 6 5
+6 Integracja Z_alkoholem 0 4 104 4 104 Odpoczynek Poszalales_na_imprezie._Odespij_2_kolejki. Wykorzystales_antykacowego_buffa._Jedziesz_dalej.
+2 ZMiTAC_II Konstrukcja_Ukladów_Cyfrowych 234500351 105 166 4 104 6 6
+2 ZMiTAC_II Podstawy_Cyfrowej_Transmisji_Danych 234500351 167 228 4 104 6 6
+3 Szansa ??? 0 229 290 4 104
+2 ZMiTAC_II Systemy_Mikroprogramowalne_i_Wbudowane 234500351 291 352 4 104 6 6
+8 Jezyki Jezyk_hiszpanski 0 353 414 4 104 4
+3 Szansa ??? 0 415 476 4 104
+2 Elektronicy Podstawy_Elektrotechniki 2684675071 477 538 4 104 7 7
+4 Kurs_BHP W_ramach_formalnosci 0 539 601 4 104 -100
+2 Elektronicy Elektronika_i_Miernictwo 2684675071 602 662 4 104 8 7

@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Board" Collapsed="true">
+    <Position X="6" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ygKABAggCAAAAEMiECEABIAg9ABCAQAAKgAAABAIGAA=</HashCode>
+      <FileName>board.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="dice" Collapsed="true">
+    <Position X="4.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQABAAAgAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dice.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Field" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAQQAAAAAAAAAQAAAAAAAACAIAUgAGABAREAAACgAA=</HashCode>
+      <FileName>fields.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CommercialField" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABQgAACAAggAQAAGEAAAAAAAEAIQAACAQAAAAAAAA=</HashCode>
+      <FileName>fields.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PenealtyField" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAQAAAAAAAAAAAQAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>fields.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StartField" Collapsed="true">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAACAAAAAAAAgAAAAAAAIAAAAAA=</HashCode>
+      <FileName>fields.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChanceField" Collapsed="true">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAgAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>fields.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PoliceField" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAEAAAAAAQAAAAAAAAAAAAoAAAAAAAAAAAAACA=</HashCode>
+      <FileName>fields.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RollingField" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABQgCAAAAggAQAAAAAAAAAAAQAIAAAAAQAAAAAAAA=</HashCode>
+      <FileName>fields.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LanguageField" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABQoAAAAAggAQAAAAAAABAAAAAICAAAAQAAAAAAAA=</HashCode>
+      <FileName>fields.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="9.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAIAAgAAAEEQACABAAAAEKIABEgAICFCACEAQACABQ=</HashCode>
+      <FileName>player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="userbar" Collapsed="true">
+    <Position X="6" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAACAAAAAACAQACIAAACQAAAAAAA=</HashCode>
+      <FileName>userbar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bank" Collapsed="true">
+    <Position X="4.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQKAQAACAABAAAAACAEAAAAAAAAAIAEAAIAAAAAAAAA=</HashCode>
+      <FileName>bank.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Button" Collapsed="true">
+    <Position X="7.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEEAAACAAAAAAAIAEAAIAAAAAIgAAAAAAAAAAAEAAAQ=</HashCode>
+      <FileName>button.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chance" Collapsed="true">
+    <Position X="6" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAABAAAAAAAAAAAAQABAAAAAAAACA=</HashCode>
+      <FileName>Chances.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TravellingChance" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAACAAABAAAAAAAAAAAAAIAABAAAAAAAA=</HashCode>
+      <FileName>Chances.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TeleportChance" Collapsed="true">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAABAAAABAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Chances.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalletChance" Collapsed="true">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAQBAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Chances.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JailChance" Collapsed="true">
+    <Position X="11.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAQEAAAAAA=</HashCode>
+      <FileName>Chances.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BetChance" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAABAAgAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Chances.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuffChance" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAABAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Chances.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CircularList&lt;t&gt;" Collapsed="true">
+    <Position X="9.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAACAAAAAAAAAAAAAQAQAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>CircularList.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Messenger" Collapsed="true">
+    <Position X="6" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABIAAAEAABAAAAAAAAAAoAAQACAAEAAIAAAIAAAAIIA=</HashCode>
+      <FileName>messenger.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Networking" Collapsed="true">
+    <Position X="7.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAABADAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Networking.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Stack" Collapsed="true">
+    <Position X="4.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAIAAACAAAAAAAgAAAAAQAAAAAAAAAACI=</HashCode>
+      <FileName>stack.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="FieldType" Collapsed="true">
+    <Position X="7.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAEIAAAAAEAIAAAAgIAAgAAAA=</HashCode>
+      <FileName>const.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChanceType" Collapsed="true">
+    <Position X="4.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAgCAAAAAAAAAIEACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>const.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MsgType" Collapsed="true">
+    <Position X="9.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAQAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>const.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Response" Collapsed="true">
+    <Position X="4.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAEAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>const.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="exValue" Collapsed="true">
+    <Position X="6" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>const.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
