@@ -1,0 +1,27 @@
+Debug/TEST.ilk
+*.exe
+Debug/TEST.pdb
+*.filters
+*.dll
+*.tlog
+*.obj
+*.ttf
+SFML test.sdf
+*.opensdf
+*.sln
+SFML test.v12.suo
+*.idb
+TEST/Debug/vc120.pdb
+*.log
+TEST/TEST.vcxproj
+TEST/TEST.zip
+*.7z
+Polipoly/Debug/Polipoly.ilk
+*.pdb
+*.bmp
+Polipoly/Polipoly.v12.suo
+*.vcxproj
+*.sdf
+Polipoly/fielddata.txt
+*.ilk
+TEST/Polipoly.v12.suo
