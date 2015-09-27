@@ -1,12 +1,12 @@
 //#include <SFML/System.hpp>
-#include <iostream>
-#include <time.h>
-#include <functional>
-#include "Board.h"
-#include "Player.h"
-//#include <vld.h>
-#include "Fields.h"
-#include "Networking.h"
+//#include <iostream>
+//#include <time.h>
+//#include <functional>
+//#include "Board.h"
+//#include "Player.h"
+////#include <vld.h>
+//#include "Fields.h"
+#include "Client.h"
 
 
 
@@ -14,8 +14,6 @@
 
 int main()
 {
-	std::string asd;
-	std::cin >> asd;
 	/*srand(time(NULL));
 	int roll = 0;
 	std::fstream fielddata(FIELDDATA_PATH,std::fstream::in);
@@ -49,8 +47,13 @@ int main()
 	Board::dispose();
 	fielddata.close();
 	msgdata.close();*/
-	Networking test;
-	test.init(asd);
+	std::string ip;
+	std::cin >> ip;
+	Client client;
+	if (client.init(ip)){
+		std::cout << "sukces" << std::endl;
+	}
+	client.messageLoop();
 
 	return 0;
 }
