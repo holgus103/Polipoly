@@ -3,17 +3,19 @@
 bool Server::connectionLoop(){
 	sf::TcpListener listener, helper;
 	sf::TcpSocket socket;
-	sf::Int32 currentPort = PORT + 1;
+	int currentPort;
 	if (listener.listen(PORT) != sf::Socket::Done)
 		return false;
 	std::cout << "listener setup on: " << PORT << std::endl;
-	for (sf::Int8 i = 0; i < this->players; i++){
+	for (int i = 0; i < this->players; i++){
 		// set up base listener for redirection
 		if (listener.accept(socket) != sf::Socket::Done){
 			std::cout << "new client could not connect: " << i + 1 << std::endl;
 			return false;
 		}
 		std::cout << "client connected: " << socket.getRemoteAddress() << std::endl;
+		// set up port base port number
+		currentPort = PORT + 1 + i;
 		// find closest free port and set up a new listener for a player
 		while (helper.listen(currentPort) != sf::Socket::Done){
 			currentPort++;
@@ -48,13 +50,18 @@ Server::~Server(){
 }
 Server::Server(int players){
 	this->players = players;
+	for (int i = 0; i < MAX_PLAYERS; i++)
+	{
+		this->playerSockets[i] = NULL;
+	}
 }
 
 bool Server::messegeLoop(){
 	auto i = 0;
-	auto result = true;
+	bool result = true;
 	sf::Packet packet;
 	while (true){
+		std::cout << "waiting for player " << i << std::endl;
 		if ((*this->playerSockets[i]).receive(packet) != sf::Socket::Done){
 			return false;
 		}
@@ -70,6 +77,6 @@ bool Server::messegeLoop(){
 			}
 		}
 		packet.clear();
-		i <= this->players ? i++ : i = 0;
+		i < this->players-1 ? i++ : i = 0;
 	}
 }

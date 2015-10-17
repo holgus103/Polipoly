@@ -29,19 +29,26 @@ bool Client::init(std::string ip){
 bool Client::messageLoop(){
 	sf::Packet packet;
 	std::string var;
-	auto j = 0;
 	while (true){
-		if (this->id == j){
+		if (this->id == this->current){
+			packet.clear();
 			std::cin >> var;
 			packet << var;
 			this->serverConnection.send(packet);
 		}
-		for (auto i = 0; i < this->players-1; i++){
-			packet.clear();
-			this->serverConnection.receive(packet);
-			packet >> var;
-			std::cout << var << std::endl;
+		else{
+			for (auto i = 0; i < this->players - 1; i++){
+				packet.clear();
+				this->serverConnection.receive(packet);
+				packet >> var;
+				std::cout << var << std::endl;
+			}
 		}
-		j <= this->players ? j++ : j = 0;
+		this->current < this->players - 1 ? this->current++ : this->current = 0;
 	}
 }
+
+Client::Client(){
+	this->current = 0;
+}
+
